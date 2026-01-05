@@ -1,69 +1,114 @@
 # AIFFEL_quest_eng
 
-AIFFEL 과정에서 진행하는 퀘스트와 프로젝트를 관리하는 레포지토리입니다.
-
 ## Repository Structure
 
 ```bash
 AIFFEL_quest_eng
 ├── Computer_Vision
 │   ├── CV01
-│   │   ├── CV01.ipynb
-│   │   └── README.md
+│   │   ├── README.md
+│   │   └── .ipynb
 │   ├── CV02
-│   │   ├── CV02.ipynb
-│   │   └── README.md
+│   │   ├── README.md
+│   │   └── .ipynb
 │   └── CV03
-│       ├── CV03.ipynb
-│       └── README.md
+│       ├── README.md
+│       └── .ipynb
 ├── Data_Analysis
 │   ├── DA01
-│   │   ├── DA01.ipynb
-│   │   └── README.md
+│   │   ├── README.md
+│   │   └── .ipynb
 │   └── DA02
-│       ├── DA02.ipynb
-│       └── README.md
+│       ├── README.md
+│       └── .ipynb
 ├── Deployment
 │   ├── Contents
-│   │   ├── Contents.ipynb
-│   │   └── README.md
+│   │   ├── README.md
+│   │   └── .ipynb
 │   └── Final_Code
-│       ├── Final_Code.ipynb
-│       └── README.md
+│       ├── README.md
+│       └── .ipynb
 ├── LLM_Application
 │   ├── LLM01
-│   │   ├── LLM01.ipynb
-│   │   └── README.md
-│   └── LLM02
-│       ├── LLM02.ipynb
-│       └── README.md
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── LLM02
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── LLM03
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── LLM04
+│   │   ├── README.md
+│   │   └── .ipynb
+│   └── LLM05
+│       ├── README.md
+│       └── .ipynb
 ├── MLOps
 │   ├── MLOps01
-│   │   ├── MLOps01.ipynb
-│   │   └── README.md
-│   └── MLOps02
-│       ├── MLOps02.ipynb
-│       └── README.md
-├── MainQuest
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── MLOps02
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── MLOps03
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── MLOps04
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── MLOps05
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── MLOps06
+│   │   ├── README.md
+│   │   └── .ipynb
+│   └── MLOps07
+│       ├── README.md
+│       └── .ipynb
+├── Main_Quest
 │   ├── Quest01
-│   │   ├── Quest01.ipynb
-│   │   └── README.md
-│   └── Quest02
-│       ├── Quest02.ipynb
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── Quest02
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── Quest03
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── Quest04
+│   │   ├── README.md
+│   │   └── .ipynb
+│   └── Quest05
 │       └── README.md
 ├── NLP
 │   ├── NLP01
-│   │   ├── NLP01.ipynb
-│   │   └── README.md
-│   └── NLP02
-│       ├── NLP02.ipynb
-│       └── README.md
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── NLP02
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── NLP03
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── NLP04
+│   │   ├── README.md
+│   │   └── .ipynb
+│   └── NLP05
+│       ├── README.md
+│       └── .ipynb
 ├── Python
 │   ├── Py01
-│   │   ├── Py01.ipynb
-│   │   └── README.md
-│   └── Py02
-│       ├── Py02.ipynb
-│       └── README.md
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── Py02
+│   │   ├── README.md
+│   │   └── .ipynb
+│   ├── Py03
+│   │   ├── README.md
+│   │   └── .ipynb
+│   └── Py04
+│       ├── README.md
+│       └── .ipynb
 └── README.md
 ```
