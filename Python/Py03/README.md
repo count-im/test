@@ -1,4 +1,4 @@
-# Py02
+# Py03
 
 # AIFFEL Campus Online Code Peer Review Templete
 - 코더 : 신기주
