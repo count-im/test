@@ -1,4 +1,4 @@
-# CV01
+# CV02
 
 # AIFFEL Campus Online Code Peer Review Templete
 - 코더 : 신기주
