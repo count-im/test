@@ -30,7 +30,7 @@ try:
 except ImportError:
     _PLOT_AVAILABLE = False
 
-BASE_DIR   = '/workspace/NLP04'
+BASE_DIR   = '/workspace/NLP/NLP04/miniBERT'
 MODEL_DIR  = os.path.join(BASE_DIR, 'models')
 LOG_CSV    = os.path.join(MODEL_DIR, 'experiments_log.csv')
 LOG_JSON   = os.path.join(MODEL_DIR, 'experiments_log.json')

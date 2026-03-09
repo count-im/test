@@ -6,7 +6,7 @@ MLM + NSP 전처리 후 np.memmap으로 저장
 """
 
 import os
-os.chdir('/workspace/NLP04')
+os.chdir("/workspace/NLP/NLP04/miniBERT")
 
 import json
 import random
@@ -14,7 +14,7 @@ import numpy as np
 from tqdm import tqdm
 
 # ── 경로 설정 ─────────────────────────────────────────────────
-BASE_DIR   = '/workspace/NLP04'
+BASE_DIR   = '/workspace/NLP/NLP04/miniBERT'
 RAW_DIR    = os.path.join(BASE_DIR, 'data', 'raw')
 PROC_DIR   = os.path.join(BASE_DIR, 'data', 'processed')
 SPM_MODEL  = os.path.join(PROC_DIR, 'spm.model')

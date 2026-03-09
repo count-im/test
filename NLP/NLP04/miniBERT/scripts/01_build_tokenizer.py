@@ -5,7 +5,7 @@ special tokens: [PAD]=0, [UNK]=1, [CLS]=2, [SEP]=3, [MASK]=4
 """
 
 import os
-os.chdir('/workspace/NLP04')
+os.chdir("/workspace/NLP/NLP04/miniBERT")
 
 import sys
 import json
@@ -15,7 +15,7 @@ import re
 import xml.etree.ElementTree as ET
 
 # ── 경로 설정 ────────────────────────────────────────────────
-BASE_DIR    = '/workspace/NLP04'
+BASE_DIR    = '/workspace/NLP/NLP04/miniBERT'
 RAW_DIR     = os.path.join(BASE_DIR, 'data', 'raw')
 PROC_DIR    = os.path.join(BASE_DIR, 'data', 'processed')
 DUMP_URL    = 'https://dumps.wikimedia.org/kowiki/latest/kowiki-latest-pages-articles.xml.bz2'

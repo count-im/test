@@ -5,7 +5,7 @@ MLM loss + NSP loss, WarmupLinearSchedule
 """
 
 import os
-os.chdir('/workspace/NLP04')
+os.chdir("/workspace/NLP/NLP04/miniBERT")
 
 import json
 import math
@@ -21,11 +21,11 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 
 import sys
-sys.path.insert(0, os.path.join('/workspace/NLP04', 'scripts'))
+sys.path.insert(0, os.path.join('/workspace/NLP/NLP04/miniBERT', 'scripts'))
 from experiment_tracker import ExperimentTracker
 
 # ── 경로 설정 ─────────────────────────────────────────────────
-BASE_DIR   = '/workspace/NLP04'
+BASE_DIR   = '/workspace/NLP/NLP04/miniBERT'
 PROC_DIR   = os.path.join(BASE_DIR, 'data', 'processed')
 MODEL_DIR  = os.path.join(BASE_DIR, 'models')
 

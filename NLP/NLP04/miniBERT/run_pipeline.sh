@@ -28,9 +28,9 @@ while [[ $# -gt 0 ]]; do
 done
 
 # ── 경로 설정 ────────────────────────────────────────────────
-cd /workspace/NLP04
+cd /workspace/NLP/NLP04/miniBERT
 
-LOG_DIR="/workspace/NLP04/logs"
+LOG_DIR="/workspace/NLP/NLP04/miniBERT/logs"
 mkdir -p "$LOG_DIR"
 
 # ── 헬퍼 함수 ────────────────────────────────────────────────
@@ -105,7 +105,7 @@ log_pipeline "Step 3 완료"
 # loss 그래프 저장 확인
 echo ""
 echo "[확인] 생성된 모델 파일:"
-PLOT_PATH="/workspace/NLP04/models/pretrain_loss.png"
+PLOT_PATH="/workspace/NLP/NLP04/miniBERT/models/pretrain_loss.png"
 if [ -f "$PLOT_PATH" ]; then
     SIZE=$(du -h "$PLOT_PATH" | cut -f1)
     echo "  pretrain_loss.png  ($SIZE)  OK"
@@ -113,13 +113,13 @@ else
     echo "  pretrain_loss.png  NOT FOUND"
 fi
 
-BEST_CKPT="/workspace/NLP04/models/bert_best.pt"
+BEST_CKPT="/workspace/NLP/NLP04/miniBERT/models/bert_best.pt"
 if [ -f "$BEST_CKPT" ]; then
     SIZE=$(du -h "$BEST_CKPT" | cut -f1)
     echo "  bert_best.pt       ($SIZE)  OK"
 fi
 
-FINAL_CKPT="/workspace/NLP04/models/bert_final.pt"
+FINAL_CKPT="/workspace/NLP/NLP04/miniBERT/models/bert_final.pt"
 if [ -f "$FINAL_CKPT" ]; then
     SIZE=$(du -h "$FINAL_CKPT" | cut -f1)
     echo "  bert_final.pt      ($SIZE)  OK"
