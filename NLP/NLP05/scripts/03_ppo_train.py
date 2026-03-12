@@ -1,9 +1,12 @@
+import sys
+sys.path.insert(0, '/workspace/test/NLP/NLP05')
+
 import os, sys, json, random
 import torch
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 from transformers import (
-    GPT2LMHeadModel, PreTrainedTokenizerFast, AdamW,
+    GPT2LMHeadModel, PreTrainedTokenizerFast,
     get_linear_schedule_with_warmup
 )
 
@@ -141,7 +144,7 @@ def main():
     loader  = DataLoader(dataset, batch_size=cfg.PPO_BATCH_SIZE, shuffle=True)
     print(f"PPO 데이터 수: {len(dataset)}")
 
-    optimizer = AdamW(policy_model.parameters(), lr=cfg.PPO_LR)
+    optimizer = torch.optim.AdamW(policy_model.parameters(), lr=cfg.PPO_LR)
     total_steps = len(loader) * cfg.PPO_EPOCHS
     scheduler = get_linear_schedule_with_warmup(
         optimizer, num_warmup_steps=20, num_training_steps=total_steps
