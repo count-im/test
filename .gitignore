@@ -6,3 +6,5 @@ data/raw/ChatbotData.csv
 __pycache__/
 logs/
 LLM_Application/LLM01/data/
+**/*-checkpoint.ipynb
+**/*의_사본.ipynb
