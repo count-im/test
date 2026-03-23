@@ -52,6 +52,12 @@ def create_app() -> FastAPI:
         with open(html_path, encoding="utf-8") as f:
             return f.read()
 
+    @app.get("/mom4", response_class=HTMLResponse)
+    def mom4() -> str:
+        html_path = os.path.join(os.path.dirname(__file__), "ui", "babycoach_mom4.html")
+        with open(html_path, encoding="utf-8") as f:
+            return f.read()
+
     @app.get("/health")
     def health() -> dict:
         # Ensure graph can compile at runtime (smoke check).
