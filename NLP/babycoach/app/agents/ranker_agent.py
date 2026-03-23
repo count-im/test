@@ -21,6 +21,7 @@ def ranker_agent(state: BabyCoachState) -> BabyCoachState:
 
     if protein_stage <= 1:
         rank_tags.append("영양")
+        rank_tags.append("이유식")
     if focus <= 5 or state.get("repeat_count", 0) <= 2:
         rank_tags.append("놀이")
     if responsive <= 2 or state.get("flat_response", False):
@@ -41,8 +42,14 @@ def ranker_agent(state: BabyCoachState) -> BabyCoachState:
     play = state.get("play_suggestions", []) or []
 
     # Keep UI compact: 1~2 suggestions each.
-    spoon_suggestions = spoon[:2] if spoon else ["오늘은 한 가지를 아주 편안하게 시도해보세요."]
-    play_suggestions = play[:2] if play else ["오늘은 2~3회 주고받는 짧은 놀이로 시작해보세요."]
+    spoon_suggestions = spoon[:2] if spoon else [
+        "오늘은 두부 한 숟갈만 천천히 먹여보세요 🥄",
+        "채소는 익힌 한 가지를 아주 부드럽게(삶기/갈기) 시작해보세요.",
+    ]
+    play_suggestions = play[:2] if play else [
+        "오늘은 2~3회 주고받는 짧은 놀이로 시작해보세요.",
+        "아이가 관심 보이는 물건을 따라가며 짧게 반응해주세요.",
+    ]
 
     return {
         **state,

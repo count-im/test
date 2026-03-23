@@ -83,15 +83,15 @@ def _make_short_nudge(state: BabyCoachState) -> str:
 
     if domain == "spoon":
         if meal_refusal or (reaction_flags and reaction_flags != ["없음"]):
-            return "오늘은 단백질만 한 입 크기로 천천히 해보세요."
-        return "오늘은 단백질 텍스처를 한 숟갈만 천천히 해보세요."
+            return "오늘은 두부 한 숟갈만 아주 천천히 먹여보세요 🥄"
+        return "오늘은 두부 한 숟갈만 천천히 먹여보세요 🥄"
 
     if domain == "play":
         if refusal:
-            return "오늘은 놀이를 1~2분만 짧게 다시 해보세요."
-        return "오늘은 같은 놀이를 2번만 짧게 반복해 보세요."
+            return "오늘은 놀이를 1~2분만 짧게 다시 시도해보세요 🎈"
+        return "오늘은 같은 놀이를 2번만 짧게 반복해보세요 🎈"
 
-    return "오늘은 관찰 포인트 1개만 체크해봐요."
+    return "오늘은 관찰 포인트 1개만 체크해봐요 🌱"
 
 
 def _mock_nudge_and_explanation(state: BabyCoachState) -> tuple[str, str]:
