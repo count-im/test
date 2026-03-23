@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -14,6 +15,13 @@ from .ui.app_ui import get_ui_html
 
 def create_app() -> FastAPI:
     app = FastAPI(title="BabyCoach PoC")
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     # Static assets (icons/images). Path is fixed and used in UI only.
     assets_dir = os.path.join(os.path.dirname(__file__), "ui", "assets")
