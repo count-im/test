@@ -20,6 +20,9 @@ def chat(payload: ChatRequest) -> ChatResponse:
             final_output=payload.final_output,
             user_message=payload.user_message,
             state_summary=payload.state_summary,
+            baby_info_summary=payload.baby_info_summary,
+            growth_direction=payload.growth_direction,
+            baby_name=payload.baby_name,
         )
         return ChatResponse(assistant_message=assistant_message)
     except Exception as e:

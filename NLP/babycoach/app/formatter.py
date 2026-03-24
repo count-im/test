@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
+from .baby_display_name import sanitize_coaching_dict
 from .state import BabyCoachState
 
 
@@ -43,7 +44,7 @@ def format_final_output(state: BabyCoachState) -> Dict[str, Any]:
         f"오늘 추천 한 줄 코칭: {state.get('nudge_message', '')}"
     )
 
-    return {
+    raw = {
         "spoon": spoon,
         "play": play,
         "growth": growth,
@@ -51,4 +52,8 @@ def format_final_output(state: BabyCoachState) -> Dict[str, Any]:
         "explanation": explanation,
         "chat_context_summary": chat_context_summary,
     }
+    baby_name = state.get("baby_name")
+    if isinstance(baby_name, str) and baby_name.strip():
+        return sanitize_coaching_dict(raw, baby_name)
+    return raw
 

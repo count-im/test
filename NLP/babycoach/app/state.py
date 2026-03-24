@@ -31,10 +31,14 @@ class BabyCoachState(TypedDict, total=False):
 
     parent_query: str
 
+    # --- Profile (PoC; recommend payload에서 baby_info.health.name) ---
+    baby_name: str
+
     # --- Input expansion (PoC 2차) ---
     food_tag: str
     meal_reaction: str
     play_focus_level: str
+    growth_direction: List[str]
 
     # --- Intermediate summaries ---
     nutrition_summary: str
@@ -80,6 +84,7 @@ def build_state_from_input(raw: Dict[str, Any]) -> BabyCoachState:
     state.setdefault("food_tag", "")
     state.setdefault("meal_reaction", "")
     state.setdefault("play_focus_level", "")
+    state.setdefault("growth_direction", [])
 
     # If play_focus_level is missing, derive from focus_minutes.
     if not state.get("play_focus_level"):

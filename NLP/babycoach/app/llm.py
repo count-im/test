@@ -8,6 +8,7 @@ from typing import Any, Dict, List, Optional
 
 from openai import OpenAI
 
+from .baby_display_name import apply_baby_name_to_coaching_text, baby_call_name_for_coaching
 from .config import BABYCOACH_LLM_MOCK, OPENAI_API_KEY, OPENAI_MODEL, require_openai_api_key
 from .state import BabyCoachState
 
@@ -83,15 +84,15 @@ def _make_short_nudge(state: BabyCoachState) -> str:
 
     if domain == "spoon":
         if meal_refusal or (reaction_flags and reaction_flags != ["없음"]):
-            return "오늘은 두부 한 숟갈만 아주 천천히 먹여보세요 🥄"
-        return "오늘은 두부 한 숟갈만 천천히 먹여보세요 🥄"
+            return "오늘은 단백질만 한 입 크기로 천천히 해보세요."
+        return "오늘은 단백질 텍스처를 한 숟갈만 천천히 해보세요."
 
     if domain == "play":
         if refusal:
-            return "오늘은 놀이를 1~2분만 짧게 다시 시도해보세요 🎈"
-        return "오늘은 같은 놀이를 2번만 짧게 반복해보세요 🎈"
+            return "오늘은 놀이를 1~2분만 짧게 다시 해보세요."
+        return "오늘은 같은 놀이를 2번만 짧게 반복해 보세요."
 
-    return "오늘은 관찰 포인트 1개만 체크해봐요 🌱"
+    return "오늘은 관찰 포인트 1개만 체크해봐요."
 
 
 def _mock_nudge_and_explanation(state: BabyCoachState) -> tuple[str, str]:
@@ -166,18 +167,29 @@ def generate_nudge_message(state: BabyCoachState) -> str:
     Generate `nudge_message` using GPT-5 mini (Responses API).
     """
 
+    baby_name = (state.get("baby_name") or "").strip()
+
     if BABYCOACH_LLM_MOCK:
         nudge, _ = _mock_nudge_and_explanation(state)
-        return nudge
+        return apply_baby_name_to_coaching_text(nudge, baby_name)
 
     domain = _pick_primary_domain(state)
     candidate_nudge = _make_short_nudge(state)
+
+    name_rule = ""
+    if baby_name:
+        call = baby_call_name_for_coaching(baby_name)
+        name_rule = (
+            f"아기 호칭: 문장에서 아이를 부를 때는 반드시 '{call}' 형태만 쓰세요. "
+            f"등록명 '{baby_name}'은 출력에 넣지 마세요.\n\n"
+        )
 
     # Keep prompt short but explicit about style constraints.
     prompt = (
         "너는 BabyCoach. 의료 진단처럼 말하지 말고, 환경/행동 제안 중심으로 답해.\n"
         "요구: 출력은 한국어 '한 문장'만. 길이 30~60자 수준.\n"
         "Spoon/Play/Growth를 섞지 말고, ranker 기준 최우선 행동 1개만 반영해.\n\n"
+        f"{name_rule}"
         f"입력 요약:\n"
         f"- age_months: {state.get('age_months')}\n"
         f"- weight_kg: {state.get('weight_kg')}\n"
@@ -191,7 +203,8 @@ def generate_nudge_message(state: BabyCoachState) -> str:
         f"후보(참조): {candidate_nudge}\n\n"
         "출력: 한 문장 nudge_message만 그대로."
     )
-    return _responses_create_text(prompt, system="BabyCoach")
+    raw = _responses_create_text(prompt, system="BabyCoach")
+    return apply_baby_name_to_coaching_text(raw, baby_name)
 
 
 def generate_explanation(state: BabyCoachState) -> str:
@@ -199,12 +212,22 @@ def generate_explanation(state: BabyCoachState) -> str:
     Generate `explanation` using GPT-5 mini (Responses API).
     """
 
+    baby_name = (state.get("baby_name") or "").strip()
+
     if BABYCOACH_LLM_MOCK:
         _, explanation = _mock_nudge_and_explanation(state)
-        return explanation
+        return apply_baby_name_to_coaching_text(explanation, baby_name)
 
     domain = _pick_primary_domain(state)
     candidate_nudge = _make_short_nudge(state)
+
+    name_rule = ""
+    if baby_name:
+        call = baby_call_name_for_coaching(baby_name)
+        name_rule = (
+            f"아기 호칭: 문장에서 아이를 부를 때는 반드시 '{call}' 형태만 쓰세요. "
+            f"등록명 '{baby_name}'은 출력에 넣지 마세요.\n\n"
+        )
 
     prompt = (
         "너는 BabyCoach 설명 담당. 의료 진단/병명/확정적 표현은 금지하고, 부모가 안심할 수 있는 톤으로 작성해.\n"
@@ -212,11 +235,13 @@ def generate_explanation(state: BabyCoachState) -> str:
         "- 상태(1문장)\n"
         "- 왜 중요한지(1문장)\n"
         "- 오늘 제안(1문장; nudge_message와 같은 행동 1개만)\n\n"
+        f"{name_rule}"
         f"ranker 최우선 도메인: {domain}\n"
         f"nudge_message(오늘 제안으로 사용할 행동): {candidate_nudge}\n\n"
         "출력은 3파트를 문장으로만 작성하고 줄바꿈은 자유롭게 허용."
     )
-    return _responses_create_text(prompt, system="BabyCoach")
+    raw = _responses_create_text(prompt, system="BabyCoach")
+    return apply_baby_name_to_coaching_text(raw, baby_name)
 
 
 def generate_chat_reply(
@@ -224,6 +249,9 @@ def generate_chat_reply(
     final_output: Dict[str, Any],
     user_message: str,
     state_summary: Optional[str] = None,
+    baby_info_summary: Optional[str] = None,
+    growth_direction: Optional[List[str]] = None,
+    baby_name: Optional[str] = None,
 ) -> str:
     """
     Generate BabyCoach chatbot reply.
@@ -263,6 +291,7 @@ def generate_chat_reply(
             s = s.replace(k, v)
         return s
     msg = user_message or ""
+    growth_direction = growth_direction or []
 
     # ---- Build contexts from `final_output` ----
     spoon = final_output.get("spoon") or {}
@@ -290,6 +319,9 @@ def generate_chat_reply(
         "explanation": explanation.get("explanation") or "",
     }
 
+    reg_name = (baby_name or "").strip()
+    call_name = baby_call_name_for_coaching(reg_name) if reg_name else ""
+
     # ---- Similarity / repetition guard ----
     banned_phrases = ["오늘 추천은", "오늘 제안은", "흐름을 바탕으로", "좋은 질문이야"]
 
@@ -303,6 +335,9 @@ def generate_chat_reply(
     def _state_fingerprint() -> str:
         key_obj = {
             "state_summary": state_summary or "",
+            "baby_info_summary": baby_info_summary or "",
+            "baby_registered_name": reg_name,
+            "growth_direction": growth_direction,
             "spoon": spoon_context,
             "play": play_context,
             "interaction": interaction_context,
@@ -378,6 +413,7 @@ def generate_chat_reply(
         spoon_snip = _clip(spoon_notes, 60)
         interaction_snip = _clip(interaction_notes, 60)
         growth_snip = _clip(growth_first, 60)
+        direction_snip = _clip(", ".join([str(x) for x in growth_direction if x]), 50)
 
         # Decide emphasis.
         intent = "general"
@@ -407,6 +443,9 @@ def generate_chat_reply(
             s1 = f"말씀하신 '{q_snip}' 고민은 현재 상태 신호를 기준으로, 한 번에 크게 바꾸기보다 편안하게 맞춰보는 방식이 잘 맞아요."
             s2 = f"Spoon/Play/Growth 중에서 오늘은 {growth_snip or '반응을 우선으로 보는 관점'}을 더 강조해보는 게 좋아요."
 
+        if direction_snip:
+            s2 = f"{s2} 부모님이 바라는 방향({direction_snip})도 함께 반영해볼게요."
+
         # Sentence 3: developmental viewpoint (short)
         s3_variants = [
             "아이에게는 예측 가능성과 편안함이 쌓일수록 다음 반응으로 이어지기 쉬우세요.",
@@ -425,14 +464,21 @@ def generate_chat_reply(
         # Ensure banned phrases are not included.
         candidate = _normalize_candidate(" ".join([s1, s2, s3, s4]))
         candidate = candidate.replace("오늘 추천은", "").replace("오늘 제안은", "")
-        return candidate
+        return apply_baby_name_to_coaching_text(candidate, reg_name)
 
     def _llm_chat_reply(payload: Dict[str, Any], last_reply: str, variant: int) -> str:
         # Build prompt with required input structure.
+        name_block = ""
+        if reg_name and call_name:
+            name_block = (
+                f"아기 호칭 규칙: 코칭 문장에서는 아이를 반드시 '{call_name}'(으)로만 부르세요. "
+                f"등록명 '{reg_name}'은 출력에 넣지 마세요.\n\n"
+            )
         prompt = (
             "너는 BabyCoach 코칭 봇입니다. 의료 진단/확정적 표현은 금지합니다.\n"
             "아래 출력 규칙을 반드시 지켜주세요.\n"
             "\n"
+            f"{name_block}"
             "입력(JSON):\n"
             f"{json.dumps(payload, ensure_ascii=False)}\n"
             "\n"
@@ -450,7 +496,7 @@ def generate_chat_reply(
             f"변형 힌트: {variant}\n"
         )
         out = _responses_create_text(prompt, system="BabyCoach")
-        return _normalize_candidate(out)
+        return apply_baby_name_to_coaching_text(_normalize_candidate(out), reg_name)
 
     # ---- Prepare payload for LLM / mock ----
     state_key = _state_fingerprint()
@@ -458,6 +504,10 @@ def generate_chat_reply(
 
     llm_payload = {
         "user_message": msg,
+        "baby_info_summary": baby_info_summary or "",
+        "baby_registered_name": reg_name,
+        "baby_coaching_call_name": call_name,
+        "growth_direction": growth_direction,
         "spoon_context": spoon_context,
         "play_context": play_context,
         "interaction_context": interaction_context,
@@ -475,6 +525,7 @@ def generate_chat_reply(
             candidate = _llm_chat_reply(llm_payload, last_reply, attempt)
 
         candidate = _normalize_candidate(candidate)
+        candidate = apply_baby_name_to_coaching_text(candidate, reg_name)
         last_candidate = candidate
 
         if _contains_banned(candidate):
@@ -504,6 +555,7 @@ def generate_chat_reply(
         for p in banned_phrases:
             result = result.replace(p, "")
         result = _normalize_candidate(result)
+    result = apply_baby_name_to_coaching_text(result, reg_name)
     if result:
         _CHAT_LAST_REPLY_CACHE[state_key] = result
     return result

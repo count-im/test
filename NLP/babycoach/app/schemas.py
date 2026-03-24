@@ -48,7 +48,11 @@ class RecommendResponse(BaseModel):
 class ChatRequest(BaseModel):
     final_output: Dict[str, Any]
     state_summary: Optional[str] = None
+    baby_info_summary: Optional[str] = None
+    growth_direction: List[str] = Field(default_factory=list)
     user_message: str = Field(min_length=1)
+    # 등록명(원문). 코칭 출력에서는 baby_display_name 규칙으로 치환합니다.
+    baby_name: Optional[str] = None
 
 
 class ChatResponse(BaseModel):

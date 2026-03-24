@@ -29,8 +29,27 @@ def recommend(payload: Dict[str, Any]) -> RecommendResponse:
             merged.update(payload.get("child_profile") or {})
             merged.update(payload.get("spoon_input") or {})
             merged.update(payload.get("play_input") or {})
+
+            baby_info = payload.get("baby_info") or {}
+            if isinstance(baby_info, dict):
+                health = baby_info.get("health") or {}
+                happy = baby_info.get("happy") or {}
+                growth_direction = happy.get("growth_direction") or []
+                if isinstance(growth_direction, list):
+                    merged["growth_direction"] = growth_direction
+                # Minimal linkage: reflect profile context in notes/parent_query.
+                if health.get("name"):
+                    merged["baby_name"] = health.get("name")
+                if health.get("birth_date"):
+                    merged["birth_date"] = health.get("birth_date")
+
             if payload.get("parent_query"):
                 merged["parent_query"] = payload.get("parent_query")
+            elif isinstance(baby_info, dict):
+                happy = baby_info.get("happy") or {}
+                gd = happy.get("growth_direction") or []
+                if gd:
+                    merged["parent_query"] = "부모 성장 방향: " + ", ".join([str(x) for x in gd])
         else:
             merged = payload
 
