@@ -4,3 +4,5 @@
 .python-version
 ./app/api/__pycache__/
 ./app/__pycache__/
+data/
+data/babycoach.db
