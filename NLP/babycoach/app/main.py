@@ -3,7 +3,8 @@ from __future__ import annotations
 import os
 
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 from .api.activity import router as activity_router
@@ -17,6 +18,12 @@ from .ui.app_ui import get_ui_html
 
 def create_app() -> FastAPI:
     app = FastAPI(title="BabyCoach PoC")
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
     init_db()
 
     # Static assets (icons/images). Path is fixed and used in UI only.
@@ -43,3 +50,35 @@ def create_app() -> FastAPI:
 
 app = create_app()
 
+# ── 우리 팀 UI 라우트 ──────────────────────────────
+_UI_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ui")
+
+
+@app.get("/mom")
+async def mom():
+    return FileResponse(os.path.join(_UI_DIR, "babycoach_mom.html"))
+
+
+@app.get("/mom2")
+async def mom2():
+    return FileResponse(os.path.join(_UI_DIR, "babycoach_mom2.html"))
+
+
+@app.get("/mom3")
+async def mom3():
+    return FileResponse(os.path.join(_UI_DIR, "babycoach_mom3.html"))
+
+
+@app.get("/mom4")
+async def mom4():
+    return FileResponse(os.path.join(_UI_DIR, "babycoach_mom4.html"))
+
+
+@app.get("/mom5")
+async def mom5():
+    return FileResponse(os.path.join(_UI_DIR, "babycoach_mom5.html"))
+
+
+@app.get("/doctor")
+async def doctor():
+    return FileResponse(os.path.join(_UI_DIR, "babycoach_doctor.html"))
