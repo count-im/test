@@ -1473,11 +1473,13 @@ async function submitRecommend() {
 // 결과 렌더
 // ════════════════════════════════════════════════
 function renderResult(data) {
-  const nudgeList = data.nudge || (data.nudge_message ? [data.nudge_message] : []);
-  const nudgeObj  = typeof nudgeList === 'object' && !Array.isArray(nudgeList) ? nudgeList : null;
-  const nudgeText = nudgeObj
-    ? (nudgeObj.nudge_message || '오늘 아기에게 스킨십을 한 번 더 해보세요 🤗')
-    : (Array.isArray(nudgeList) && nudgeList.length ? String(nudgeList[0]) : '오늘 아기에게 스킨십을 한 번 더 해보세요 🤗');
+  // API 응답: { final_output: { spoon, play, growth, nudge, explanation } }
+  const d = data.final_output || data;
+
+  // 넛지
+  const nudgeText = (d.nudge && d.nudge.nudge_message)
+    || d.nudge_message
+    || '오늘 아기에게 스킨십을 한 번 더 해보세요 🤗';
   document.getElementById('nudgeHeadline').textContent = nudgeText;
   document.getElementById('nudgeDoneBtn').disabled = false;
   document.getElementById('nudgeBtnText').textContent = '해봤어요 ✓';
@@ -1492,32 +1494,45 @@ function renderResult(data) {
   renderTree(prevTotal);
   renderBadgeGrid();
 
+  // 결과 카드
   const sec = document.getElementById('resultSection');
   sec.innerHTML = '';
-  const cards = [
-    { cls:'spoon',   icon:'🥄', title:'이유식 추천', key:'spoon',       fallback:'이유식 추천 정보가 없어요.' },
-    { cls:'play',    icon:'🎈', title:'놀이 추천',   key:'play',        fallback:'놀이 추천 정보가 없어요.' },
-    { cls:'growth',  icon:'📏', title:'발달 코칭',   key:'growth',      fallback:'발달 코칭 정보가 없어요.' },
-    { cls:'explain', icon:'💜', title:'코치 설명',   key:'explanation', fallback:'설명 정보가 없어요.' },
-  ];
   const grid = document.createElement('div');
   grid.className = 'result-cards';
-  cards.forEach(({ cls, icon, title, key, fallback }) => {
-    const raw = data[key] || data[`${key}_recommendation`] || data[`${key}_message`] || null;
-    let body = '';
-    if (!raw) body = `<span style="color:var(--muted)">${fallback}</span>`;
-    else if (typeof raw === 'string') body = escHtml(raw);
-    else if (Array.isArray(raw)) body = raw.map(r => `<strong>• </strong>${escHtml(String(r))}`).join('<br>');
-    else if (typeof raw === 'object') body = Object.entries(raw).map(([k,v]) =>
-      `<strong>${escHtml(k)}:</strong> ${escHtml(String(v))}`).join('<br>');
-    grid.insertAdjacentHTML('beforeend', `
-      <div class="result-card ${cls}">
-        <div class="rc-head"><div class="rc-icon">${icon}</div><div class="rc-title">${title}</div></div>
-        <div class="rc-body">${body}</div>
-      </div>
-    `);
-  });
+  grid.innerHTML =
+    buildCard('spoon',   '🥄', '이유식 추천', d.spoon)      +
+    buildCard('play',    '🎈', '놀이 추천',   d.play)       +
+    buildCard('growth',  '📏', '발달 코칭',   d.growth)     +
+    buildCard('explain', '💜', '코치 설명',   d.explanation);
   sec.appendChild(grid);
+}
+
+function buildCard(cls, icon, title, raw) {
+  let body = '';
+  if (!raw) {
+    body = `<span style="color:var(--muted)">${title} 정보가 없어요.</span>`;
+  } else if (typeof raw === 'string') {
+    body = escHtml(raw);
+  } else if (Array.isArray(raw)) {
+    body = raw.map(r => `<strong>• </strong>${escHtml(String(r))}`).join('<br>');
+  } else {
+    // 객체: suggestions / observation_points / explanation / notes 순으로 렌더
+    const parts = [];
+    if (Array.isArray(raw.suggestions))
+      parts.push(raw.suggestions.map(s => `<strong>• </strong>${escHtml(s)}`).join('<br>'));
+    if (Array.isArray(raw.observation_points))
+      parts.push(raw.observation_points.map(s => `<strong>• </strong>${escHtml(s)}`).join('<br>'));
+    if (raw.explanation)
+      parts.push(escHtml(String(raw.explanation)));
+    if (raw.notes)
+      parts.push(`<span style="opacity:.75;font-size:11px;">${escHtml(raw.notes)}</span>`);
+    body = parts.length ? parts.join('<br>') : escHtml(JSON.stringify(raw));
+  }
+  return `
+    <div class="result-card ${cls}">
+      <div class="rc-head"><div class="rc-icon">${icon}</div><div class="rc-title">${title}</div></div>
+      <div class="rc-body">${body}</div>
+    </div>`;
 }
 
 // ════════════════════════════════════════════════
