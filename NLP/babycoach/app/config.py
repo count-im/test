@@ -41,4 +41,3 @@ def require_openai_api_key() -> str:
             "with OPENAI_API_KEY set, or run with BABYCOACH_LLM_MOCK=1."
         )
     return OPENAI_API_KEY
-

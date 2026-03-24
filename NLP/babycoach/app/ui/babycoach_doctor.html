@@ -280,6 +280,29 @@
     .mom-link a { color: #ff8c69; text-decoration: none; }
     .mom-link a:hover { text-decoration: underline; }
 
+    /* ════════════ 히스토리 헤더 ════════════ */
+    .history-title-row {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .history-filter { display: flex; align-items: center; gap: 8px; }
+    .history-filter label { font-size: 11px; font-weight: 700; color: var(--muted); }
+    .history-filter input[type="number"] {
+      width: 56px; padding: 4px 8px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 12px; font-weight: 800; color: var(--blue);
+      outline: none;
+    }
+    .history-filter input[type="number"]:focus { border-color: var(--blue); }
+    .history-query-btn {
+      background: var(--blue-light); border: 1.5px solid rgba(45,108,223,.25);
+      border-radius: 8px; padding: 4px 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 12px; font-weight: 800; color: var(--blue); cursor: pointer;
+    }
+    .history-query-btn:hover { background: rgba(45,108,223,.15); }
+    .history-empty { text-align: center; padding: 20px; color: var(--muted); font-size: 13px; }
+
     /* ════════════ 상태 새로고침 버튼 ════════════ */
     .refresh-row {
       display: flex; align-items: center; justify-content: space-between;
@@ -446,24 +469,15 @@
 
   <!-- 검토 이력 -->
   <div class="history-card">
-    <div class="history-title">📋 최근 검토 이력</div>
-    <div id="historyList">
-      <div class="history-row">
-        <div class="h-time">오늘 09:14</div>
-        <div class="h-baby">8개월 · 5.9kg · 알레르기 없음</div>
-        <div class="h-status approved">✅ 승인</div>
-      </div>
-      <div class="history-row">
-        <div class="h-time">어제 21:03</div>
-        <div class="h-baby">7개월 · 7.1kg · 달걀 알레르기</div>
-        <div class="h-status modified">✏️ 수정</div>
-      </div>
-      <div class="history-row">
-        <div class="h-time">어제 15:30</div>
-        <div class="h-baby">12개월 · 9.4kg · 알레르기 없음</div>
-        <div class="h-status approved">✅ 승인</div>
+    <div class="history-title history-title-row">
+      <span>📋 최근 추천 이력 (DB)</span>
+      <div class="history-filter">
+        <label for="babyIdInput">baby_id</label>
+        <input id="babyIdInput" type="number" min="1" value="1" title="조회할 아기 ID" />
+        <button type="button" class="history-query-btn" onclick="loadActivityHistory()">조회</button>
       </div>
     </div>
+    <div id="historyList"><div class="history-empty">불러오는 중...</div></div>
   </div>
 
   <!-- 엄마 화면 링크 -->
@@ -606,6 +620,48 @@ function addHistoryEntry(status, comment) {
 
 function updateHistory(status) { /* 이력은 addHistoryEntry에서 처리 */ }
 
+// ════════════════════════════════════════════════
+// 실제 DB 이력 로드 (GET /activities/{baby_id})
+// ════════════════════════════════════════════════
+async function loadActivityHistory() {
+  const babyId = parseInt(document.getElementById('babyIdInput').value) || 1;
+  const list   = document.getElementById('historyList');
+  list.innerHTML = '<div class="history-empty">불러오는 중...</div>';
+
+  try {
+    const res = await fetch(`http://127.0.0.1:8000/activities/${babyId}`);
+    if (res.status === 404) {
+      list.innerHTML = '<div class="history-empty">해당 아기의 활동 기록이 없어요.</div>';
+      return;
+    }
+    if (!res.ok) throw new Error(`서버 오류 (${res.status})`);
+
+    const activities = await res.json();
+    list.innerHTML = '';
+    activities.forEach(act => {
+      const p    = act.payload || {};
+      const time = act.created_at || '';
+      const age  = p.age_months != null ? `${p.age_months}개월` : '—';
+      const wt   = p.weight_kg  != null ? `${p.weight_kg}kg`    : '—';
+      const alg  = Array.isArray(p.allergies) && p.allergies.length
+                     ? p.allergies.join(', ') : '없음';
+      const nudge = typeof p.nudge === 'string' ? p.nudge.slice(0, 30) : '—';
+
+      const row = document.createElement('div');
+      row.className = 'history-row';
+      row.innerHTML = `
+        <div class="h-time">${escHtml(time.slice(11, 16) || time.slice(0, 10))}</div>
+        <div class="h-baby">${escHtml(age)} · ${escHtml(wt)} · 알레르기: ${escHtml(alg)}<br>
+          <span style="font-size:10px;color:var(--muted);">${escHtml(nudge)}${p.nudge && p.nudge.length > 30 ? '…' : ''}</span>
+        </div>
+        <div class="h-status approved">✅ ${escHtml(act.type)}</div>`;
+      list.appendChild(row);
+    });
+  } catch (e) {
+    list.innerHTML = `<div class="history-empty" style="color:#c0392b;">오류: ${escHtml(e.message)}</div>`;
+  }
+}
+
 function escHtml(s) {
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
@@ -614,10 +670,11 @@ function escHtml(s) {
 // 초기화
 // ════════════════════════════════════════════════
 loadCase();
+loadActivityHistory();  // DB 이력 자동 로드
 
 // 다른 탭(mom5)에서 HITL 상태가 바뀌면 자동 반영
 window.addEventListener('storage', e => {
-  if (e.key === 'hitl_status') loadCase();
+  if (e.key === 'hitl_status') { loadCase(); loadActivityHistory(); }
 });
 </script>
 </body>

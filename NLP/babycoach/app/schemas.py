@@ -43,6 +43,7 @@ class BabyCoachInput(BaseModel):
 
 class RecommendResponse(BaseModel):
     final_output: Dict[str, Any]
+    baby_id: Optional[int] = None
 
 
 class ChatRequest(BaseModel):

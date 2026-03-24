@@ -1,8 +1,10 @@
-from __future__ import annotations
+from __future__ import annotations  # noqa: I001
 
+import json
 import os
+from typing import Any, Dict, List
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -82,3 +84,52 @@ async def mom5():
 @app.get("/doctor")
 async def doctor():
     return FileResponse(os.path.join(_UI_DIR, "babycoach_doctor.html"))
+
+
+# ── 테스트용 DB 조회 엔드포인트 ────────────────────
+from .db import get_connection  # noqa: E402
+
+
+@app.get("/babies", tags=["debug"])
+def list_babies() -> List[Dict[str, Any]]:
+    """baby_profile 전체 목록 반환 (테스트용)."""
+    with get_connection() as conn:
+        rows = conn.execute(
+            "SELECT id, name, age_months, weight_kg, allergies, notes, created_at FROM baby_profile ORDER BY id DESC"
+        ).fetchall()
+    result = []
+    for r in rows:
+        item = dict(r)
+        try:
+            item["allergies"] = json.loads(item["allergies"] or "[]")
+        except Exception:
+            pass
+        result.append(item)
+    return result
+
+
+@app.get("/activities/{baby_id}", tags=["debug"])
+def list_activities(baby_id: int) -> List[Dict[str, Any]]:
+    """특정 아기의 activity_log 반환 (최근 20개)."""
+    with get_connection() as conn:
+        rows = conn.execute(
+            """
+            SELECT id, baby_id, type, payload, created_at
+            FROM activity_log
+            WHERE baby_id = ?
+            ORDER BY id DESC
+            LIMIT 20
+            """,
+            (baby_id,),
+        ).fetchall()
+    if not rows:
+        raise HTTPException(status_code=404, detail=f"baby_id={baby_id} 의 활동 기록이 없습니다.")
+    result = []
+    for r in rows:
+        item = dict(r)
+        try:
+            item["payload"] = json.loads(item["payload"] or "{}")
+        except Exception:
+            pass
+        result.append(item)
+    return result
