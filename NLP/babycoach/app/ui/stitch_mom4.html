@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>BabyCoach Mom Flow — stitch_mom4</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: sans-serif; background: #f0f0f0; padding: 16px; }
+  nav { background: #fff; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; line-height: 1.8; }
+  nav a { color: #4A90E2; text-decoration: none; margin: 0 4px; }
+  nav a:hover { text-decoration: underline; }
+  h1 { font-size: 18px; margin-bottom: 12px; color: #333; }
+  section { margin-bottom: 32px; }
+  .slabel { font-size: 14px; color: #666; margin-bottom: 8px; padding-left: 4px; }
+  iframe { width: 390px; display: block; border: none; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); min-height: 100px; }
+</style>
+<script>
+function autoH(iframe) {
+  try {
+    var h = iframe.contentDocument.documentElement.scrollHeight;
+    iframe.style.height = h + 'px';
+  } catch(e) {}
+}
+</script>
+</head>
+<body>
+  <h1>BabyCoach Mom Flow — stitch_mom4</h1>
+  <nav><a href="#s0">Baby Info Step 1</a> | <a href="#s1">Baby Info Step 2</a> | <a href="#s2">코치에게 질문하기</a> | <a href="#s3">Screen 4B: 성장 기록</a> | <a href="#s4">의사 프로필 상세</a> | <a href="#s5">Screen 4A: 코칭 결과 (인사이트 추가)</a></nav>
+  
+    <section id="s0">
+      <h2 class="slabel">1. Baby Info Step 1</h2>
+      <iframe srcdoc="<!DOCTYPE html>
+
+<html class=&quot;light&quot; lang=&quot;ko&quot;><head>
+<meta charset=&quot;utf-8&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/>
+<title>BabyCoach - Baby Info Input</title>
+<!-- Google Fonts: Nunito &amp; Plus Jakarta Sans (Fallbacks) -->
+<link href=&quot;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<!-- Material Symbols -->
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<script src=&quot;https://cdn.tailwindcss.com?plugins=forms,container-queries&quot;></script>
+<script id=&quot;tailwind-config&quot;>
+      tailwind.config = {
+        darkMode: &quot;class&quot;,
+        theme: {
+          extend: {
+            colors: {
+              &quot;outline-variant&quot;: &quot;#dcc0b9&quot;,
+              &quot;on-primary-container&quot;: &quot;#752409&quot;,
+              &quot;surface-container-high&quot;: &quot;#eee7e2&quot;,
+              &quot;surface-tint&quot;: &quot;#9e4225&quot;,
+              &quot;on-primary&quot;: &quot;#ffffff&quot;,
+              &quot;primary-container&quot;: &quot;#ff8c69&quot;,
+              &quot;tertiary-container&quot;: &quot;#c5a594&quot;,
+              &quot;on-surface&quot;: &quot;#1d1b18&quot;,
+              &quot;surface-container-highest&quot;: &quot;#e8e1dc&quot;,
+              &quot;surface-bright&quot;: &quot;#fff8f3&quot;,
+              &quot;secondary-fixed&quot;: &quot;#ffddb6&quot;,
+              &quot;on-secondary-fixed-variant&quot;: &quot;#643f00&quot;,
+              &quot;primary-fixed-dim&quot;: &quot;#ffb59f&quot;,
+              &quot;surface&quot;: &quot;#fff8f3&quot;,
+              &quot;on-tertiary-fixed&quot;: &quot;#29170c&quot;,
+              &quot;tertiary-fixed&quot;: &quot;#ffdbc9&quot;,
+              &quot;primary-fixed&quot;: &quot;#ffdbd1&quot;,
+              &quot;secondary&quot;: &quot;#845400&quot;,
+              &quot;on-error-container&quot;: &quot;#93000a&quot;,
+              &quot;inverse-primary&quot;: &quot;#ffb59f&quot;,
+              &quot;surface-container-low&quot;: &quot;#f9f2ed&quot;,
+              &quot;surface-variant&quot;: &quot;#e8e1dc&quot;,
+              &quot;on-secondary-fixed&quot;: &quot;#2a1800&quot;,
+              &quot;on-surface-variant&quot;: &quot;#56423d&quot;,
+              &quot;tertiary-fixed-dim&quot;: &quot;#e1c0ae&quot;,
+              &quot;on-tertiary&quot;: &quot;#ffffff&quot;,
+              &quot;primary&quot;: &quot;#9e4225&quot;,
+              &quot;background&quot;: &quot;#fff8f3&quot;,
+              &quot;on-secondary&quot;: &quot;#ffffff&quot;,
+              &quot;error&quot;: &quot;#ba1a1a&quot;,
+              &quot;on-tertiary-fixed-variant&quot;: &quot;#594234&quot;,
+              &quot;secondary-fixed-dim&quot;: &quot;#ffb95a&quot;,
+              &quot;outline&quot;: &quot;#89726b&quot;,
+              &quot;on-tertiary-container&quot;: &quot;#513b2d&quot;,
+              &quot;tertiary&quot;: &quot;#73594a&quot;,
+              &quot;error-container&quot;: &quot;#ffdad6&quot;,
+              &quot;surface-container&quot;: &quot;#f3ede8&quot;,
+              &quot;on-background&quot;: &quot;#1d1b18&quot;,
+              &quot;on-primary-fixed-variant&quot;: &quot;#7e2b10&quot;,
+              &quot;surface-container-lowest&quot;: &quot;#ffffff&quot;,
+              &quot;secondary-container&quot;: &quot;#feb246&quot;,
+              &quot;inverse-surface&quot;: &quot;#33302d&quot;,
+              &quot;inverse-on-surface&quot;: &quot;#f6efeb&quot;,
+              &quot;on-secondary-container&quot;: &quot;#6f4600&quot;,
+              &quot;on-error&quot;: &quot;#ffffff&quot;,
+              &quot;surface-dim&quot;: &quot;#dfd9d4&quot;,
+              &quot;on-primary-fixed&quot;: &quot;#3a0a00&quot;
+            },
+            fontFamily: {
+              &quot;headline&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;],
+              &quot;body&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;],
+              &quot;label&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;]
+            },
+            borderRadius: {&quot;DEFAULT&quot;: &quot;1rem&quot;, &quot;lg&quot;: &quot;2rem&quot;, &quot;xl&quot;: &quot;3rem&quot;, &quot;full&quot;: &quot;9999px&quot;},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: 'Nunito', sans-serif;
+        background-color: #fff8f3;
+        background-image: radial-gradient(circle at 10% 20%, rgba(255, 140, 105, 0.05) 0%, transparent 40%),
+                          radial-gradient(circle at 90% 80%, rgba(254, 178, 70, 0.05) 0%, transparent 40%);
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1.5px solid rgba(255, 140, 105, 0.28);
+        box-shadow: 0 8px 28px rgba(158, 66, 37, 0.08);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .step-dot.active {
+        width: 1.5rem;
+        background: linear-gradient(135deg, #ff8c69, #feb246);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class=&quot;min-h-screen text-on-background selection:bg-primary-container/30&quot;>
+<!-- Top Navigation -->
+<header class=&quot;fixed top-0 left-0 w-full z-50 bg-[#fff8f3]/80 backdrop-blur-sm flex justify-between items-center px-6 py-4&quot;>
+<div class=&quot;flex items-center gap-2&quot;>
+<span class=&quot;material-symbols-outlined text-[#9e4225] text-2xl&quot; data-icon=&quot;baby_changing_station&quot;>baby_changing_station</span>
+<h1 class=&quot;font-['Nunito'] font-black text-2xl tracking-tight text-[#9e4225]&quot;>BabyCoach</h1>
+</div>
+<div class=&quot;bg-gradient-to-r from-[#ff8c69] to-[#feb246] px-4 py-1.5 rounded-full shadow-sm&quot;>
+<span class=&quot;text-white font-black text-sm&quot;>🔥 5</span>
+</div>
+</header>
+<main class=&quot;pt-24 pb-32 px-6 max-w-md mx-auto space-y-6&quot;>
+<!-- Progress Indicator Section -->
+<section class=&quot;space-y-4&quot;>
+<div class=&quot;flex justify-between items-end&quot;>
+<h2 class=&quot;text-on-surface font-black text-xl tracking-tight&quot;>1/3 아기 정보 👶</h2>
+<div class=&quot;flex gap-1.5 mb-1.5&quot;>
+<div class=&quot;step-dot active h-2 rounded-full transition-all duration-300&quot;></div>
+<div class=&quot;step-dot w-2 h-2 rounded-full bg-surface-container-highest transition-all duration-300&quot;></div>
+<div class=&quot;step-dot w-2 h-2 rounded-full bg-surface-container-highest transition-all duration-300&quot;></div>
+</div>
+</div>
+<div class=&quot;w-full bg-surface-container h-3 rounded-full overflow-hidden&quot;>
+<div class=&quot;w-1/3 h-full bg-gradient-to-r from-[#ff8c69] to-[#feb246] rounded-full&quot;></div>
+</div>
+</section>
+<!-- Illustration Hero (Size reduced by 30%: 48->34, 40->28) -->
+<section class=&quot;flex justify-center py-2&quot;>
+<div class=&quot;relative w-34 h-34 bg-secondary-fixed/30 rounded-full flex items-center justify-center&quot;>
+<img alt=&quot;Cute Baby Bear Illustration&quot; class=&quot;w-28 h-28 drop-shadow-xl&quot; data-alt=&quot;Cute minimalist teddy bear character with a friendly expression, soft warm skin tones, and rounded features, centered on a soft peach background&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDSBS3ItYo5ntdeIq8omco6kidlXmJ3I16h5CoTDRZBPjosa3Pn1hZhtfKHMyzcHj_RzGXvAbtkckkloHstKi_WDyJuhErOrwg69fYylW_z4fc5wAw5_umDLagHm27KTu1FEa81-owBJLc7knfjiQI4x4LOjVlO8eW6ZuIMLTRbM7SBecMbmJy5akcV3V3kfE0z9tAqzAW77-V-b8pqEWbZOB5Yyjz4cOEPysrwviN1RlEtXIHAePc0cwJiSSo9xmI2Zqt17h1xITRU&quot;/>
+<div class=&quot;absolute -bottom-1 -right-1 bg-white p-2 rounded-xl shadow-lg border border-primary-container/20&quot;>
+<span class=&quot;text-xl&quot;>🧸</span>
+</div>
+</div>
+</section>
+<!-- Form Cards -->
+<div class=&quot;space-y-6&quot;>
+<!-- Card 1: Basic Stats -->
+<div class=&quot;glass-card p-6 rounded-xl space-y-6&quot;>
+<div>
+<div class=&quot;flex justify-between items-center mb-3&quot;>
+<label class=&quot;text-[#9e4225] font-extrabold text-sm uppercase tracking-wider&quot;>생년월일</label>
+<span class=&quot;bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-xs font-black&quot;>4개월</span>
+</div>
+<div class=&quot;relative&quot;>
+<input class=&quot;w-full bg-surface-container-low border-none rounded-xl py-4 px-4 text-on-surface font-bold focus:ring-2 focus:ring-primary-container&quot; type=&quot;date&quot; value=&quot;2024-01-01&quot;/>
+</div>
+</div>
+<div class=&quot;space-y-3&quot;>
+<label class=&quot;block text-[#9e4225] font-extrabold text-sm uppercase tracking-wider&quot;>몸무게 (kg)</label>
+<div class=&quot;flex items-center justify-between bg-white rounded-xl p-1 shadow-sm border border-outline-variant/10&quot;>
+<button class=&quot;w-12 h-12 flex items-center justify-center text-primary active:scale-90 transition-transform&quot;><span class=&quot;material-symbols-outlined&quot; data-icon=&quot;remove&quot;>remove</span></button>
+<span class=&quot;font-black text-xl&quot;>6.5</span>
+<button class=&quot;w-12 h-12 flex items-center justify-center text-primary active:scale-90 transition-transform&quot;><span class=&quot;material-symbols-outlined&quot; data-icon=&quot;add&quot;>add</span></button>
+</div>
+</div>
+</div>
+<!-- Card 2: Allergies -->
+<div class=&quot;glass-card p-6 rounded-xl space-y-4&quot;>
+<label class=&quot;block text-[#9e4225] font-extrabold text-sm uppercase tracking-wider&quot;>알레르기 정보</label>
+<div class=&quot;flex flex-wrap gap-2&quot;>
+<button class=&quot;flex items-center gap-1 px-4 py-2 rounded-full bg-gradient-to-br from-[#ff8c69] to-[#feb246] text-white font-bold text-sm shadow-md active:scale-95 transition-all&quot;>
+<span class=&quot;material-symbols-outlined text-[18px] leading-none&quot; data-icon=&quot;check&quot;>check</span>
+                    없음
+                </button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>우유</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>달걀</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>땅콩</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>밀</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>콩</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>새우</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>게</button>
+</div>
+</div>
+<!-- Card 3: Notes -->
+<div class=&quot;glass-card p-6 rounded-xl space-y-4&quot;>
+<label class=&quot;block text-[#9e4225] font-extrabold text-sm uppercase tracking-wider&quot;>추가 참고 사항</label>
+<textarea class=&quot;w-full bg-surface-container-low border-none rounded-xl p-4 text-sm font-medium focus:ring-2 focus:ring-primary-container placeholder:text-outline/50&quot; placeholder=&quot;아이의 건강 정보나 특징을 입력해주세요 (선택)&quot; rows=&quot;3&quot;></textarea>
+</div>
+</div>
+<!-- Submit Button -->
+<div class=&quot;pt-4&quot;>
+<button class=&quot;w-full h-16 bg-gradient-to-r from-[#ff8c69] to-[#feb246] text-white rounded-full font-black text-lg flex items-center justify-center gap-2 shadow-xl shadow-primary-container/20 active:scale-[0.98] transition-all&quot;>
+                다음으로 → 🌼
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class=&quot;fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 bg-white/88 backdrop-blur-md rounded-t-[3rem] shadow-[0px_-10px_30px_rgba(158,66,37,0.05)] border-t-1.5 border-[#ff8c69]/20&quot;>
+<div class=&quot;flex flex-col items-center justify-center bg-gradient-to-br from-[#ff8c69] to-[#feb246] text-white rounded-full p-3 shadow-lg transform -translate-y-2 active:scale-90 transition-all duration-300 ease-out&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;home&quot;>home</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Home</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;auto_awesome&quot;>auto_awesome</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Milestones</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;bedtime&quot;>bedtime</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Sleep</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;analytics&quot;>analytics</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Insights</span>
+</div>
+</nav>
+</body></html>" onload="autoH(this)" scrolling="no" frameborder="0"></iframe>
+    </section>
+
+    <section id="s1">
+      <h2 class="slabel">2. Baby Info Step 2</h2>
+      <iframe srcdoc="<!DOCTYPE html>
+
+<html lang=&quot;ko&quot;><head>
+<meta charset=&quot;utf-8&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/>
+<title>BabyCoach - Step 2</title>
+<script src=&quot;https://cdn.tailwindcss.com?plugins=forms,container-queries&quot;></script>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<script id=&quot;tailwind-config&quot;>
+      tailwind.config = {
+        darkMode: &quot;class&quot;,
+        theme: {
+          extend: {
+            colors: {
+              &quot;surface-tint&quot;: &quot;#9e4225&quot;,
+              &quot;on-surface-variant&quot;: &quot;#56423d&quot;,
+              &quot;surface-container&quot;: &quot;#f3ede8&quot;,
+              &quot;on-tertiary-fixed&quot;: &quot;#29170c&quot;,
+              &quot;on-secondary-container&quot;: &quot;#6f4600&quot;,
+              &quot;tertiary&quot;: &quot;#73594a&quot;,
+              &quot;surface-container-low&quot;: &quot;#f9f2ed&quot;,
+              &quot;on-primary-fixed-variant&quot;: &quot;#7e2b10&quot;,
+              &quot;inverse-surface&quot;: &quot;#33302d&quot;,
+              &quot;surface-dim&quot;: &quot;#dfd9d4&quot;,
+              &quot;tertiary-fixed&quot;: &quot;#ffdbc9&quot;,
+              &quot;on-primary-container&quot;: &quot;#752409&quot;,
+              &quot;secondary-fixed-dim&quot;: &quot;#ffb95a&quot;,
+              &quot;on-tertiary-container&quot;: &quot;#513b2d&quot;,
+              &quot;surface-bright&quot;: &quot;#fff8f3&quot;,
+              &quot;on-secondary-fixed&quot;: &quot;#2a1800&quot;,
+              &quot;on-background&quot;: &quot;#1d1b18&quot;,
+              &quot;secondary-fixed&quot;: &quot;#ffddb6&quot;,
+              &quot;inverse-on-surface&quot;: &quot;#f6efeb&quot;,
+              &quot;primary-fixed-dim&quot;: &quot;#ffb59f&quot;,
+              &quot;outline&quot;: &quot;#89726b&quot;,
+              &quot;tertiary-fixed-dim&quot;: &quot;#e1c0ae&quot;,
+              &quot;primary&quot;: &quot;#9e4225&quot;,
+              &quot;on-error-container&quot;: &quot;#93000a&quot;,
+              &quot;surface&quot;: &quot;#fff8f3&quot;,
+              &quot;secondary-container&quot;: &quot;#feb246&quot;,
+              &quot;inverse-primary&quot;: &quot;#ffb59f&quot;,
+              &quot;on-tertiary-fixed-variant&quot;: &quot;#594234&quot;,
+              &quot;on-surface&quot;: &quot;#1d1b18&quot;,
+              &quot;error-container&quot;: &quot;#ffdad6&quot;,
+              &quot;surface-container-high&quot;: &quot;#eee7e2&quot;,
+              &quot;on-error&quot;: &quot;#ffffff&quot;,
+              &quot;on-tertiary&quot;: &quot;#ffffff&quot;,
+              &quot;primary-container&quot;: &quot;#ff8c69&quot;,
+              &quot;primary-fixed&quot;: &quot;#ffdbd1&quot;,
+              &quot;on-primary-fixed&quot;: &quot;#3a0a00&quot;,
+              &quot;secondary&quot;: &quot;#845400&quot;,
+              &quot;on-primary&quot;: &quot;#ffffff&quot;,
+              &quot;on-secondary-fixed-variant&quot;: &quot;#643f00&quot;,
+              &quot;surface-container-lowest&quot;: &quot;#ffffff&quot;,
+              &quot;error&quot;: &quot;#ba1a1a&quot;,
+              &quot;surface-variant&quot;: &quot;#e8e1dc&quot;,
+              &quot;on-secondary&quot;: &quot;#ffffff&quot;,
+              &quot;background&quot;: &quot;#fff8f3&quot;,
+              &quot;tertiary-container&quot;: &quot;#c5a594&quot;,
+              &quot;surface-container-highest&quot;: &quot;#e8e1dc&quot;,
+              &quot;outline-variant&quot;: &quot;#dcc0b9&quot;
+            },
+            fontFamily: {
+              &quot;sans&quot;: [&quot;Nunito&quot;, &quot;sans-serif&quot;],
+              &quot;headline&quot;: [&quot;Nunito&quot;, &quot;sans-serif&quot;],
+              &quot;body&quot;: [&quot;Nunito&quot;, &quot;sans-serif&quot;],
+              &quot;label&quot;: [&quot;Nunito&quot;, &quot;sans-serif&quot;]
+            },
+            borderRadius: {&quot;DEFAULT&quot;: &quot;1rem&quot;, &quot;lg&quot;: &quot;2rem&quot;, &quot;xl&quot;: &quot;3rem&quot;, &quot;full&quot;: &quot;9999px&quot;},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff8f3;
+            color: #1d1b18;
+            font-family: 'Nunito', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid #ff8c69;
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #ff8c69 0%, #feb246 100%);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 56px;
+            height: 30px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #dcc0b9;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: &quot;&quot;;
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background: linear-gradient(135deg, #ff8c69 0%, #feb246 100%);
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class=&quot;min-h-screen pb-40&quot;>
+<!-- TopAppBar -->
+<header class=&quot;w-full top-0 sticky z-50 bg-[#fff8f3]/90 backdrop-blur-sm dark:bg-stone-950&quot;>
+<div class=&quot;flex justify-between items-center px-6 py-4 w-full max-w-screen-xl mx-auto&quot;>
+<div class=&quot;flex items-center gap-2&quot;>
+<span class=&quot;material-symbols-outlined text-[#9e4225] dark:text-[#ff8c69]&quot; data-icon=&quot;spa&quot;>spa</span>
+<h1 class=&quot;font-['Nunito'] font-black text-2xl tracking-tight text-[#9e4225] dark:text-[#ff8c69] italic&quot;>BabyCoach</h1>
+</div>
+<div class=&quot;bg-primary-container/20 px-4 py-1.5 rounded-full border border-primary-container/30&quot;>
+<span class=&quot;text-[#9e4225] font-extrabold text-sm&quot;>5 Day Streak</span>
+</div>
+</div>
+</header>
+<main class=&quot;max-w-md mx-auto px-6 pt-8 space-y-8&quot;>
+<!-- Step Indicator Section -->
+<section class=&quot;space-y-4&quot;>
+<div class=&quot;flex justify-between items-end&quot;>
+<h2 class=&quot;text-3xl font-black text-on-background tracking-tight&quot;>수유 및 식습관 🥣</h2>
+<span class=&quot;text-primary font-black text-lg&quot;>2/3</span>
+</div>
+<div class=&quot;w-full h-4 bg-surface-container rounded-full overflow-hidden&quot;>
+<div class=&quot;h-full signature-gradient rounded-full w-[66%]&quot;></div>
+</div>
+</section>
+<!-- Main Content Cards -->
+<div class=&quot;space-y-6&quot;>
+<!-- Feeding Method -->
+<div class=&quot;glass-card rounded-xl p-6 shadow-[0px_20px_40px_rgba(158,66,37,0.06)]&quot;>
+<h3 class=&quot;text-on-background font-bold text-xl mb-6&quot;>수유 방식</h3>
+<div class=&quot;grid grid-cols-3 gap-3&quot;>
+<button class=&quot;flex flex-col items-center justify-center p-5 rounded-lg bg-primary-container text-white signature-gradient shadow-md transform active:scale-95 transition-all&quot;>
+<span class=&quot;material-symbols-outlined mb-2 text-3xl&quot; data-icon=&quot;water_drop&quot;>water_drop</span>
+<span class=&quot;font-extrabold text-sm&quot;>모유</span>
+</button>
+<button class=&quot;flex flex-col items-center justify-center p-5 rounded-lg bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant transform active:scale-95 transition-all&quot;>
+<span class=&quot;material-symbols-outlined mb-2 text-3xl&quot; data-icon=&quot;baby_changing_station&quot;>baby_changing_station</span>
+<span class=&quot;font-extrabold text-sm&quot;>분유</span>
+</button>
+<button class=&quot;flex flex-col items-center justify-center p-5 rounded-lg bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant transform active:scale-95 transition-all&quot;>
+<span class=&quot;material-symbols-outlined mb-2 text-3xl&quot; data-icon=&quot;fluid_med&quot;>fluid_med</span>
+<span class=&quot;font-extrabold text-sm&quot;>혼합</span>
+</button>
+</div>
+</div>
+<!-- Feeding Frequency -->
+<div class=&quot;glass-card rounded-xl p-6 shadow-[0px_20px_40px_rgba(158,66,37,0.06)]&quot;>
+<h3 class=&quot;text-on-background font-bold text-xl mb-4&quot;>수유 횟수 (하루)</h3>
+<div class=&quot;flex items-center justify-center gap-8 py-4&quot;>
+<button class=&quot;w-14 h-14 rounded-full bg-surface-container-highest flex items-center justify-center text-primary active:scale-90 transition-transform&quot;>
+<span class=&quot;material-symbols-outlined font-black&quot; data-icon=&quot;remove&quot;>remove</span>
+</button>
+<span class=&quot;text-6xl font-black text-primary italic&quot;>6</span>
+<button class=&quot;w-14 h-14 rounded-full bg-surface-container-highest flex items-center justify-center text-primary active:scale-90 transition-transform&quot;>
+<span class=&quot;material-symbols-outlined font-black&quot; data-icon=&quot;add&quot;>add</span>
+</button>
+</div>
+</div>
+<!-- Starting Solids? -->
+<div class=&quot;glass-card rounded-xl p-6 shadow-[0px_20px_40px_rgba(158,66,37,0.06)]&quot;>
+<div class=&quot;flex justify-between items-center&quot;>
+<h3 class=&quot;text-on-background font-bold text-xl&quot;>이유식 여부</h3>
+<div class=&quot;flex items-center gap-3&quot;>
+<span class=&quot;text-sm font-bold text-on-surface-variant&quot;>네</span>
+<label class=&quot;toggle-switch&quot;>
+<input checked=&quot;&quot; type=&quot;checkbox&quot;/>
+<span class=&quot;slider&quot;></span>
+</label>
+<span class=&quot;text-sm font-bold text-on-surface-variant&quot;>아니오</span>
+</div>
+</div>
+</div>
+<!-- Additional Notes -->
+<div class=&quot;glass-card rounded-xl p-6 shadow-[0px_20px_40px_rgba(158,66,37,0.06)]&quot;>
+<h3 class=&quot;text-on-background font-bold text-xl mb-4&quot;>추가 요청 사항</h3>
+<textarea class=&quot;w-full h-32 bg-surface-container-lowest border-none rounded-lg p-4 text-on-background focus:ring-2 focus:ring-primary-container transition-all resize-none font-medium placeholder:text-outline-variant&quot; placeholder=&quot;아이의 특이사항이나 알레르기 정보를 입력해주세요...&quot;></textarea>
+</div>
+</div>
+<!-- Decorative Illustration Bleed -->
+<div class=&quot;relative h-32 w-full overflow-visible&quot;>
+<img alt=&quot;Soft illustration of a baby bottle and organic shapes&quot; class=&quot;absolute -right-12 bottom-0 w-64 h-auto opacity-40 mix-blend-multiply pointer-events-none&quot; data-alt=&quot;whimsical illustration of baby bottles and soft organic cloud shapes in warm coral and amber tones on a soft cream background&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDjVPgfAmrVYfAJ0yzTkEm6eS7ddxCXDVy6zgCsXpaFwJY6UzhNDrmoO5RhEwy5-W1DrMNDsVhVa4QvXMn70wAdR1dBYb_J-zAak9X6lX_M1WaOxPk5R7TxnYWmvjrEfwjzqwc2UF9yLEwt7FT2NHfqoz906uPMazgwWhIYy0sBpV-vRFE6vRgN9oF95kegU_CvsfFESaqTKHsSAZKUHvgaZ8f8d6GVfUhfSK-hO2kNMfIf6LAE3jV8qBN_93DZnnFNwl007gRhCxup&quot;/>
+</div>
+</main>
+<!-- Sticky CTA Container -->
+<div class=&quot;fixed bottom-[88px] left-0 right-0 px-6 pb-4 z-40 bg-gradient-to-t from-[#fff8f3] via-[#fff8f3]/80 to-transparent&quot;>
+<div class=&quot;max-w-md mx-auto&quot;>
+<button class=&quot;w-full py-5 signature-gradient text-white rounded-full font-black text-xl flex items-center justify-center gap-2 shadow-xl transform active:scale-[0.98] transition-all&quot;>
+<span>다음으로 → 🧸</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class=&quot;fixed bottom-0 w-full z-50 flex justify-around items-end pb-6 px-4 bg-white/88 dark:bg-stone-900/80 backdrop-blur-md shadow-[0px_-10px_40px_rgba(158,66,37,0.06)] rounded-t-[3rem] border-t-1.5 border-[#ff8c69]/20&quot;>
+<div class=&quot;flex flex-col items-center justify-center bg-gradient-to-br from-[#ff8c69] to-[#feb246] text-white rounded-full p-3 mb-1 scale-110&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;favorite&quot; data-weight=&quot;fill&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>favorite</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Nurture</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;auto_awesome&quot;>auto_awesome</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Milestones</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;bedtime&quot;>bedtime</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Sleep</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;groups&quot;>groups</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Community</span>
+</div>
+</nav>
+</body></html>" onload="autoH(this)" scrolling="no" frameborder="0"></iframe>
+    </section>
+
+    <section id="s2">
+      <h2 class="slabel">3. 코치에게 질문하기</h2>
+      <iframe srcdoc="<!DOCTYPE html>
+
+<html class=&quot;light&quot; lang=&quot;ko&quot;><head>
+<meta charset=&quot;utf-8&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/>
+<script src=&quot;https://cdn.tailwindcss.com?plugins=forms,container-queries&quot;></script>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<script id=&quot;tailwind-config&quot;>
+      tailwind.config = {
+        darkMode: &quot;class&quot;,
+        theme: {
+          extend: {
+            colors: {
+              &quot;surface-container-high&quot;: &quot;#eee7e2&quot;,
+              &quot;on-primary-fixed-variant&quot;: &quot;#7e2b10&quot;,
+              &quot;surface-container-lowest&quot;: &quot;#ffffff&quot;,
+              &quot;secondary-container&quot;: &quot;#feb246&quot;,
+              &quot;on-secondary-container&quot;: &quot;#6f4600&quot;,
+              &quot;on-primary-container&quot;: &quot;#752409&quot;,
+              &quot;on-tertiary-fixed&quot;: &quot;#29170c&quot;,
+              &quot;inverse-surface&quot;: &quot;#33302d&quot;,
+              &quot;primary-fixed-dim&quot;: &quot;#ffb59f&quot;,
+              &quot;surface&quot;: &quot;#fff8f3&quot;,
+              &quot;secondary-fixed-dim&quot;: &quot;#ffb95a&quot;,
+              &quot;on-secondary-fixed-variant&quot;: &quot;#643f00&quot;,
+              &quot;surface-bright&quot;: &quot;#fff8f3&quot;,
+              &quot;on-surface&quot;: &quot;#1d1b18&quot;,
+              &quot;on-secondary&quot;: &quot;#ffffff&quot;,
+              &quot;on-background&quot;: &quot;#1d1b18&quot;,
+              &quot;inverse-on-surface&quot;: &quot;#f6efeb&quot;,
+              &quot;tertiary-fixed&quot;: &quot;#ffdbc9&quot;,
+              &quot;on-primary-fixed&quot;: &quot;#3a0a00&quot;,
+              &quot;surface-variant&quot;: &quot;#e8e1dc&quot;,
+              &quot;on-secondary-fixed&quot;: &quot;#2a1800&quot;,
+              &quot;primary&quot;: &quot;#9e4225&quot;,
+              &quot;surface-dim&quot;: &quot;#dfd9d4&quot;,
+              &quot;on-error-container&quot;: &quot;#93000a&quot;,
+              &quot;tertiary-container&quot;: &quot;#c5a594&quot;,
+              &quot;on-tertiary-fixed-variant&quot;: &quot;#594234&quot;,
+              &quot;error-container&quot;: &quot;#ffdad6&quot;,
+              &quot;surface-tint&quot;: &quot;#9e4225&quot;,
+              &quot;on-surface-variant&quot;: &quot;#56423d&quot;,
+              &quot;inverse-primary&quot;: &quot;#ffb59f&quot;,
+              &quot;error&quot;: &quot;#ba1a1a&quot;,
+              &quot;outline-variant&quot;: &quot;#dcc0b9&quot;,
+              &quot;on-tertiary-container&quot;: &quot;#513b2d&quot;,
+              &quot;tertiary-fixed-dim&quot;: &quot;#e1c0ae&quot;,
+              &quot;outline&quot;: &quot;#89726b&quot;,
+              &quot;on-primary&quot;: &quot;#ffffff&quot;,
+              &quot;background&quot;: &quot;#fff8f3&quot;,
+              &quot;on-tertiary&quot;: &quot;#ffffff&quot;,
+              &quot;tertiary&quot;: &quot;#73594a&quot;,
+              &quot;secondary&quot;: &quot;#845400&quot;,
+              &quot;on-error&quot;: &quot;#ffffff&quot;,
+              &quot;primary-fixed&quot;: &quot;#ffdbd1&quot;,
+              &quot;surface-container&quot;: &quot;#f3ede8&quot;,
+              &quot;surface-container-low&quot;: &quot;#f9f2ed&quot;,
+              &quot;secondary-fixed&quot;: &quot;#ffddb6&quot;,
+              &quot;primary-container&quot;: &quot;#ff8c69&quot;,
+              &quot;surface-container-highest&quot;: &quot;#e8e1dc&quot;
+            },
+            fontFamily: {
+              &quot;nunito&quot;: [&quot;Nunito&quot;, &quot;sans-serif&quot;],
+              &quot;headline&quot;: [&quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;],
+              &quot;body&quot;: [&quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;],
+              &quot;label&quot;: [&quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;]
+            },
+            borderRadius: {&quot;DEFAULT&quot;: &quot;1rem&quot;, &quot;lg&quot;: &quot;2rem&quot;, &quot;xl&quot;: &quot;3rem&quot;, &quot;full&quot;: &quot;9999px&quot;},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fff8f3;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class=&quot;bg-surface text-on-surface min-h-screen flex flex-col items-center&quot;>
+<!-- TopAppBar -->
+<header class=&quot;w-full top-0 sticky z-50 bg-[#fff8f3] dark:bg-stone-950&quot;>
+<div class=&quot;flex items-center justify-between px-6 py-4 w-full&quot;>
+<div class=&quot;flex items-center gap-3&quot;>
+<button class=&quot;text-primary hover:bg-primary/10 p-2 rounded-full transition-colors active:scale-95 duration-200 flex items-center justify-center&quot;>
+<span class=&quot;material-symbols-outlined&quot;>arrow_back</span>
+</button>
+<div class=&quot;flex flex-col&quot;>
+<h1 class=&quot;font-nunito text-lg font-bold tracking-tight text-[#9e4225] dark:text-[#ff8c69] leading-tight&quot;>BabyCoach 💬</h1>
+<span class=&quot;font-nunito text-[10px] font-extrabold uppercase text-[#513b2d] opacity-70 tracking-wider&quot;>전문가 AI 상담</span>
+</div>
+</div>
+<button class=&quot;text-[#9e4225] dark:text-[#ff8c69] active:scale-95 duration-200&quot;>
+<span class=&quot;material-symbols-outlined&quot;>more_vert</span>
+</button>
+</div>
+<div class=&quot;bg-[#f9f2ed] dark:bg-stone-900 h-px w-full&quot;></div>
+</header>
+<main class=&quot;flex-1 w-full max-w-[375px] px-4 pt-6 pb-32 flex flex-col gap-8 overflow-y-auto min-h-screen&quot;>
+<!-- Date Marker -->
+<div class=&quot;flex justify-center&quot;>
+<span class=&quot;bg-surface-container-high text-on-tertiary-fixed-variant px-4 py-1.5 rounded-full text-[12px] font-bold&quot;>
+                오늘, 5월 24일
+            </span>
+</div>
+<!-- Chat Area -->
+<div class=&quot;flex flex-col gap-6&quot;>
+<!-- User Message -->
+<div class=&quot;flex flex-col items-end animate-in slide-in-from-right duration-300&quot;>
+<div class=&quot;max-w-[85%] bg-primary-container text-white px-5 py-4 rounded-xl rounded-tr-none shadow-[0px_10px_20px_rgba(255,140,105,0.15)]&quot;>
+<p class=&quot;font-nunito text-[15px] font-bold leading-relaxed&quot;>이유식은 언제부터 시작하는 게 좋을까요? 우리 아기는 이제 4개월이에요.</p>
+</div>
+<span class=&quot;text-[10px] font-bold text-on-surface-variant/40 mt-1 px-1&quot;>오후 2:14</span>
+</div>
+<!-- Bot Response -->
+<div class=&quot;flex gap-3 group animate-in slide-in-from-left duration-300&quot;>
+<!-- Avatar -->
+<div class=&quot;flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-primary-container to-secondary-container flex items-center justify-center shadow-lg&quot;>
+<span class=&quot;text-xl&quot;>🍼</span>
+</div>
+<div class=&quot;flex flex-col gap-2 max-w-[85%]&quot;>
+<!-- HITL Badge -->
+<div class=&quot;flex items-center gap-1.5 bg-surface-container-lowest border-1.5 border-primary-container/30 self-start px-2.5 py-1 rounded-full shadow-sm&quot;>
+<span class=&quot;text-[10px]&quot;>👨‍⚕️</span>
+<span class=&quot;font-nunito text-[10px] font-extrabold text-primary&quot;>의사 검토됨</span>
+</div>
+<!-- Bot Bubble -->
+<div class=&quot;glass-card border-l-4 border-primary-container px-5 py-4 rounded-xl rounded-tl-none shadow-[0px_20px_40px_rgba(158,66,37,0.06)]&quot;>
+<p class=&quot;font-nunito text-[15px] font-semibold text-on-surface leading-relaxed&quot;>
+                            보통 생후 4~6개월 사이에 시작하는 것을 추천합니다. 아기가 목을 잘 가누고 음식을 향해 입을 벌리는지 확인해 보세요!
+                        </p>
+</div>
+<span class=&quot;text-[10px] font-bold text-on-surface-variant/40 px-1&quot;>오후 2:15</span>
+</div>
+</div>
+</div>
+<!-- AI Persona Card (Subtle Callout) -->
+<div class=&quot;bg-surface-container-low rounded-lg p-6 flex flex-col items-center text-center gap-3 border border-outline-variant/20&quot;>
+<div class=&quot;relative w-16 h-16&quot;>
+<div class=&quot;absolute inset-0 bg-primary-container/20 rounded-full animate-pulse&quot;></div>
+<img alt=&quot;Expert AI Coach Avatar&quot; class=&quot;w-16 h-16 relative z-10&quot; data-alt=&quot;professional smiling pediatric health expert avatar in a soft circular frame with warm lighting&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAzH9S8ivDYxiPcswcLH6p0yeQ3jpBl15BRfAukGs_MbyyqZ6lnw1JBviWPUNfOqRv416Fuc-j8jKBwkCR1KdVRdP5DPSwBhIH4h_SSrjsv8eCcO4go63vRpS1j6PgRbQcETHq0Hdh9EU3ImkNNwwayCuMefB4Eo1Bxqa17GcByPAEIRwsj8b10SjuAL0t5QgzDTvWOUEkkZlH6DuyWkxxIzagu7WzOczAZLxbiDufwmQFo7t9qHEB6HRt7JxyLYOSD7vguhNszBB9P&quot;/>
+</div>
+<div>
+<h3 class=&quot;font-nunito font-extrabold text-primary&quot;>베이비코치 클로이</h3>
+<p class=&quot;font-nunito text-sm text-on-surface-variant&quot;>소아 발달 및 영양 전문 AI 상담사</p>
+</div>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<footer class=&quot;fixed bottom-0 w-full bg-white/88 backdrop-blur-md z-50 pb-8 pt-4 px-4 flex flex-col gap-4&quot;>
+<!-- Suggested Questions Row -->
+<div class=&quot;flex overflow-x-auto gap-2 px-2 hide-scrollbar&quot;>
+<button class=&quot;flex-shrink-0 bg-white border-1.5 border-primary-container px-4 py-2.5 rounded-full shadow-sm active:scale-95 transition-transform&quot;>
+<span class=&quot;font-nunito text-[13px] font-bold text-primary&quot;>이유식 언제부터?</span>
+</button>
+<button class=&quot;flex-shrink-0 bg-white border-1.5 border-primary-container px-4 py-2.5 rounded-full shadow-sm active:scale-95 transition-transform&quot;>
+<span class=&quot;font-nunito text-[13px] font-bold text-primary&quot;>알레르기 검사는?</span>
+</button>
+<button class=&quot;flex-shrink-0 bg-white border-1.5 border-primary-container px-4 py-2.5 rounded-full shadow-sm active:scale-95 transition-transform&quot;>
+<span class=&quot;font-nunito text-[13px] font-bold text-primary&quot;>밤중수유 끊는 법</span>
+</button>
+</div>
+<!-- Input Bar -->
+<div class=&quot;flex items-center gap-3 bg-surface-container rounded-full p-2 pl-6 shadow-inner&quot;>
+<input class=&quot;flex-1 bg-transparent border-none focus:ring-0 font-nunito text-[15px] text-on-surface placeholder-on-surface-variant/50&quot; placeholder=&quot;궁금한 것을 물어보세요...&quot; type=&quot;text&quot;/>
+<button class=&quot;w-12 h-12 bg-gradient-to-br from-primary-container to-secondary-container rounded-full flex items-center justify-center text-white shadow-lg active:scale-90 transition-transform&quot;>
+<span class=&quot;material-symbols-outlined !text-2xl ml-1&quot;>send</span>
+</button>
+</div>
+</footer>
+<!-- BottomNavBar (Hidden or Contextual) - Included for structural consistency but suppressed in favor of focused chat UI -->
+<nav class=&quot;hidden fixed bottom-0 left-0 w-full z-50 justify-around items-center px-4 pb-6 pt-2 bg-white/88 backdrop-blur-md rounded-t-[3rem] border-t-1.5 border-[#ff8c69] shadow-[0px_-20px_40px_rgba(158,66,37,0.06)]&quot;>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-3&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;home&quot;>home</span>
+<span class=&quot;font-nunito text-[10px] font-extrabold uppercase mt-1&quot;>Home</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-3&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;auto_awesome&quot;>auto_awesome</span>
+<span class=&quot;font-nunito text-[10px] font-extrabold uppercase mt-1&quot;>Milestones</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center bg-gradient-to-br from-[#ff8c69] to-[#feb246] text-white rounded-full p-3 shadow-md&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;chat_bubble&quot;>chat_bubble</span>
+<span class=&quot;font-nunito text-[10px] font-extrabold uppercase mt-1&quot;>Expert Chat</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-3&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;bedtime&quot;>bedtime</span>
+<span class=&quot;font-nunito text-[10px] font-extrabold uppercase mt-1&quot;>Sleep</span>
+</div>
+</nav>
+</body></html>" onload="autoH(this)" scrolling="no" frameborder="0"></iframe>
+    </section>
+
+    <section id="s3">
+      <h2 class="slabel">4. Screen 4B: 성장 기록</h2>
+      <iframe srcdoc="<!DOCTYPE html>
+
+<html class=&quot;light&quot; lang=&quot;ko&quot;><head>
+<meta charset=&quot;utf-8&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/>
+<title>성장 기록 - Nurture &amp;amp; Bloom</title>
+<script src=&quot;https://cdn.tailwindcss.com?plugins=forms,container-queries&quot;></script>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<script id=&quot;tailwind-config&quot;>
+      tailwind.config = {
+        darkMode: &quot;class&quot;,
+        theme: {
+          extend: {
+            colors: {
+              &quot;tertiary-container&quot;: &quot;#c5a594&quot;,
+              &quot;tertiary&quot;: &quot;#73594a&quot;,
+              &quot;surface-container-low&quot;: &quot;#f9f2ed&quot;,
+              &quot;primary-fixed&quot;: &quot;#ffdbd1&quot;,
+              &quot;primary-container&quot;: &quot;#ff8c69&quot;,
+              &quot;on-tertiary&quot;: &quot;#ffffff&quot;,
+              &quot;on-primary-fixed-variant&quot;: &quot;#7e2b10&quot;,
+              &quot;error-container&quot;: &quot;#ffdad6&quot;,
+              &quot;tertiary-fixed-dim&quot;: &quot;#e1c0ae&quot;,
+              &quot;background&quot;: &quot;#fff8f3&quot;,
+              &quot;primary&quot;: &quot;#9e4225&quot;,
+              &quot;on-primary-fixed&quot;: &quot;#3a0a00&quot;,
+              &quot;on-error-container&quot;: &quot;#93000a&quot;,
+              &quot;on-secondary-fixed&quot;: &quot;#2a1800&quot;,
+              &quot;on-primary-container&quot;: &quot;#752409&quot;,
+              &quot;surface-container-highest&quot;: &quot;#e8e1dc&quot;,
+              &quot;on-secondary-container&quot;: &quot;#6f4600&quot;,
+              &quot;on-secondary&quot;: &quot;#ffffff&quot;,
+              &quot;primary-fixed-dim&quot;: &quot;#ffb59f&quot;,
+              &quot;on-error&quot;: &quot;#ffffff&quot;,
+              &quot;surface&quot;: &quot;#fff8f3&quot;,
+              &quot;surface-dim&quot;: &quot;#dfd9d4&quot;,
+              &quot;on-tertiary-container&quot;: &quot;#513b2d&quot;,
+              &quot;on-tertiary-fixed-variant&quot;: &quot;#594234&quot;,
+              &quot;surface-container&quot;: &quot;#f3ede8&quot;,
+              &quot;secondary-fixed-dim&quot;: &quot;#ffb95a&quot;,
+              &quot;on-surface&quot;: &quot;#1d1b18&quot;,
+              &quot;surface-container-high&quot;: &quot;#eee7e2&quot;,
+              &quot;surface-container-lowest&quot;: &quot;#ffffff&quot;,
+              &quot;secondary-fixed&quot;: &quot;#ffddb6&quot;,
+              &quot;on-primary&quot;: &quot;#ffffff&quot;,
+              &quot;inverse-primary&quot;: &quot;#ffb59f&quot;,
+              &quot;on-background&quot;: &quot;#1d1b18&quot;,
+              &quot;surface-bright&quot;: &quot;#fff8f3&quot;,
+              &quot;on-secondary-fixed-variant&quot;: &quot;#643f00&quot;,
+              &quot;surface-tint&quot;: &quot;#9e4225&quot;,
+              &quot;secondary&quot;: &quot;#845400&quot;,
+              &quot;on-surface-variant&quot;: &quot;#56423d&quot;,
+              &quot;surface-variant&quot;: &quot;#e8e1dc&quot;,
+              &quot;inverse-on-surface&quot;: &quot;#f6efeb&quot;,
+              &quot;outline&quot;: &quot;#89726b&quot;,
+              &quot;outline-variant&quot;: &quot;#dcc0b9&quot;,
+              &quot;tertiary-fixed&quot;: &quot;#ffdbc9&quot;,
+              &quot;error&quot;: &quot;#ba1a1a&quot;,
+              &quot;inverse-surface&quot;: &quot;#33302d&quot;,
+              &quot;secondary-container&quot;: &quot;#feb246&quot;,
+              &quot;on-tertiary-fixed&quot;: &quot;#29170c&quot;
+            },
+            fontFamily: {
+              &quot;headline&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;],
+              &quot;body&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;],
+              &quot;label&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;]
+            },
+            borderRadius: {&quot;DEFAULT&quot;: &quot;1rem&quot;, &quot;lg&quot;: &quot;2rem&quot;, &quot;xl&quot;: &quot;3rem&quot;, &quot;full&quot;: &quot;9999px&quot;},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Nunito', sans-serif;
+        background: radial-gradient(circle at top right, #ffffff, #fff8f3);
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(8px);
+        border: 1.5px solid #ff8c6933;
+      }
+      .signature-glow {
+        background: linear-gradient(135deg, #ff8c69 0%, #feb246 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class=&quot;text-on-surface min-h-screen pb-32 overflow-x-hidden&quot;>
+<!-- Top AppBar -->
+<header class=&quot;flex justify-between items-center px-6 py-4 w-full top-0 z-50 bg-[#f9f2ed] transition-colors duration-300&quot;>
+<div class=&quot;flex items-center gap-3&quot;>
+<div class=&quot;w-10 h-10 rounded-full bg-primary-fixed overflow-hidden&quot;>
+<img alt=&quot;Baby profile&quot; class=&quot;w-full h-full object-cover&quot; data-alt=&quot;Close-up of a smiling baby with soft lighting in a warm nursery setting&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDUHo6KI56CKvdZ7AkkGOIhVQBbcH9vpM-PvaJbWL-g2iDSybIQMSn2tN-5fqkamsiRe8mIif8YivEVicRl32GRUNwNxPlhKTguVCXZyRa-fKczJKo0LicwExZDcBCLexBvWxdfRNRD-uW-BHADRKCOfeZaYh2J_qpxoh-1i5Np6ytoaMWjjKjEgSB9PAF-KGuWBEe51MxDBZ1nHZf9U4elQ6kXEzcGoOPaz7zZwrhDBR_6IAsMgJN9zdK-rikTxsRUmHcdav7eII62&quot;/>
+</div>
+<h1 class=&quot;text-2xl font-black text-[#9e4225] tracking-tight&quot;>성장 기록 📈</h1>
+</div>
+<button class=&quot;text-[#9e4225] hover:opacity-80 transition-opacity active:scale-95&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot;>notifications</span>
+</button>
+</header>
+<main class=&quot;px-6 py-8 space-y-8&quot;>
+<!-- 성장 트리 (Growth Tree) Section: High priority tactile card -->
+<section class=&quot;glass-card rounded-xl p-6 flex flex-col items-center shadow-[0px_20px_40px_rgba(158,66,37,0.06)] relative overflow-hidden&quot;>
+<div class=&quot;absolute -top-10 -right-10 w-32 h-32 signature-glow opacity-10 rounded-full blur-3xl&quot;></div>
+<div class=&quot;flex flex-col items-center mb-6&quot;>
+<div class=&quot;w-32 h-32 flex items-center justify-center bg-surface-container rounded-full mb-4&quot;>
+<span class=&quot;material-symbols-outlined text-7xl text-secondary&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>park</span>
+</div>
+<div class=&quot;flex items-center gap-2&quot;>
+<h2 class=&quot;text-xl font-bold text-on-surface&quot;>튼튼 나무</h2>
+<span class=&quot;bg-primary text-white text-[10px] font-black px-2 py-0.5 rounded-full&quot;>LV.4</span>
+</div>
+</div>
+<div class=&quot;w-full space-y-2&quot;>
+<div class=&quot;flex justify-between text-[12px] font-extrabold text-primary px-1&quot;>
+<span>성장도</span>
+<span>75%</span>
+</div>
+<div class=&quot;w-full h-3 bg-surface-container-high rounded-full overflow-hidden&quot;>
+<div class=&quot;h-full signature-glow w-[75%] rounded-full&quot;></div>
+</div>
+</div>
+</section>
+<!-- 주간 미션 (Weekly Mission) Section -->
+<section class=&quot;space-y-4&quot;>
+<h3 class=&quot;text-lg font-bold px-1&quot;>주간 미션</h3>
+<div class=&quot;space-y-3&quot;>
+<!-- Mission Row 1 -->
+<div class=&quot;bg-surface-container-low p-4 rounded-lg flex items-center justify-between&quot;>
+<div class=&quot;flex items-center gap-4&quot;>
+<div class=&quot;w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center&quot;>
+<span class=&quot;material-symbols-outlined text-primary text-xl&quot;>restaurant</span>
+</div>
+<div>
+<p class=&quot;text-[14px] font-bold&quot;>이유식 기록하기</p>
+<p class=&quot;text-[11px] text-tertiary&quot;>3회 남음</p>
+</div>
+</div>
+<div class=&quot;flex gap-1&quot;>
+<div class=&quot;w-2 h-2 rounded-full bg-primary&quot;></div>
+<div class=&quot;w-2 h-2 rounded-full bg-primary&quot;></div>
+<div class=&quot;w-2 h-2 rounded-full bg-outline-variant/30&quot;></div>
+<div class=&quot;w-2 h-2 rounded-full bg-outline-variant/30&quot;></div>
+<div class=&quot;w-2 h-2 rounded-full bg-outline-variant/30&quot;></div>
+</div>
+</div>
+<!-- Mission Row 2 -->
+<div class=&quot;bg-surface-container-low p-4 rounded-lg flex items-center justify-between&quot;>
+<div class=&quot;flex items-center gap-4&quot;>
+<div class=&quot;w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center&quot;>
+<span class=&quot;material-symbols-outlined text-secondary text-xl&quot;>bedtime</span>
+</div>
+<div>
+<p class=&quot;text-[14px] font-bold&quot;>수면 패턴 맞추기</p>
+<p class=&quot;text-[11px] text-tertiary&quot;>미션 완료!</p>
+</div>
+</div>
+<div class=&quot;flex gap-1&quot;>
+<div class=&quot;w-2 h-2 rounded-full bg-secondary&quot;></div>
+<div class=&quot;w-2 h-2 rounded-full bg-secondary&quot;></div>
+<div class=&quot;w-2 h-2 rounded-full bg-secondary&quot;></div>
+</div>
+</div>
+<!-- Mission Row 3 -->
+<div class=&quot;bg-surface-container-low p-4 rounded-lg flex items-center justify-between&quot;>
+<div class=&quot;flex items-center gap-4&quot;>
+<div class=&quot;w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center&quot;>
+<span class=&quot;material-symbols-outlined text-tertiary text-xl&quot;>menu_book</span>
+</div>
+<div>
+<p class=&quot;text-[14px] font-bold&quot;>매일 독서 10분</p>
+<p class=&quot;text-[11px] text-tertiary&quot;>1회 진행 중</p>
+</div>
+</div>
+<div class=&quot;flex gap-1&quot;>
+<div class=&quot;w-2 h-2 rounded-full bg-tertiary&quot;></div>
+<div class=&quot;w-2 h-2 rounded-full bg-outline-variant/30&quot;></div>
+<div class=&quot;w-2 h-2 rounded-full bg-outline-variant/30&quot;></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 수집한 배지 (Badge Collection) Section -->
+<section class=&quot;space-y-4&quot;>
+<div class=&quot;flex justify-between items-center px-1&quot;>
+<h3 class=&quot;text-lg font-bold&quot;>수집한 배지</h3>
+<span class=&quot;text-xs font-extrabold text-primary&quot;>전체보기</span>
+</div>
+<div class=&quot;flex justify-between items-center bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/20 shadow-sm&quot;>
+<div class=&quot;w-12 h-12 flex items-center justify-center signature-glow rounded-full text-white shadow-md&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>military_tech</span>
+</div>
+<div class=&quot;w-12 h-12 flex items-center justify-center bg-primary-fixed rounded-full text-on-primary-fixed-variant&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>auto_awesome</span>
+</div>
+<div class=&quot;w-12 h-12 flex items-center justify-center bg-secondary-fixed rounded-full text-on-secondary-fixed-variant&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>celebration</span>
+</div>
+<div class=&quot;w-12 h-12 flex items-center justify-center bg-tertiary-fixed rounded-full text-on-tertiary-fixed-variant&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>thumb_up</span>
+</div>
+<div class=&quot;w-12 h-12 flex items-center justify-center bg-surface-container-high rounded-full text-outline/40&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot;>lock</span>
+</div>
+</div>
+</section>
+<!-- Bottom CTA -->
+<section class=&quot;pt-4&quot;>
+<button class=&quot;w-full py-4 rounded-full border-2 border-primary/30 text-primary font-black flex items-center justify-center gap-2 active:scale-95 transition-all&quot;>
+<span>처음으로 돌아가기</span>
+<span class=&quot;material-symbols-outlined&quot;>home</span>
+</button>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class=&quot;fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/88 backdrop-blur-md rounded-t-[3rem] shadow-[0px_-10px_30px_rgba(158,66,37,0.04)] border-t-1.5 border-[#ff8c69]/20&quot;>
+<a class=&quot;flex flex-col items-center justify-center text-[#c5a594] px-4 py-2 hover:text-[#9e4225] transition-all&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot;>auto_awesome</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider mt-1&quot;>Coaching</span>
+</a>
+<a class=&quot;flex flex-col items-center justify-center bg-gradient-to-br from-[#ff8c69] to-[#feb246] text-white rounded-full px-4 py-2 mb-1 active:scale-95 transition-all duration-200&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>park</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider mt-1&quot;>Growth</span>
+</a>
+<a class=&quot;flex flex-col items-center justify-center text-[#c5a594] px-4 py-2 hover:text-[#9e4225] transition-all&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot;>group</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider mt-1&quot;>Community</span>
+</a>
+<a class=&quot;flex flex-col items-center justify-center text-[#c5a594] px-4 py-2 hover:text-[#9e4225] transition-all&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot;>person</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider mt-1&quot;>Profile</span>
+</a>
+</nav>
+</body></html>" onload="autoH(this)" scrolling="no" frameborder="0"></iframe>
+    </section>
+
+    <section id="s4">
+      <h2 class="slabel">5. 의사 프로필 상세</h2>
+      <iframe srcdoc="<!DOCTYPE html>
+
+<html lang=&quot;ko&quot;><head>
+<meta charset=&quot;utf-8&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/>
+<script src=&quot;https://cdn.tailwindcss.com?plugins=forms,container-queries&quot;></script>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Nunito', 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid #ff8c69;
+        }
+        .signature-glow {
+            background: linear-gradient(135deg, #ff8c69 0%, #feb246 100%);
+        }
+    </style>
+<script id=&quot;tailwind-config&quot;>
+      tailwind.config = {
+        darkMode: &quot;class&quot;,
+        theme: {
+          extend: {
+            colors: {
+              &quot;surface&quot;: &quot;#fff8f3&quot;,
+              &quot;secondary&quot;: &quot;#845400&quot;,
+              &quot;on-tertiary-fixed&quot;: &quot;#29170c&quot;,
+              &quot;on-tertiary&quot;: &quot;#ffffff&quot;,
+              &quot;error&quot;: &quot;#ba1a1a&quot;,
+              &quot;error-container&quot;: &quot;#ffdad6&quot;,
+              &quot;primary-fixed&quot;: &quot;#ffdbd1&quot;,
+              &quot;on-secondary&quot;: &quot;#ffffff&quot;,
+              &quot;on-secondary-fixed-variant&quot;: &quot;#643f00&quot;,
+              &quot;background&quot;: &quot;#fff8f3&quot;,
+              &quot;on-primary&quot;: &quot;#ffffff&quot;,
+              &quot;on-primary-fixed-variant&quot;: &quot;#7e2b10&quot;,
+              &quot;tertiary-fixed-dim&quot;: &quot;#e1c0ae&quot;,
+              &quot;tertiary&quot;: &quot;#73594a&quot;,
+              &quot;surface-container-lowest&quot;: &quot;#ffffff&quot;,
+              &quot;tertiary-fixed&quot;: &quot;#ffdbc9&quot;,
+              &quot;outline-variant&quot;: &quot;#dcc0b9&quot;,
+              &quot;on-surface&quot;: &quot;#1d1b18&quot;,
+              &quot;surface-bright&quot;: &quot;#fff8f3&quot;,
+              &quot;secondary-fixed-dim&quot;: &quot;#ffb95a&quot;,
+              &quot;primary-fixed-dim&quot;: &quot;#ffb59f&quot;,
+              &quot;surface-container-high&quot;: &quot;#eee7e2&quot;,
+              &quot;inverse-on-surface&quot;: &quot;#f6efeb&quot;,
+              &quot;surface-variant&quot;: &quot;#e8e1dc&quot;,
+              &quot;on-primary-container&quot;: &quot;#752409&quot;,
+              &quot;tertiary-container&quot;: &quot;#c5a594&quot;,
+              &quot;on-background&quot;: &quot;#1d1b18&quot;,
+              &quot;on-tertiary-fixed-variant&quot;: &quot;#594234&quot;,
+              &quot;on-tertiary-container&quot;: &quot;#513b2d&quot;,
+              &quot;primary-container&quot;: &quot;#ff8c69&quot;,
+              &quot;on-error&quot;: &quot;#ffffff&quot;,
+              &quot;surface-tint&quot;: &quot;#9e4225&quot;,
+              &quot;on-secondary-container&quot;: &quot;#6f4600&quot;,
+              &quot;on-secondary-fixed&quot;: &quot;#2a1800&quot;,
+              &quot;secondary-container&quot;: &quot;#feb246&quot;,
+              &quot;primary&quot;: &quot;#9e4225&quot;,
+              &quot;on-surface-variant&quot;: &quot;#56423d&quot;,
+              &quot;outline&quot;: &quot;#89726b&quot;,
+              &quot;inverse-surface&quot;: &quot;#33302d&quot;,
+              &quot;surface-container-low&quot;: &quot;#f9f2ed&quot;,
+              &quot;surface-container&quot;: &quot;#f3ede8&quot;,
+              &quot;secondary-fixed&quot;: &quot;#ffddb6&quot;,
+              &quot;inverse-primary&quot;: &quot;#ffb59f&quot;,
+              &quot;surface-container-highest&quot;: &quot;#e8e1dc&quot;,
+              &quot;surface-dim&quot;: &quot;#dfd9d4&quot;,
+              &quot;on-primary-fixed&quot;: &quot;#3a0a00&quot;,
+              &quot;on-error-container&quot;: &quot;#93000a&quot;
+            },
+            fontFamily: {
+              &quot;headline&quot;: [&quot;Nunito&quot;],
+              &quot;body&quot;: [&quot;Nunito&quot;],
+              &quot;label&quot;: [&quot;Nunito&quot;]
+            },
+            borderRadius: {&quot;DEFAULT&quot;: &quot;1rem&quot;, &quot;lg&quot;: &quot;2rem&quot;, &quot;xl&quot;: &quot;3rem&quot;, &quot;full&quot;: &quot;9999px&quot;},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class=&quot;bg-surface text-on-surface min-h-screen pb-32&quot;>
+<!-- TopAppBar -->
+<nav class=&quot;w-full top-0 sticky z-50 bg-[#fff8f3] dark:bg-slate-950 flex items-center justify-between px-6 py-4 w-full max-w-xl mx-auto&quot;>
+<div class=&quot;flex items-center gap-2&quot;>
+<button class=&quot;text-[#9e4225] hover:opacity-80 transition-opacity active:scale-95 duration-200&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;arrow_back&quot;>arrow_back</span>
+</button>
+<h1 class=&quot;font-['Nunito'] font-bold text-lg text-[#9e4225]&quot;>Doctor Profile</h1>
+</div>
+<div class=&quot;w-6&quot;></div> <!-- Spacer for balance -->
+</nav>
+<main class=&quot;max-w-xl mx-auto px-5 pt-2&quot;>
+<!-- Top Hero Section (Doctor Identity) -->
+<section class=&quot;signature-glow rounded-xl p-8 text-white relative overflow-hidden shadow-[0px_20px_40px_rgba(158,66,37,0.12)]&quot;>
+<div class=&quot;relative z-10 flex flex-col items-center text-center&quot;>
+<div class=&quot;w-24 h-24 rounded-full border-4 border-white/30 p-1 mb-4&quot;>
+<img alt=&quot;김소아 원장&quot; class=&quot;w-full h-full object-cover rounded-full&quot; data-alt=&quot;Close-up portrait of a friendly professional female pediatrician smiling warmly, wearing a white coat, soft natural lighting in a modern clinic&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDsaQXXACi6Z-D-QoRTHfVS9HxXp_TZ_Tf6su082kgvaK_YZg3jB0d2vMgvOqg3kYGuey67Ja30T_PTjm2fjHj6jlukHgukxzOiI8mF14yrRBRj3oTZ9wYaSnrS4v1urStj2RY7xUeZHYApmEJAvVAhZhg-JvVydfT6GvZ00b9Xygvsz_6kVRp68DU1BWvVb16aMyaZkt4y2sL_bVADynzEFpIFf0PROTba2bBt73HycV_SY1TrNMC7f8hVsqC-jbenSvGohAhlc-yj&quot;/>
+</div>
+<h2 class=&quot;text-2xl font-black mb-1&quot;>김소아 원장</h2>
+<p class=&quot;text-white/80 font-semibold mb-3&quot;>서울소아과의원</p>
+<div class=&quot;flex items-center gap-2 mb-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-sm&quot;>
+<div class=&quot;flex text-[#feb246]&quot;>
+<span class=&quot;material-symbols-outlined text-sm&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined text-sm&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined text-sm&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined text-sm&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined text-sm&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+</div>
+<span class=&quot;font-bold&quot;>4.8</span>
+<span class=&quot;opacity-70&quot;>· 후기 127개</span>
+</div>
+<p class=&quot;flex items-center gap-1 text-sm text-white/90 mb-6&quot;>
+<span class=&quot;material-symbols-outlined text-xs&quot; data-icon=&quot;location_on&quot;>location_on</span>
+                    내 위치에서 2.3km
+                </p>
+<button class=&quot;w-full py-4 bg-white text-[#9e4225] font-extrabold rounded-full shadow-lg active:scale-95 transition-transform&quot;>
+                    병원 방문 예약하기
+                </button>
+</div>
+<!-- Decorative Background Element -->
+<div class=&quot;absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl&quot;></div>
+</section>
+<!-- Doctor Info Cards -->
+<div class=&quot;mt-8 space-y-6&quot;>
+<!-- Intro Section -->
+<section class=&quot;bg-surface-container-low p-6 rounded-xl&quot;>
+<h3 class=&quot;flex items-center gap-2 font-bold text-[#9e4225] mb-3&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;home_health&quot;>home_health</span>
+                    병원 소개
+                </h3>
+<p class=&quot;text-on-surface-variant leading-relaxed font-medium&quot;>
+                    안녕하세요. 아이들의 건강한 성장을 돕는 <span class=&quot;text-primary font-bold&quot;>김소아</span>입니다. 15년 경력의 소아 전문의로 꼼꼼하게 상담해 드립니다.
+                </p>
+</section>
+<!-- Expertise Pills -->
+<section>
+<h3 class=&quot;font-bold text-[#9e4225] mb-4 px-2&quot;>전문 분야</h3>
+<div class=&quot;flex flex-wrap gap-2&quot;>
+<span class=&quot;px-5 py-2 glass-card rounded-full text-primary font-extrabold text-sm&quot;>소아과 일반</span>
+<span class=&quot;px-5 py-2 bg-surface-container-high rounded-full text-on-surface-variant font-extrabold text-sm&quot;>발달</span>
+<span class=&quot;px-5 py-2 bg-surface-container-high rounded-full text-on-surface-variant font-extrabold text-sm&quot;>영양</span>
+</div>
+</section>
+<!-- Schedule &amp; Contact -->
+<div class=&quot;grid grid-cols-1 gap-4&quot;>
+<section class=&quot;bg-surface-container-low p-6 rounded-xl flex items-center justify-between&quot;>
+<div>
+<h3 class=&quot;font-bold text-[#9e4225] mb-2 text-sm uppercase tracking-wider&quot;>진료 가능 요일</h3>
+<div class=&quot;flex gap-2&quot;>
+<span class=&quot;text-on-surface font-black&quot;>월 화 수 목 금</span>
+<span class=&quot;text-outline-variant font-bold&quot;>토 일</span>
+</div>
+</div>
+<div class=&quot;w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;calendar_today&quot;>calendar_today</span>
+</div>
+</section>
+<section class=&quot;bg-surface-container-low p-6 rounded-xl flex items-center justify-between&quot;>
+<div>
+<h3 class=&quot;font-bold text-[#9e4225] mb-1 text-sm&quot;>전화번호</h3>
+<p class=&quot;text-xl font-black text-on-surface&quot;>02-000-0000</p>
+</div>
+<a class=&quot;flex items-center gap-1 font-extrabold text-primary hover:underline&quot; href=&quot;tel:02-000-0000&quot;>
+                        전화하기
+                        <span class=&quot;material-symbols-outlined text-sm&quot; data-icon=&quot;call&quot;>call</span>
+</a>
+</section>
+</div>
+<!-- Reviews Section -->
+<section class=&quot;mt-8&quot;>
+<div class=&quot;flex items-center justify-between mb-4 px-2&quot;>
+<h3 class=&quot;text-xl font-black text-on-surface&quot;>다른 엄마들의 후기</h3>
+<button class=&quot;text-sm font-bold text-primary&quot;>전체보기</button>
+</div>
+<div class=&quot;space-y-4&quot;>
+<!-- Review 1 -->
+<div class=&quot;bg-surface-container-lowest p-5 rounded-lg shadow-[0px_10px_30px_rgba(158,66,37,0.04)]&quot;>
+<div class=&quot;flex items-center justify-between mb-2&quot;>
+<div class=&quot;flex text-[#feb246] scale-75 origin-left&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+</div>
+<span class=&quot;text-xs text-outline font-bold&quot;>3일 전</span>
+</div>
+<p class=&quot;text-on-surface font-semibold&quot;>&quot;이유식 추천이 정말 도움됐어요&quot;</p>
+</div>
+<!-- Review 2 -->
+<div class=&quot;bg-surface-container-lowest p-5 rounded-lg shadow-[0px_10px_30px_rgba(158,66,37,0.04)]&quot;>
+<div class=&quot;flex items-center justify-between mb-2&quot;>
+<div class=&quot;flex text-[#feb246] scale-75 origin-left&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+</div>
+<span class=&quot;text-xs text-outline font-bold&quot;>1주일 전</span>
+</div>
+<p class=&quot;text-on-surface font-semibold&quot;>&quot;아이 눈높이에서 친절하게 설명해주셔서 좋았어요&quot;</p>
+</div>
+<!-- Review 3 -->
+<div class=&quot;bg-surface-container-lowest p-5 rounded-lg shadow-[0px_10px_30px_rgba(158,66,37,0.04)]&quot;>
+<div class=&quot;flex items-center justify-between mb-2&quot;>
+<div class=&quot;flex text-[#feb246] scale-75 origin-left&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;star&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span>
+<span class=&quot;material-symbols-outlined text-outline-variant&quot; data-icon=&quot;star&quot;>star</span>
+</div>
+<span class=&quot;text-xs text-outline font-bold&quot;>2주일 전</span>
+</div>
+<p class=&quot;text-on-surface font-semibold&quot;>&quot;병원이 깨끗하고 선생님이 꼼꼼하세요&quot;</p>
+</div>
+</div>
+</section>
+<!-- Secondary Action -->
+<button class=&quot;w-full mt-6 py-4 border-2 border-primary-container text-primary font-black rounded-full hover:bg-primary-fixed/20 transition-colors&quot;>
+                이 의사 계속 담당으로 설정
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class=&quot;fixed bottom-0 left-0 w-full z-50 bg-white/88 dark:bg-slate-900/80 backdrop-blur-md flex justify-around items-center px-4 pb-6 pt-2 rounded-t-[3rem] border-t-1.5 border-[#ff8c69] shadow-[0px_-10px_40px_rgba(158,66,37,0.06)]&quot;>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-3 hover:text-[#9e4225] transition-colors cursor-pointer&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;home&quot;>home</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] tracking-wide uppercase&quot;>Home</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-3 hover:text-[#9e4225] transition-colors cursor-pointer&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;Child_Care&quot;>child_care</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] tracking-wide uppercase&quot;>Coaching</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-3 hover:text-[#9e4225] transition-colors cursor-pointer&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;Auto_Graph&quot;>auto_graph</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] tracking-wide uppercase&quot;>Milestones</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center bg-gradient-to-br from-[#ff8c69] to-[#feb246] text-white rounded-full p-3 active:scale-98 transition-transform duration-200 cursor-pointer&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;person&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>person</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] tracking-wide uppercase&quot;>Profile</span>
+</div>
+</nav>
+</body></html>" onload="autoH(this)" scrolling="no" frameborder="0"></iframe>
+    </section>
+
+    <section id="s5">
+      <h2 class="slabel">6. Screen 4A: 코칭 결과 (인사이트 추가)</h2>
+      <iframe srcdoc="<!DOCTYPE html>
+
+<html class=&quot;light&quot; lang=&quot;ko&quot;><head>
+<meta charset=&quot;utf-8&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/>
+<script src=&quot;https://cdn.tailwindcss.com?plugins=forms,container-queries&quot;></script>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<script id=&quot;tailwind-config&quot;>
+    tailwind.config = {
+      darkMode: &quot;class&quot;,
+      theme: {
+        extend: {
+          colors: {
+            &quot;tertiary-container&quot;: &quot;#c5a594&quot;,
+            &quot;tertiary&quot;: &quot;#73594a&quot;,
+            &quot;surface-container-low&quot;: &quot;#f9f2ed&quot;,
+            &quot;primary-fixed&quot;: &quot;#ffdbd1&quot;,
+            &quot;primary-container&quot;: &quot;#ff8c69&quot;,
+            &quot;on-tertiary&quot;: &quot;#ffffff&quot;,
+            &quot;on-primary-fixed-variant&quot;: &quot;#7e2b10&quot;,
+            &quot;error-container&quot;: &quot;#ffdad6&quot;,
+            &quot;tertiary-fixed-dim&quot;: &quot;#e1c0ae&quot;,
+            &quot;background&quot;: &quot;#fff8f3&quot;,
+            &quot;primary&quot;: &quot;#9e4225&quot;,
+            &quot;on-primary-fixed&quot;: &quot;#3a0a00&quot;,
+            &quot;on-error-container&quot;: &quot;#93000a&quot;,
+            &quot;on-secondary-fixed&quot;: &quot;#2a1800&quot;,
+            &quot;on-primary-container&quot;: &quot;#752409&quot;,
+            &quot;surface-container-highest&quot;: &quot;#e8e1dc&quot;,
+            &quot;on-secondary-container&quot;: &quot;#6f4600&quot;,
+            &quot;on-secondary&quot;: &quot;#ffffff&quot;,
+            &quot;primary-fixed-dim&quot;: &quot;#ffb59f&quot;,
+            &quot;on-error&quot;: &quot;#ffffff&quot;,
+            &quot;surface&quot;: &quot;#fff8f3&quot;,
+            &quot;surface-dim&quot;: &quot;#dfd9d4&quot;,
+            &quot;on-tertiary-container&quot;: &quot;#513b2d&quot;,
+            &quot;on-tertiary-fixed-variant&quot;: &quot;#594234&quot;,
+            &quot;surface-container&quot;: &quot;#f3ede8&quot;,
+            &quot;secondary-fixed-dim&quot;: &quot;#ffb95a&quot;,
+            &quot;on-surface&quot;: &quot;#1d1b18&quot;,
+            &quot;surface-container-high&quot;: &quot;#eee7e2&quot;,
+            &quot;surface-container-lowest&quot;: &quot;#ffffff&quot;,
+            &quot;secondary-fixed&quot;: &quot;#ffddb6&quot;,
+            &quot;on-primary&quot;: &quot;#ffffff&quot;,
+            &quot;inverse-primary&quot;: &quot;#ffb59f&quot;,
+            &quot;on-background&quot;: &quot;#1d1b18&quot;,
+            &quot;surface-bright&quot;: &quot;#fff8f3&quot;,
+            &quot;on-secondary-fixed-variant&quot;: &quot;#643f00&quot;,
+            &quot;surface-tint&quot;: &quot;#9e4225&quot;,
+            &quot;secondary&quot;: &quot;#845400&quot;,
+            &quot;on-surface-variant&quot;: &quot;#56423d&quot;,
+            &quot;surface-variant&quot;: &quot;#e8e1dc&quot;,
+            &quot;inverse-on-surface&quot;: &quot;#f6efeb&quot;,
+            &quot;outline&quot;: &quot;#89726b&quot;,
+            &quot;outline-variant&quot;: &quot;#dcc0b9&quot;,
+            &quot;tertiary-fixed&quot;: &quot;#ffdbc9&quot;,
+            &quot;error&quot;: &quot;#ba1a1a&quot;,
+            &quot;inverse-surface&quot;: &quot;#33302d&quot;,
+            &quot;secondary-container&quot;: &quot;#feb246&quot;,
+            &quot;on-tertiary-fixed&quot;: &quot;#29170c&quot;
+          },
+          fontFamily: {
+            &quot;headline&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;],
+            &quot;body&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;],
+            &quot;label&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;]
+          },
+          borderRadius: {&quot;DEFAULT&quot;: &quot;1rem&quot;, &quot;lg&quot;: &quot;2rem&quot;, &quot;xl&quot;: &quot;3rem&quot;, &quot;full&quot;: &quot;9999px&quot;},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1.5px solid #ff8c69;
+    }
+    body {
+      background: radial-gradient(circle at top right, #fff8f3, #f9f2ed);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class=&quot;font-body text-on-background min-h-screen pb-32&quot;>
+<!-- Top App Bar -->
+<header class=&quot;flex justify-between items-center px-6 py-4 w-full bg-[#fff8f3] dark:bg-[#1d1b18] top-0 z-50&quot;>
+<div class=&quot;flex items-center gap-3&quot;>
+<div class=&quot;w-10 h-10 rounded-full bg-primary-fixed overflow-hidden&quot;>
+<img class=&quot;w-full h-full object-cover&quot; data-alt=&quot;cute happy baby smiling close up portrait with warm soft lighting and pastel colors&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBtkIlsifKaW8AkTulV6syMkeRTvYvrOF0Kjl7VDrY-f0r_pe1GB5ZeXt6wTNcsig1wEz4Lwb88FXpdRo7ff0C_hjjhSuR5LvtY9c0lw2JKErG09fUIKQOmIqTdKAQ0XKr5GdTPyXl4v_FflbsuuUV_8WEHA3bE6PCYgs8nFNjxxERYRnjhzS00f175nxvprL5nExc-bLXhi6bD20CJgUTKopcKXdxk7YpJseqx_5VjKSCd_UoOm3a5uOZqO0l2LkG-5rd4kugCyczE&quot;/>
+</div>
+<h1 class=&quot;text-2xl font-black text-[#9e4225] dark:text-[#ff8c69] tracking-tight&quot;>Nurture &amp;amp; Bloom</h1>
+</div>
+<div class=&quot;flex items-center gap-4&quot;>
+<button class=&quot;text-[#9e4225] hover:opacity-80 transition-opacity&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;notifications&quot;>notifications</span>
+</button>
+</div>
+</header>
+<main class=&quot;px-6 space-y-8 mt-4&quot;>
+<!-- Hero Header -->
+<section class=&quot;space-y-4&quot;>
+<h2 class=&quot;text-3xl font-[900] leading-tight text-on-surface&quot;>오늘의 코칭이<br/>준비됐어요! 🎉</h2>
+<!-- HITL Status Bar -->
+<div class=&quot;inline-flex items-center gap-2 bg-secondary-container/20 border border-secondary-container/30 px-4 py-2 rounded-full&quot;>
+<span class=&quot;flex h-2 w-2 relative&quot;>
+<span class=&quot;animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75&quot;></span>
+<span class=&quot;relative inline-flex rounded-full h-2 w-2 bg-secondary&quot;></span>
+</span>
+<span class=&quot;text-sm font-bold text-on-secondary-container&quot;>⏳ 소아과 의사 검토 중...</span>
+</div><div class=&quot;mt-6 glass-card border-l-4 border-l-[#ff8c69] border-[#ff8c69]/30 rounded-[22px] p-4 flex gap-4 items-center shadow-sm active:scale-[0.98] transition-all cursor-pointer group&quot;>
+<!-- Left side: Photo with status -->
+<div class=&quot;relative flex-shrink-0&quot;>
+<div class=&quot;w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm&quot;>
+<img alt=&quot;Doctor portrait&quot; class=&quot;w-full h-full object-cover&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AGV9sqYcWc7-t0m2F9V_r_v6Qy5B4-n_yqI5_f7qXp4uA_Vf4S8V&quot;/>
+</div>
+<div class=&quot;absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full&quot;></div>
+</div>
+<!-- Right side: Details -->
+<div class=&quot;flex-grow&quot;>
+<div class=&quot;flex justify-between items-start&quot;>
+<div>
+<h4 class=&quot;text-[15px] font-[900] text-on-surface leading-tight&quot;>👨‍⚕️ 김소아 원장</h4>
+<p class=&quot;text-[12px] text-[#9b7e6e] font-bold&quot;>서울소아과의원</p>
+</div>
+<span class=&quot;material-symbols-outlined text-[#9b7e6e] text-lg opacity-40 group-hover:opacity-100 transition-opacity&quot;>keyboard_arrow_down</span>
+</div>
+<div class=&quot;flex items-center gap-3 mt-1.5&quot;>
+<span class=&quot;text-[11px] text-[#9b7e6e] font-semibold flex items-center gap-0.5&quot;>
+<span class=&quot;material-symbols-outlined text-[12px]&quot;>location_on</span>내 위치에서 2.3km
+      </span>
+<span class=&quot;text-[11px] text-[#ff8c69] font-bold flex items-center gap-0.5&quot;>
+<span class=&quot;material-symbols-outlined text-[12px]&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>star</span> 4.8 (후기 127개)
+      </span>
+</div>
+<div class=&quot;mt-2&quot;>
+<a class=&quot;text-[11px] text-[#ff8c69] font-black hover:underline inline-flex items-center gap-0.5&quot; href=&quot;#&quot;>
+        병원 방문 예약 <span class=&quot;material-symbols-outlined text-[14px]&quot;>arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Nudge Card (Glassmorphic) -->
+<section class=&quot;glass-card rounded-xl p-6 shadow-[0px_20px_40px_rgba(158,66,37,0.06)] relative overflow-hidden&quot;>
+<div class=&quot;absolute -top-10 -right-10 w-32 h-32 bg-primary-container/10 rounded-full blur-2xl&quot;></div>
+<div class=&quot;relative z-10&quot;>
+<div class=&quot;flex items-center gap-2 mb-3&quot;>
+<span class=&quot;text-primary font-black text-lg&quot;>⭐ 오늘 딱 한 가지</span>
+</div>
+<p class=&quot;text-on-surface-variant leading-relaxed mb-6 font-semibold&quot;>
+          오늘 오후 산책 때는 아기에게 &quot;바람&quot;, &quot;나뭇잎&quot; 등 주변의 자연물을 가리키며 이름을 들려주세요. 언어 발달에 큰 도움이 됩니다!
+        </p>
+<button class=&quot;w-full py-4 rounded-full bg-gradient-to-br from-[#ff8c69] to-[#feb246] text-white font-black text-lg shadow-lg active:scale-95 transition-all&quot;>
+          해봤어요 ✓
+        </button>
+</div>
+</section>
+<!-- Nutrition Gauge -->
+<section class=&quot;bg-surface-container-low rounded-xl p-6 space-y-6&quot;>
+<div class=&quot;flex justify-between items-end&quot;>
+<h3 class=&quot;text-xl font-bold text-on-surface&quot;>영양 상태</h3>
+<span class=&quot;text-sm font-extrabold text-primary&quot;>훌륭해요!</span>
+</div>
+<div class=&quot;space-y-5&quot;>
+<!-- Row 1 -->
+<div class=&quot;space-y-2&quot;>
+<div class=&quot;flex justify-between text-sm font-bold text-on-tertiary-container&quot;>
+<span>단백질</span>
+<span>적정</span>
+</div>
+<div class=&quot;h-3 w-full bg-surface-container-highest rounded-full overflow-hidden flex gap-1 px-1 items-center&quot;>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-primary-container&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-primary-container&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-primary-container&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-primary-container&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-outline-variant&quot;></div>
+</div>
+</div>
+<!-- Row 2 -->
+<div class=&quot;space-y-2&quot;>
+<div class=&quot;flex justify-between text-sm font-bold text-on-tertiary-container&quot;>
+<span>채소</span>
+<span>부족</span>
+</div>
+<div class=&quot;h-3 w-full bg-surface-container-highest rounded-full overflow-hidden flex gap-1 px-1 items-center&quot;>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-secondary-container&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-secondary-container&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-outline-variant&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-outline-variant&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-outline-variant&quot;></div>
+</div>
+</div>
+<!-- Row 3 -->
+<div class=&quot;space-y-2&quot;>
+<div class=&quot;flex justify-between text-sm font-bold text-on-tertiary-container&quot;>
+<span>다양성</span>
+<span>우수</span>
+</div>
+<div class=&quot;h-3 w-full bg-surface-container-highest rounded-full overflow-hidden flex gap-1 px-1 items-center&quot;>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-primary&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-primary&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-primary&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-primary&quot;></div>
+<div class=&quot;h-1.5 w-1.5 rounded-full bg-primary&quot;></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Results -->
+<section class=&quot;grid grid-cols-2 gap-4&quot;>
+<!-- Card 1 -->
+<div class=&quot;bg-[#e8f5e9] rounded-lg p-5 flex flex-col justify-between aspect-square active:scale-95 transition-transform&quot;>
+<span class=&quot;material-symbols-outlined text-green-700 text-3xl&quot; data-icon=&quot;restaurant&quot;>restaurant</span>
+<div>
+<h4 class=&quot;font-black text-green-900 leading-tight&quot;>이유식 추천</h4>
+<p class=&quot;text-xs text-green-800/70 mt-1 font-bold&quot;>소고기 청경채 미음</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class=&quot;bg-[#e3f2fd] rounded-lg p-5 flex flex-col justify-between aspect-square active:scale-95 transition-transform&quot;>
+<span class=&quot;material-symbols-outlined text-blue-700 text-3xl&quot; data-icon=&quot;toys&quot;>toys</span>
+<div>
+<h4 class=&quot;font-black text-blue-900 leading-tight&quot;>놀이 추천</h4>
+<p class=&quot;text-xs text-blue-800/70 mt-1 font-bold&quot;>까꿍 놀이와 손뼉</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class=&quot;bg-[#f3e5f5] rounded-lg p-5 flex flex-col justify-between aspect-square active:scale-95 transition-transform&quot;>
+<span class=&quot;material-symbols-outlined text-purple-700 text-3xl&quot; data-icon=&quot;straighten&quot;>straighten</span>
+<div>
+<h4 class=&quot;font-black text-purple-900 leading-tight&quot;>발달 코칭</h4>
+<p class=&quot;text-xs text-purple-800/70 mt-1 font-bold&quot;>대근육 발달 체크</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class=&quot;bg-[#fffde7] rounded-lg p-5 flex flex-col justify-between aspect-square active:scale-95 transition-transform&quot;>
+<span class=&quot;material-symbols-outlined text-amber-700 text-3xl&quot; data-icon=&quot;auto_awesome&quot;>auto_awesome</span>
+<div>
+<h4 class=&quot;font-black text-amber-900 leading-tight&quot;>코치 설명</h4>
+<p class=&quot;text-xs text-amber-800/70 mt-1 font-bold&quot;>오늘의 총평 확인</p>
+</div>
+</div>
+</section>
+<!-- 후성유전학 배우기 Section -->
+<section class=&quot;space-y-4&quot;>
+<div class=&quot;flex items-center gap-2&quot;>
+<h3 class=&quot;text-xl font-bold text-on-surface&quot;>🧬 오늘의 후성유전학 인사이트</h3>
+<span class=&quot;bg-[#ff8c69] text-white text-[10px] font-black px-1.5 py-0.5 rounded-sm&quot;>NEW</span>
+</div>
+<div class=&quot;bg-[#f0e8ff] rounded-2xl p-5 shadow-sm space-y-3 relative overflow-hidden active:scale-[0.98] transition-all cursor-pointer&quot;>
+<div class=&quot;inline-block bg-[#9b59b6] text-white text-[10px] font-bold px-3 py-1 rounded-full&quot;>
+      연구 기반 육아 팁
+    </div>
+<h4 class=&quot;text-base font-[900] text-[#2d1b4d] leading-snug&quot;>초기 영양이 아이의 유전자 발현에 미치는 영향</h4>
+<p class=&quot;text-[12px] text-[#2d1b4d]/70 font-semibold leading-tight line-clamp-2&quot;>
+      생후 6개월의 식이 패턴이 장기적 건강에 영향을 미칩니다
+    </p>
+<a class=&quot;text-[#9b59b6] font-black text-[13px] inline-flex items-center&quot; href=&quot;#&quot;>
+      더 알아보기 →
+    </a>
+</div>
+<div class=&quot;flex gap-2 overflow-x-auto hide-scrollbar -mx-6 px-6&quot;>
+<div class=&quot;flex-shrink-0 bg-white border border-[#9b59b6]/20 px-4 py-2 rounded-full text-[12px] font-bold text-[#9b59b6]&quot;># 이유식과 유전자</div>
+<div class=&quot;flex-shrink-0 bg-white border border-[#9b59b6]/20 px-4 py-2 rounded-full text-[12px] font-bold text-[#9b59b6]&quot;># 수면과 발달</div>
+<div class=&quot;flex-shrink-0 bg-white border border-[#9b59b6]/20 px-4 py-2 rounded-full text-[12px] font-bold text-[#9b59b6]&quot;># 놀이와 뇌발달</div>
+</div>
+</section>
+<!-- Bottom Link -->
+<div class=&quot;flex justify-center py-6&quot;>
+<a class=&quot;inline-flex items-center gap-2 text-primary font-black text-lg hover:underline transition-all&quot; href=&quot;#&quot;>
+        성장 기록 보기
+        <span class=&quot;material-symbols-outlined&quot; data-icon=&quot;arrow_forward&quot;>arrow_forward</span>
+</a>
+</div>
+</main>
+<!-- Navigation Shell -->
+<nav class=&quot;fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/88 dark:bg-[#1d1b18]/88 backdrop-blur-md shadow-[0px_-10px_30px_rgba(158,66,37,0.04)] rounded-t-[3rem] border-t-1.5 border-[#ff8c69]/20&quot;>
+<!-- Active State: Coaching -->
+<a class=&quot;flex flex-col items-center justify-center bg-gradient-to-br from-[#ff8c69] to-[#feb246] text-white rounded-full px-4 py-2 mb-1 active:scale-95 transition-all duration-200 ease-out&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;auto_awesome&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>auto_awesome</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Coaching</span>
+</a>
+<a class=&quot;flex flex-col items-center justify-center text-[#c5a594] dark:text-[#dcc0b9] px-4 py-2 hover:text-[#9e4225] active:scale-95 transition-all&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;park&quot;>park</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Growth</span>
+</a>
+<a class=&quot;flex flex-col items-center justify-center text-[#c5a594] dark:text-[#dcc0b9] px-4 py-2 hover:text-[#9e4225] active:scale-95 transition-all&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;group&quot;>group</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Community</span>
+</a>
+<a class=&quot;flex flex-col items-center justify-center text-[#c5a594] dark:text-[#dcc0b9] px-4 py-2 hover:text-[#9e4225] active:scale-95 transition-all&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;person&quot;>person</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Profile</span>
+</a>
+</nav>
+</body></html>" onload="autoH(this)" scrolling="no" frameborder="0"></iframe>
+    </section>
+</body>
+</html>

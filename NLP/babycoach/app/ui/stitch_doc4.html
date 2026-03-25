@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>BabyCoach Doctor Flow — stitch_doc4</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: sans-serif; background: #f0f0f0; padding: 16px; }
+  nav { background: #fff; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; line-height: 1.8; }
+  nav a { color: #4A90E2; text-decoration: none; margin: 0 4px; }
+  nav a:hover { text-decoration: underline; }
+  h1 { font-size: 18px; margin-bottom: 12px; color: #333; }
+  section { margin-bottom: 32px; }
+  .slabel { font-size: 14px; color: #666; margin-bottom: 8px; padding-left: 4px; }
+  iframe { width: 390px; display: block; border: none; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); min-height: 100px; }
+</style>
+<script>
+function autoH(iframe) {
+  try {
+    var h = iframe.contentDocument.documentElement.scrollHeight;
+    iframe.style.height = h + 'px';
+  } catch(e) {}
+}
+</script>
+</head>
+<body>
+  <h1>BabyCoach Doctor Flow — stitch_doc4</h1>
+  <nav><a href="#s0">의사 대시보드 최종 개선안</a> | <a href="#s1">의사 프로필 설정</a></nav>
+  
+    <section id="s0">
+      <h2 class="slabel">1. 의사 대시보드 최종 개선안</h2>
+      <iframe srcdoc="<!DOCTYPE html>
+
+<html class=&quot;light&quot; lang=&quot;ko&quot;><head>
+<meta charset=&quot;utf-8&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/>
+<title>BabyCoach 의사 대시보드</title>
+<script src=&quot;https://cdn.tailwindcss.com?plugins=forms,container-queries&quot;></script>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;amp;family=Nunito:wght@400;600;700;800;900&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<script id=&quot;tailwind-config&quot;>
+        tailwind.config = {
+            darkMode: &quot;class&quot;,
+            theme: {
+                extend: {
+                    colors: {
+                        &quot;on-secondary-fixed-variant&quot;: &quot;#384763&quot;,
+                        &quot;secondary&quot;: &quot;#505f7c&quot;,
+                        &quot;primary-container&quot;: &quot;#2d6cdf&quot;,
+                        &quot;secondary-fixed&quot;: &quot;#d7e2ff&quot;,
+                        &quot;secondary-container&quot;: &quot;#cbdafd&quot;,
+                        &quot;surface-container-high&quot;: &quot;#e6e8ec&quot;,
+                        &quot;primary-fixed&quot;: &quot;#d9e2ff&quot;,
+                        &quot;on-primary-container&quot;: &quot;#f7f7ff&quot;,
+                        &quot;surface-tint&quot;: &quot;#0358cb&quot;,
+                        &quot;surface-container-low&quot;: &quot;#f2f4f8&quot;,
+                        &quot;on-secondary-fixed&quot;: &quot;#0b1b35&quot;,
+                        &quot;secondary-fixed-dim&quot;: &quot;#b7c7e9&quot;,
+                        &quot;on-tertiary-fixed-variant&quot;: &quot;#3f4752&quot;,
+                        &quot;on-primary-fixed&quot;: &quot;#001945&quot;,
+                        &quot;surface-container-highest&quot;: &quot;#e0e3e6&quot;,
+                        &quot;on-primary&quot;: &quot;#ffffff&quot;,
+                        &quot;on-tertiary-fixed&quot;: &quot;#141c25&quot;,
+                        &quot;error-container&quot;: &quot;#ffdad6&quot;,
+                        &quot;primary&quot;: &quot;#0053c1&quot;,
+                        &quot;tertiary-container&quot;: &quot;#6a727d&quot;,
+                        &quot;outline-variant&quot;: &quot;#c2c6d6&quot;,
+                        &quot;outline&quot;: &quot;#737785&quot;,
+                        &quot;inverse-primary&quot;: &quot;#b0c6ff&quot;,
+                        &quot;surface&quot;: &quot;#f7f9fd&quot;,
+                        &quot;surface-variant&quot;: &quot;#e0e3e6&quot;,
+                        &quot;error&quot;: &quot;#ba1a1a&quot;,
+                        &quot;surface-bright&quot;: &quot;#f7f9fd&quot;,
+                        &quot;surface-container-lowest&quot;: &quot;#ffffff&quot;,
+                        &quot;tertiary-fixed-dim&quot;: &quot;#bfc7d4&quot;,
+                        &quot;primary-fixed-dim&quot;: &quot;#b0c6ff&quot;,
+                        &quot;surface-dim&quot;: &quot;#d8dade&quot;,
+                        &quot;on-background&quot;: &quot;#181c1f&quot;,
+                        &quot;on-surface&quot;: &quot;#181c1f&quot;,
+                        &quot;background&quot;: &quot;#f7f9fd&quot;,
+                        &quot;on-secondary&quot;: &quot;#ffffff&quot;,
+                        &quot;on-tertiary&quot;: &quot;#ffffff&quot;,
+                        &quot;on-surface-variant&quot;: &quot;#424653&quot;,
+                        &quot;on-tertiary-container&quot;: &quot;#f4f7ff&quot;,
+                        &quot;on-error&quot;: &quot;#ffffff&quot;,
+                        &quot;inverse-surface&quot;: &quot;#2d3134&quot;,
+                        &quot;on-secondary-container&quot;: &quot;#505f7d&quot;,
+                        &quot;tertiary-fixed&quot;: &quot;#dbe3f0&quot;,
+                        &quot;surface-container&quot;: &quot;#eceef2&quot;,
+                        &quot;inverse-on-surface&quot;: &quot;#eff1f5&quot;,
+                        &quot;on-primary-fixed-variant&quot;: &quot;#00429c&quot;,
+                        &quot;on-error-container&quot;: &quot;#93000a&quot;,
+                        &quot;tertiary&quot;: &quot;#515a64&quot;
+                    },
+                    fontFamily: {
+                        &quot;headline&quot;: [&quot;Plus Jakarta Sans&quot;, &quot;Nunito&quot;, &quot;sans-serif&quot;],
+                        &quot;body&quot;: [&quot;Plus Jakarta Sans&quot;, &quot;Nunito&quot;, &quot;sans-serif&quot;],
+                        &quot;label&quot;: [&quot;Plus Jakarta Sans&quot;, &quot;Nunito&quot;, &quot;sans-serif&quot;]
+                    },
+                    borderRadius: { &quot;DEFAULT&quot;: &quot;1rem&quot;, &quot;lg&quot;: &quot;2rem&quot;, &quot;xl&quot;: &quot;3rem&quot;, &quot;full&quot;: &quot;9999px&quot; },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(20px); background: rgba(255, 255, 255, 0.8); }
+        .status-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+        
+        /* Accordion &amp; Textarea logic */
+        .accordion-content { max-height: 1000px; overflow: hidden; transition: max-height 0.3s ease-out, opacity 0.3s ease-out; }
+        .accordion-collapsed .accordion-content { max-height: 0; opacity: 0; pointer-events: none; }
+        .accordion-collapsed .toggle-icon { transform: rotate(-90deg); }
+        
+        #edit-form, #reject-form { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin 0.3s; opacity: 0; }
+        .show-edit #edit-form, .show-reject #reject-form { max-height: 300px; opacity: 1; margin-top: 1rem; }
+    </style>
+</head>
+<body class=&quot;bg-surface text-on-surface min-h-screen pb-24&quot;>
+<!-- Top Navigation -->
+<header class=&quot;w-full top-0 sticky z-40 bg-[#f7f9fd]/90 backdrop-blur-md dark:bg-slate-900 shadow-none&quot;>
+<nav class=&quot;flex items-center justify-between px-6 py-4 max-w-[680px] mx-auto&quot;>
+<div class=&quot;flex items-center gap-3&quot;>
+<div class=&quot;text-[#0053c1] dark:text-[#2d6cdf] font-black tracking-tight text-xl&quot;>BabyCoach Clinical</div>
+</div>
+<div class=&quot;flex items-center gap-3&quot;>
+<span class=&quot;material-symbols-outlined text-slate-500 hover:bg-slate-100 p-2 rounded-full transition-colors cursor-pointer&quot;>notifications</span>
+<img alt=&quot;Doctor&quot; class=&quot;w-10 h-10 rounded-full border-2 border-primary-container object-cover&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuATc2tvTTUG1aPoEsW4c6IXsUQNIU33vOuc0hWuajnmB_i0cmsrjuFZkus-5zHf8RQDXfF1XgUfa2cAAVCkWxMXTzZM1BF8y6tAIeKbwYhNWP_CvkQuW1CKsBz7etNeE7WvAiYMhToPQj49SR4Eg9o6ful7D19eNtReUfmgqFiYhy1hwvrJmM5-_Xk_LMB2GoUYGvFHbWl18BPC8DBuke28PqwHdoEsRNTcdNfvJ-uBXT7IX2uu-Glmthy0H2AMA4hW2_3hQQHf5Q&quot;/>
+</div>
+</nav>
+</header>
+<main class=&quot;max-w-[680px] mx-auto px-4 mt-4 space-y-6&quot;>
+<!-- Header Card Section -->
+<section class=&quot;bg-surface-container-lowest rounded-[18px] p-6 shadow-[0_12px_32px_rgba(45,108,223,0.06)] border-[1.5px] border-primary/10&quot;>
+<div class=&quot;flex items-center justify-between&quot;>
+<div class=&quot;space-y-1&quot;>
+<div class=&quot;flex items-center gap-2&quot;>
+<span class=&quot;text-2xl&quot;>🏥</span>
+<h1 class=&quot;text-[24px] font-[900] text-on-surface leading-tight tracking-tight&quot;>BabyCoach 의사 대시보드</h1>
+</div>
+<div class=&quot;flex items-center gap-2 mt-2&quot;>
+<div class=&quot;w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center&quot;>
+<span class=&quot;material-symbols-outlined text-primary text-sm&quot;>person</span>
+</div>
+<span class=&quot;font-bold text-on-surface-variant&quot;>김소아 원장</span>
+<span class=&quot;text-[10px] font-semibold uppercase tracking-widest bg-primary-fixed text-on-primary-fixed-variant px-2 py-1 rounded-full&quot;>Professional</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Status Row -->
+<div class=&quot;flex items-center justify-between px-2&quot;>
+<div class=&quot;flex items-center gap-2&quot;>
+<div class=&quot;w-2.5 h-2.5 bg-emerald-500 rounded-full status-pulse&quot;></div>
+<span class=&quot;text-sm font-semibold text-on-surface-variant&quot;>실시간 연결됨</span>
+</div>
+<button class=&quot;flex items-center gap-1.5 px-4 py-1.5 bg-surface-container-high hover:bg-surface-container-highest transition-colors rounded-full text-xs font-bold text-on-surface-variant&quot;>
+<span class=&quot;material-symbols-outlined text-[16px]&quot;>refresh</span>
+            🔄 상태 새로고침
+        </button>
+</div>
+<!-- Section: Pending Cases -->
+<div class=&quot;space-y-4&quot;>
+<div class=&quot;flex items-center justify-between px-2&quot;>
+<h2 class=&quot;text-xl font-[800] flex items-center gap-2&quot;>
+                ⏳ 검토 대기 케이스
+                <span class=&quot;bg-primary text-on-primary px-2.5 py-0.5 rounded-full text-sm font-black&quot;>3</span>
+</h2>
+</div>
+<!-- Case Card 1 -->
+<article class=&quot;bg-surface-container-lowest rounded-[18px] overflow-hidden border-[1.5px] border-primary/10 transition-all&quot; id=&quot;case-container&quot;>
+<!-- Card Header -->
+<div class=&quot;p-5 border-b border-primary/5 flex items-center justify-between bg-surface-container-low/30&quot;>
+<div class=&quot;space-y-0.5&quot;>
+<span class=&quot;text-[10px] font-bold text-primary tracking-widest uppercase&quot;>CASE ID #BC-2026-0001</span>
+<p class=&quot;text-xs text-slate-500&quot;>2026. 05. 24 • 오전 10:15</p>
+</div>
+<span class=&quot;bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-[11px] font-extrabold flex items-center gap-1 uppercase tracking-tighter&quot;>
+<span class=&quot;material-symbols-outlined text-[14px]&quot;>hourglass_empty</span>
+                    검토 대기
+                </span>
+</div>
+<div class=&quot;p-6 space-y-6&quot;>
+<!-- Accordion 1: Baby Info -->
+<div class=&quot;border border-slate-100 rounded-[18px] overflow-hidden&quot; id=&quot;baby-info-accordion&quot;>
+<button class=&quot;w-full flex items-center justify-between p-4 bg-surface-container-low/20&quot; onclick=&quot;document.getElementById('baby-info-accordion').classList.toggle('accordion-collapsed')&quot;>
+<span class=&quot;text-sm font-black text-on-surface flex items-center gap-2&quot;>👶 아기 정보</span>
+<span class=&quot;material-symbols-outlined text-slate-400 toggle-icon transition-transform&quot;>expand_more</span>
+</button>
+<div class=&quot;accordion-content p-4&quot;>
+<div class=&quot;grid grid-cols-3 gap-3&quot;>
+<div class=&quot;bg-surface-container-low py-4 px-2 rounded-[14px] text-center border-l-[4px] border-blue-500 min-h-[96px] flex flex-col justify-center&quot;>
+<p class=&quot;text-[10px] font-bold text-slate-500 mb-1&quot;>👶 월령</p>
+<p class=&quot;text-[20px] font-[900] text-on-surface&quot;>8개월</p>
+</div>
+<div class=&quot;bg-surface-container-low py-4 px-2 rounded-[14px] text-center border-l-[4px] border-emerald-500 min-h-[96px] flex flex-col justify-center&quot;>
+<p class=&quot;text-[10px] font-bold text-slate-500 mb-1&quot;>⚖️ 체중</p>
+<p class=&quot;text-[20px] font-[900] text-on-surface&quot;>9.2kg</p>
+</div>
+<div class=&quot;bg-surface-container-low py-4 px-2 rounded-[14px] text-center border-l-[4px] border-error min-h-[96px] flex flex-col justify-center&quot;>
+<p class=&quot;text-[10px] font-bold text-error/70 mb-1&quot;>🚫 알레르기</p>
+<p class=&quot;text-[18px] font-[900] text-error&quot;>달걀, 땅콩</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion 2: AI Recommendations -->
+<div class=&quot;border border-slate-100 rounded-[18px] overflow-hidden&quot; id=&quot;ai-rec-accordion&quot;>
+<button class=&quot;w-full flex items-center justify-between p-4 bg-surface-container-low/20&quot; onclick=&quot;document.getElementById('ai-rec-accordion').classList.toggle('accordion-collapsed')&quot;>
+<span class=&quot;text-sm font-black text-on-surface flex items-center gap-2&quot;>🤖 AI 생성 분석 제안</span>
+<span class=&quot;material-symbols-outlined text-slate-400 toggle-icon transition-transform&quot;>expand_more</span>
+</button>
+<div class=&quot;accordion-content p-5 bg-gradient-to-br from-primary-fixed/10 to-transparent&quot;>
+<div class=&quot;divide-y divide-primary/5&quot;>
+<div class=&quot;flex items-start gap-3 py-4 first:pt-0&quot;>
+<div class=&quot;w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0&quot;>
+<span class=&quot;text-sm&quot;>🥄</span>
+</div>
+<div class=&quot;flex-1&quot;>
+<p class=&quot;text-xs font-bold text-on-surface-variant&quot;>이유식 가이드</p>
+<p class=&quot;text-sm text-on-surface&quot;>입자가 있는 죽 형태의 중기 이유식 2회, 닭가슴살 비중 강화</p>
+</div>
+</div>
+<div class=&quot;flex items-start gap-3 py-4&quot;>
+<div class=&quot;w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0&quot;>
+<span class=&quot;text-sm&quot;>🎮</span>
+</div>
+<div class=&quot;flex-1&quot;>
+<p class=&quot;text-xs font-bold text-on-surface-variant&quot;>맞춤형 놀이</p>
+<p class=&quot;text-sm text-on-surface&quot;>대근육 발달을 위한 기어 다니기 유도 및 촉감 놀이</p>
+</div>
+</div>
+<div class=&quot;flex items-start gap-3 py-4 last:pb-0&quot;>
+<div class=&quot;w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0&quot;>
+<span class=&quot;text-sm&quot;>💬</span>
+</div>
+<div class=&quot;flex-1&quot;>
+<p class=&quot;text-xs font-bold text-on-surface-variant&quot;>부모 넛지</p>
+<p class=&quot;text-sm text-on-surface&quot;>&quot;잘 먹지 않을 때는 수유량을 조금 조절해보세요&quot; 격려</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class=&quot;space-y-4&quot;>
+<div class=&quot;grid grid-cols-2 gap-3&quot;>
+<button class=&quot;flex flex-col items-center justify-center p-4 rounded-[14px] border border-emerald-100 bg-emerald-50 hover:bg-emerald-100 transition-colors group&quot; onclick=&quot;document.getElementById('case-container').classList.remove('show-edit', 'show-reject')&quot;>
+<span class=&quot;material-symbols-outlined text-emerald-600 mb-1&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>check_circle</span>
+<span class=&quot;text-[13px] font-bold text-emerald-700&quot;>✅ 승인</span>
+</button>
+<button class=&quot;flex flex-col items-center justify-center p-4 rounded-[14px] border border-primary/10 bg-primary/5 hover:bg-primary/10 transition-colors group&quot; onclick=&quot;document.getElementById('case-container').classList.remove('show-reject'); document.getElementById('case-container').classList.add('show-edit')&quot;>
+<span class=&quot;material-symbols-outlined text-primary mb-1&quot;>edit_note</span>
+<span class=&quot;text-[13px] font-bold text-primary&quot;>✏️ 수정 승인</span>
+</button>
+</div>
+<div class=&quot;flex justify-center&quot;>
+<button class=&quot;px-6 py-2 rounded-full border border-error/30 text-error text-[11px] font-bold hover:bg-error/5 transition-colors flex items-center gap-1.5&quot; onclick=&quot;document.getElementById('case-container').classList.remove('show-edit'); document.getElementById('case-container').classList.add('show-reject')&quot;>
+<span class=&quot;material-symbols-outlined text-[14px]&quot;>cancel</span>
+                            ❌ 반려
+                        </button>
+</div>
+<!-- Contextual Form: Edit -->
+<div class=&quot;space-y-3&quot; id=&quot;edit-form&quot;>
+<textarea class=&quot;w-full rounded-[14px] border-2 border-primary/20 bg-primary/5 focus:ring-1 focus:ring-primary/40 text-sm py-3 px-4 min-h-[100px] placeholder:text-slate-400&quot; placeholder=&quot;수정 내용을 입력하세요...&quot;></textarea>
+<button class=&quot;w-full py-4 bg-primary text-on-primary font-bold rounded-full shadow-[0_8px_16px_rgba(45,108,223,0.2)] active:scale-[0.98] transition-all&quot;>
+                            ✏️ 수정 내용 전송
+                        </button>
+</div>
+<!-- Contextual Form: Reject -->
+<div class=&quot;space-y-3&quot; id=&quot;reject-form&quot;>
+<textarea class=&quot;w-full rounded-[14px] border-2 border-error/20 bg-error/5 focus:ring-1 focus:ring-error/40 text-sm py-3 px-4 min-h-[100px] placeholder:text-slate-400&quot; placeholder=&quot;반려 사유를 입력하세요...&quot;></textarea>
+<button class=&quot;w-full py-4 border-2 border-error bg-transparent text-error font-bold rounded-full hover:bg-error/5 active:scale-[0.98] transition-all&quot;>
+                            ❌ 반려 전송
+                        </button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Section: Recent History -->
+<section class=&quot;bg-surface-container-low/50 rounded-[18px] p-6 space-y-4&quot;>
+<h3 class=&quot;text-[16px] font-[800] text-on-surface-variant flex items-center gap-2&quot;>
+<span class=&quot;material-symbols-outlined text-[20px]&quot;>assignment</span>
+            📋 최근 검토 이력
+        </h3>
+<div class=&quot;space-y-3&quot;>
+<div class=&quot;flex items-center justify-between p-4 bg-surface-container-lowest rounded-[14px]&quot;>
+<div class=&quot;flex items-center gap-4&quot;>
+<span class=&quot;text-[10px] font-bold text-slate-400 font-mono&quot;>14:20</span>
+<div>
+<p class=&quot;text-sm font-bold&quot;>이서준 (12개월)</p>
+<p class=&quot;text-[10px] text-slate-500&quot;>후기 이유식 가이드</p>
+</div>
+</div>
+<span class=&quot;bg-emerald-50 text-emerald-600 text-[10px] font-black px-2 py-1 rounded-full border border-emerald-100 uppercase tracking-tighter&quot;>✅ 승인</span>
+</div>
+<div class=&quot;flex items-center justify-between p-4 bg-surface-container-lowest rounded-[14px]&quot;>
+<div class=&quot;flex items-center gap-4&quot;>
+<span class=&quot;text-[10px] font-bold text-slate-400 font-mono&quot;>11:05</span>
+<div>
+<p class=&quot;text-sm font-bold&quot;>박민재 (5개월)</p>
+<p class=&quot;text-[10px] text-slate-500&quot;>초기 미음 제안 수정</p>
+</div>
+</div>
+<span class=&quot;bg-primary/5 text-primary text-[10px] font-black px-2 py-1 rounded-full border border-primary/10 uppercase tracking-tighter&quot;>✏️ 수정</span>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class=&quot;text-center py-6&quot;>
+<a class=&quot;text-sm font-extrabold text-[#FF7F6A] hover:opacity-80 transition-opacity flex items-center justify-center gap-1&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined text-[18px]&quot;>arrow_back</span>
+            엄마 화면으로 돌아가기
+        </a>
+</footer>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class=&quot;fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pb-safe pt-2 px-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl rounded-t-[18px] border-t border-[#0053c1]/14 shadow-[0_-12px_32px_rgba(45,108,223,0.08)]&quot;>
+<a class=&quot;flex flex-col items-center justify-center bg-[#2d6cdf]/10 dark:bg-[#2d6cdf]/20 text-[#0053c1] dark:text-[#2d6cdf] rounded-[18px] px-5 py-2 active:scale-90 transition-transform&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>dashboard</span>
+<span class=&quot;font-plus-jakarta-sans uppercase tracking-widest text-[10px] font-semibold mt-1&quot;>대시보드</span>
+</a>
+<a class=&quot;flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#2d6cdf] active:scale-90 transition-transform&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined&quot;>pending_actions</span>
+<span class=&quot;font-plus-jakarta-sans uppercase tracking-widest text-[10px] font-semibold mt-1&quot;>검토 대기</span>
+</a>
+<a class=&quot;flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#2d6cdf] active:scale-90 transition-transform&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined&quot;>history</span>
+<span class=&quot;font-plus-jakarta-sans uppercase tracking-widest text-[10px] font-semibold mt-1&quot;>완료 목록</span>
+</a>
+<a class=&quot;flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#2d6cdf] active:scale-90 transition-transform&quot; href=&quot;#&quot;>
+<span class=&quot;material-symbols-outlined&quot;>settings</span>
+<span class=&quot;font-plus-jakarta-sans uppercase tracking-widest text-[10px] font-semibold mt-1&quot;>설정</span>
+</a>
+</nav>
+</body></html>" onload="autoH(this)" scrolling="no" frameborder="0"></iframe>
+    </section>
+
+    <section id="s1">
+      <h2 class="slabel">2. 의사 프로필 설정</h2>
+      <iframe srcdoc="<!DOCTYPE html>
+
+<html class=&quot;light&quot; lang=&quot;ko&quot;><head>
+<meta charset=&quot;utf-8&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/>
+<script src=&quot;https://cdn.tailwindcss.com?plugins=forms,container-queries&quot;></script>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;amp;family=Nunito:wght@400;600;700;800&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<script id=&quot;tailwind-config&quot;>
+      tailwind.config = {
+        darkMode: &quot;class&quot;,
+        theme: {
+          extend: {
+            colors: {
+              &quot;secondary-container&quot;: &quot;#cbdafd&quot;,
+              &quot;background&quot;: &quot;#f7f9fd&quot;,
+              &quot;on-tertiary-fixed-variant&quot;: &quot;#3f4752&quot;,
+              &quot;on-secondary-fixed-variant&quot;: &quot;#384763&quot;,
+              &quot;on-primary-fixed&quot;: &quot;#001945&quot;,
+              &quot;tertiary-fixed&quot;: &quot;#dbe3f0&quot;,
+              &quot;on-error&quot;: &quot;#ffffff&quot;,
+              &quot;surface-container-low&quot;: &quot;#f2f4f8&quot;,
+              &quot;on-primary&quot;: &quot;#ffffff&quot;,
+              &quot;surface-container-highest&quot;: &quot;#e0e3e6&quot;,
+              &quot;on-tertiary&quot;: &quot;#ffffff&quot;,
+              &quot;surface-dim&quot;: &quot;#d8dade&quot;,
+              &quot;inverse-surface&quot;: &quot;#2d3134&quot;,
+              &quot;inverse-on-surface&quot;: &quot;#eff1f5&quot;,
+              &quot;tertiary-fixed-dim&quot;: &quot;#bfc7d4&quot;,
+              &quot;outline-variant&quot;: &quot;#c2c6d6&quot;,
+              &quot;surface-container-high&quot;: &quot;#e6e8ec&quot;,
+              &quot;primary-fixed-dim&quot;: &quot;#b0c6ff&quot;,
+              &quot;surface&quot;: &quot;#f7f9fd&quot;,
+              &quot;on-secondary&quot;: &quot;#ffffff&quot;,
+              &quot;primary&quot;: &quot;#0053c1&quot;,
+              &quot;inverse-primary&quot;: &quot;#b0c6ff&quot;,
+              &quot;surface-container-lowest&quot;: &quot;#ffffff&quot;,
+              &quot;outline&quot;: &quot;#737785&quot;,
+              &quot;error-container&quot;: &quot;#ffdad6&quot;,
+              &quot;on-tertiary-fixed&quot;: &quot;#141c25&quot;,
+              &quot;secondary&quot;: &quot;#505f7c&quot;,
+              &quot;on-surface-variant&quot;: &quot;#424653&quot;,
+              &quot;on-surface&quot;: &quot;#181c1f&quot;,
+              &quot;on-error-container&quot;: &quot;#93000a&quot;,
+              &quot;tertiary&quot;: &quot;#515a64&quot;,
+              &quot;surface-variant&quot;: &quot;#e0e3e6&quot;,
+              &quot;secondary-fixed&quot;: &quot;#d7e2ff&quot;,
+              &quot;error&quot;: &quot;#ba1a1a&quot;,
+              &quot;tertiary-container&quot;: &quot;#6a727d&quot;,
+              &quot;surface-tint&quot;: &quot;#0358cb&quot;,
+              &quot;primary-fixed&quot;: &quot;#d9e2ff&quot;,
+              &quot;on-primary-container&quot;: &quot;#f7f7ff&quot;,
+              &quot;secondary-fixed-dim&quot;: &quot;#b7c7e9&quot;,
+              &quot;on-secondary-fixed&quot;: &quot;#0b1b35&quot;,
+              &quot;on-background&quot;: &quot;#181c1f&quot;,
+              &quot;surface-bright&quot;: &quot;#f7f9fd&quot;,
+              &quot;on-secondary-container&quot;: &quot;#505f7d&quot;,
+              &quot;primary-container&quot;: &quot;#2d6cdf&quot;,
+              &quot;surface-container&quot;: &quot;#eceef2&quot;,
+              &quot;on-primary-fixed-variant&quot;: &quot;#00429c&quot;,
+              &quot;on-tertiary-container&quot;: &quot;#f4f7ff&quot;
+            },
+            fontFamily: {
+              &quot;headline&quot;: [&quot;Plus Jakarta Sans&quot;],
+              &quot;body&quot;: [&quot;Plus Jakarta Sans&quot;],
+              &quot;label&quot;: [&quot;Plus Jakarta Sans&quot;]
+            },
+            borderRadius: {&quot;DEFAULT&quot;: &quot;1rem&quot;, &quot;lg&quot;: &quot;2rem&quot;, &quot;xl&quot;: &quot;3rem&quot;, &quot;full&quot;: &quot;9999px&quot;},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class=&quot;bg-surface text-on-surface antialiased flex justify-center&quot;>
+<!-- Mobile Container (390px width) -->
+<main class=&quot;w-[390px] min-h-screen bg-surface relative pb-32&quot;>
+<!-- TopAppBar Predicted Component Mapping -->
+<header class=&quot;bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl no-border bg-slate-50/50 dark:bg-slate-900/50 shadow-[0_12px_32px_rgba(45,108,223,0.08)] docked full-width top-0 sticky flex items-center justify-between px-6 h-16 w-full z-50&quot;>
+<div class=&quot;flex items-center gap-3&quot;>
+<button class=&quot;active:scale-95 duration-200 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors p-2 rounded-full text-blue-600 dark:text-blue-400&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;arrow_back&quot;>arrow_back</span>
+</button>
+<h1 class=&quot;font-['Plus_Jakarta_Sans'] font-extrabold tracking-tight text-on-surface&quot;>내 프로필 설정</h1>
+</div>
+<button class=&quot;text-blue-700 dark:text-blue-400 font-bold active:scale-95 duration-200 hover:bg-blue-50 p-2 px-4 rounded-xl&quot;>저장</button>
+</header>
+<!-- Profile Hero Section -->
+<section class=&quot;flex flex-col items-center pt-8 pb-4&quot;>
+<div class=&quot;relative group&quot;>
+<div class=&quot;w-24 h-24 rounded-full border-[1.5px] border-primary/14 overflow-hidden bg-surface-container-low shadow-[0_8px_16px_rgba(45,108,223,0.05)]&quot;>
+<img alt=&quot;Doctor Profile&quot; class=&quot;w-full h-full object-cover&quot; data-alt=&quot;Professional portrait of a friendly female pediatrician in a clean modern clinic setting with soft clinical lighting&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAUWFMECSIPBOJOAvx0afqbawEruW6eH6IFklEJTyP5uMHIfQkyAnClCyisapjjt_PNArb0NdbpmtwV_X42ihSDgpRffgxasp68Nt0rHOwpb16YycRidzDn4OpYGMxMPWVXGGabkgvCb0D_nGtNCaFRwMvzvM8b82KgZSMe0ZQfrp9IradpPCoudblz6qKtzdycfs5ysZuBywIAWiy2b52ff9Z3i80XuLiHDuou6ujOW8KApxbPXfp72SUGtL4b97AuNdVXb6opKQ&quot;/>
+</div>
+<div class=&quot;absolute bottom-0 right-0 bg-primary text-white p-1.5 rounded-full border-2 border-white shadow-lg&quot;>
+<span class=&quot;material-symbols-outlined text-sm&quot; data-icon=&quot;photo_camera&quot;>photo_camera</span>
+</div>
+</div>
+<button class=&quot;mt-3 text-primary font-bold text-[13px] tracking-tight transition-colors hover:text-primary-container&quot;>사진 변경</button>
+</section>
+<!-- Form Content -->
+<div class=&quot;px-5 space-y-6&quot;>
+<!-- Basic Information Card -->
+<div class=&quot;bg-surface-container-lowest rounded-[1.125rem] border-[1.5px] border-primary/14 p-6 space-y-5 shadow-sm&quot;>
+<div class=&quot;space-y-1.5&quot;>
+<label class=&quot;font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-[0.05rem] text-slate-500&quot;>이름</label>
+<input class=&quot;w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm font-semibold focus:ring-2 focus:ring-primary/40 transition-all outline-none&quot; type=&quot;text&quot; value=&quot;김소아 원장&quot;/>
+</div>
+<div class=&quot;space-y-1.5&quot;>
+<label class=&quot;font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-[0.05rem] text-slate-500&quot;>병원명</label>
+<input class=&quot;w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm font-semibold focus:ring-2 focus:ring-primary/40 transition-all outline-none&quot; placeholder=&quot;병원 이름을 입력하세요&quot; type=&quot;text&quot;/>
+</div>
+<div class=&quot;space-y-1.5&quot;>
+<div class=&quot;flex justify-between items-center&quot;>
+<label class=&quot;font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-[0.05rem] text-slate-500&quot;>병원 주소</label>
+<button class=&quot;text-[11px] font-bold text-primary flex items-center gap-0.5&quot;>
+<span class=&quot;material-symbols-outlined text-xs&quot; data-icon=&quot;location_on&quot;>location_on</span>
+                            지도에서 찾기
+                        </button>
+</div>
+<input class=&quot;w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm font-semibold focus:ring-2 focus:ring-primary/40 transition-all outline-none&quot; placeholder=&quot;병원 상세 주소를 입력하세요&quot; type=&quot;text&quot;/>
+</div>
+<div class=&quot;space-y-1.5&quot;>
+<label class=&quot;font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-[0.05rem] text-slate-500&quot;>전화번호</label>
+<input class=&quot;w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm font-semibold focus:ring-2 focus:ring-primary/40 transition-all outline-none&quot; placeholder=&quot;02-000-0000&quot; type=&quot;tel&quot;/>
+</div>
+</div>
+<!-- Specialties Section -->
+<div class=&quot;bg-surface-container-lowest rounded-[1.125rem] border-[1.5px] border-primary/14 p-6 space-y-4 shadow-sm&quot;>
+<label class=&quot;font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-[0.05rem] text-slate-500 block&quot;>전문 분야</label>
+<div class=&quot;flex flex-wrap gap-2&quot;>
+<span class=&quot;bg-blue-50 text-primary px-4 py-2 rounded-full text-xs font-bold border border-primary/20&quot;>소아과 일반</span>
+<span class=&quot;bg-surface-container-low text-slate-500 px-4 py-2 rounded-full text-xs font-bold&quot;>신생아</span>
+<span class=&quot;bg-surface-container-low text-slate-500 px-4 py-2 rounded-full text-xs font-bold&quot;>발달</span>
+<span class=&quot;bg-blue-50 text-primary px-4 py-2 rounded-full text-xs font-bold border border-primary/20&quot;>영양</span>
+<span class=&quot;bg-surface-container-low text-slate-500 px-4 py-2 rounded-full text-xs font-bold&quot;>알레르기</span>
+</div>
+</div>
+<!-- Bio Section -->
+<div class=&quot;bg-surface-container-lowest rounded-[1.125rem] border-[1.5px] border-primary/14 p-6 space-y-4 shadow-sm&quot;>
+<div class=&quot;flex justify-between items-center&quot;>
+<label class=&quot;font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-[0.05rem] text-slate-500&quot;>한줄 소개</label>
+<span class=&quot;text-[10px] text-slate-400 font-medium&quot;>0/50</span>
+</div>
+<textarea class=&quot;w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-primary/40 transition-all outline-none resize-none&quot; placeholder=&quot;부모님들께 전할 짧은 인사말을 입력하세요&quot; rows=&quot;2&quot;></textarea>
+</div>
+<!-- Clinic Days Section -->
+<div class=&quot;bg-surface-container-lowest rounded-[1.125rem] border-[1.5px] border-primary/14 p-6 space-y-4 shadow-sm&quot;>
+<label class=&quot;font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-[0.05rem] text-slate-500 block&quot;>진료 가능 요일</label>
+<div class=&quot;flex justify-between&quot;>
+<button class=&quot;w-10 h-10 rounded-full bg-primary text-white text-xs font-bold shadow-md shadow-primary/20&quot;>월</button>
+<button class=&quot;w-10 h-10 rounded-full bg-primary text-white text-xs font-bold shadow-md shadow-primary/20&quot;>화</button>
+<button class=&quot;w-10 h-10 rounded-full bg-primary text-white text-xs font-bold shadow-md shadow-primary/20&quot;>수</button>
+<button class=&quot;w-10 h-10 rounded-full bg-primary text-white text-xs font-bold shadow-md shadow-primary/20&quot;>목</button>
+<button class=&quot;w-10 h-10 rounded-full bg-primary text-white text-xs font-bold shadow-md shadow-primary/20&quot;>금</button>
+<button class=&quot;w-10 h-10 rounded-full bg-surface-container-low text-slate-400 text-xs font-bold&quot;>토</button>
+<button class=&quot;w-10 h-10 rounded-full bg-surface-container-low text-slate-400 text-xs font-bold&quot;>일</button>
+</div>
+</div>
+<!-- Ghost Button Action -->
+<div class=&quot;pt-4&quot;>
+<button class=&quot;w-full py-4 rounded-xl border-[1.5px] border-primary text-primary font-bold text-sm hover:bg-primary/5 transition-colors active:scale-95 duration-200&quot;>
+                    프로필 미리보기
+                </button>
+</div>
+</div>
+<!-- BottomNavBar Predicted Component Mapping -->
+<nav class=&quot;fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-white dark:bg-slate-950 rounded-t-[1.125rem] border-t-[1.5px] border-blue-600/10 shadow-[0_-8px_24px_rgba(45,108,223,0.05)] tonal-shift-bg-surface-container-low max-w-[390px] mx-auto left-0 right-0&quot;>
+<div class=&quot;flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 py-2 hover:text-blue-500 transition-all cursor-pointer&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot; data-icon=&quot;home_health&quot;>home_health</span>
+<span class=&quot;font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-[0.05rem] mt-1&quot;>Home</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 py-2 hover:text-blue-500 transition-all cursor-pointer&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot; data-icon=&quot;child_care&quot;>child_care</span>
+<span class=&quot;font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-[0.05rem] mt-1&quot;>Patients</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 py-2 hover:text-blue-500 transition-all cursor-pointer&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot; data-icon=&quot;thumbs_up_down&quot;>thumbs_up_down</span>
+<span class=&quot;font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-[0.05rem] mt-1&quot;>Reviews</span>
+</div>
+<!-- Active State: Profile (Semantic Mapping) -->
+<div class=&quot;flex flex-col items-center justify-center text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-[1.125rem] py-2 px-4 Active: scale-110 ease-out duration-300&quot;>
+<span class=&quot;material-symbols-outlined text-2xl&quot; data-icon=&quot;account_circle&quot;>account_circle</span>
+<span class=&quot;font-['Plus_Jakarta_Sans'] text-[11px] font-bold uppercase tracking-[0.05rem] mt-1&quot;>Profile</span>
+</div>
+</nav>
+</main>
+</body></html>" onload="autoH(this)" scrolling="no" frameborder="0"></iframe>
+    </section>
+</body>
+</html>

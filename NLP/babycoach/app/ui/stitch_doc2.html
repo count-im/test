@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BabyCoach 의사 대시보드</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Nunito:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#384763",
+                        "secondary": "#505f7c",
+                        "primary-container": "#2d6cdf",
+                        "secondary-fixed": "#d7e2ff",
+                        "secondary-container": "#cbdafd",
+                        "surface-container-high": "#e6e8ec",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-container": "#f7f7ff",
+                        "surface-tint": "#0358cb",
+                        "surface-container-low": "#f2f4f8",
+                        "on-secondary-fixed": "#0b1b35",
+                        "secondary-fixed-dim": "#b7c7e9",
+                        "on-tertiary-fixed-variant": "#3f4752",
+                        "on-primary-fixed": "#001945",
+                        "surface-container-highest": "#e0e3e6",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#141c25",
+                        "error-container": "#ffdad6",
+                        "primary": "#0053c1",
+                        "tertiary-container": "#6a727d",
+                        "outline-variant": "#c2c6d6",
+                        "outline": "#737785",
+                        "inverse-primary": "#b0c6ff",
+                        "surface": "#f7f9fd",
+                        "surface-variant": "#e0e3e6",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f7f9fd",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#bfc7d4",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "surface-dim": "#d8dade",
+                        "on-background": "#181c1f",
+                        "on-surface": "#181c1f",
+                        "background": "#f7f9fd",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#424653",
+                        "on-tertiary-container": "#f4f7ff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2d3134",
+                        "on-secondary-container": "#505f7d",
+                        "tertiary-fixed": "#dbe3f0",
+                        "surface-container": "#eceef2",
+                        "inverse-on-surface": "#eff1f5",
+                        "on-primary-fixed-variant": "#00429c",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#515a64"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans", "Nunito", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "Nunito", "sans-serif"],
+                        "label": ["Plus Jakarta Sans", "Nunito", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(20px); background: rgba(255, 255, 255, 0.8); }
+        .status-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+        
+        /* Accordion & Textarea logic */
+        .accordion-content { max-height: 1000px; overflow: hidden; transition: max-height 0.3s ease-out, opacity 0.3s ease-out; }
+        .accordion-collapsed .accordion-content { max-height: 0; opacity: 0; pointer-events: none; }
+        .accordion-collapsed .toggle-icon { transform: rotate(-90deg); }
+        
+        #edit-form, #reject-form { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin 0.3s; opacity: 0; }
+        .show-edit #edit-form, .show-reject #reject-form { max-height: 300px; opacity: 1; margin-top: 1rem; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- Top Navigation -->
+<header class="w-full top-0 sticky z-40 bg-[#f7f9fd]/90 backdrop-blur-md dark:bg-slate-900 shadow-none">
+<nav class="flex items-center justify-between px-6 py-4 max-w-[680px] mx-auto">
+<div class="flex items-center gap-3">
+<div class="text-[#0053c1] dark:text-[#2d6cdf] font-black tracking-tight text-xl">BabyCoach Clinical</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-500 hover:bg-slate-100 p-2 rounded-full transition-colors cursor-pointer">notifications</span>
+<img alt="Doctor" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATc2tvTTUG1aPoEsW4c6IXsUQNIU33vOuc0hWuajnmB_i0cmsrjuFZkus-5zHf8RQDXfF1XgUfa2cAAVCkWxMXTzZM1BF8y6tAIeKbwYhNWP_CvkQuW1CKsBz7etNeE7WvAiYMhToPQj49SR4Eg9o6ful7D19eNtReUfmgqFiYhy1hwvrJmM5-_Xk_LMB2GoUYGvFHbWl18BPC8DBuke28PqwHdoEsRNTcdNfvJ-uBXT7IX2uu-Glmthy0H2AMA4hW2_3hQQHf5Q"/>
+</div>
+</nav>
+</header>
+<main class="max-w-[680px] mx-auto px-4 mt-4 space-y-6">
+<!-- Header Card Section -->
+<section class="bg-surface-container-lowest rounded-[18px] p-6 shadow-[0_12px_32px_rgba(45,108,223,0.06)] border-[1.5px] border-primary/10">
+<div class="flex items-center justify-between">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="text-2xl">🏥</span>
+<h1 class="text-[24px] font-[900] text-on-surface leading-tight tracking-tight">BabyCoach 의사 대시보드</h1>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<span class="font-bold text-on-surface-variant">김소아 원장</span>
+<span class="text-[10px] font-semibold uppercase tracking-widest bg-primary-fixed text-on-primary-fixed-variant px-2 py-1 rounded-full">Professional</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Status Row -->
+<div class="flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 bg-emerald-500 rounded-full status-pulse"></div>
+<span class="text-sm font-semibold text-on-surface-variant">실시간 연결됨</span>
+</div>
+<button class="flex items-center gap-1.5 px-4 py-1.5 bg-surface-container-high hover:bg-surface-container-highest transition-colors rounded-full text-xs font-bold text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+            🔄 상태 새로고침
+        </button>
+</div>
+<!-- Section: Pending Cases -->
+<div class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<h2 class="text-xl font-[800] flex items-center gap-2">
+                ⏳ 검토 대기 케이스
+                <span class="bg-primary text-on-primary px-2.5 py-0.5 rounded-full text-sm font-black">3</span>
+</h2>
+</div>
+<!-- Case Card 1 -->
+<article class="bg-surface-container-lowest rounded-[18px] overflow-hidden border-[1.5px] border-primary/10 transition-all" id="case-container">
+<!-- Card Header -->
+<div class="p-5 border-b border-primary/5 flex items-center justify-between bg-surface-container-low/30">
+<div class="space-y-0.5">
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase">CASE ID #BC-2026-0001</span>
+<p class="text-xs text-slate-500">2026. 05. 24 • 오전 10:15</p>
+</div>
+<span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-[11px] font-extrabold flex items-center gap-1 uppercase tracking-tighter">
+<span class="material-symbols-outlined text-[14px]">hourglass_empty</span>
+                    검토 대기
+                </span>
+</div>
+<div class="p-6 space-y-6">
+<!-- Accordion 1: Baby Info -->
+<div class="border border-slate-100 rounded-[18px] overflow-hidden" id="baby-info-accordion">
+<button class="w-full flex items-center justify-between p-4 bg-surface-container-low/20" onclick="document.getElementById('baby-info-accordion').classList.toggle('accordion-collapsed')">
+<span class="text-sm font-black text-on-surface flex items-center gap-2">👶 아기 정보</span>
+<span class="material-symbols-outlined text-slate-400 toggle-icon transition-transform">expand_more</span>
+</button>
+<div class="accordion-content p-4">
+<div class="grid grid-cols-3 gap-3">
+<div class="bg-surface-container-low py-4 px-2 rounded-[14px] text-center border-l-[4px] border-blue-500 min-h-[96px] flex flex-col justify-center">
+<p class="text-[10px] font-bold text-slate-500 mb-1">👶 월령</p>
+<p class="text-[20px] font-[900] text-on-surface">8개월</p>
+</div>
+<div class="bg-surface-container-low py-4 px-2 rounded-[14px] text-center border-l-[4px] border-emerald-500 min-h-[96px] flex flex-col justify-center">
+<p class="text-[10px] font-bold text-slate-500 mb-1">⚖️ 체중</p>
+<p class="text-[20px] font-[900] text-on-surface">9.2kg</p>
+</div>
+<div class="bg-surface-container-low py-4 px-2 rounded-[14px] text-center border-l-[4px] border-error min-h-[96px] flex flex-col justify-center">
+<p class="text-[10px] font-bold text-error/70 mb-1">🚫 알레르기</p>
+<p class="text-[18px] font-[900] text-error">달걀, 땅콩</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion 2: AI Recommendations -->
+<div class="border border-slate-100 rounded-[18px] overflow-hidden" id="ai-rec-accordion">
+<button class="w-full flex items-center justify-between p-4 bg-surface-container-low/20" onclick="document.getElementById('ai-rec-accordion').classList.toggle('accordion-collapsed')">
+<span class="text-sm font-black text-on-surface flex items-center gap-2">🤖 AI 생성 분석 제안</span>
+<span class="material-symbols-outlined text-slate-400 toggle-icon transition-transform">expand_more</span>
+</button>
+<div class="accordion-content p-5 bg-gradient-to-br from-primary-fixed/10 to-transparent">
+<div class="divide-y divide-primary/5">
+<div class="flex items-start gap-3 py-4 first:pt-0">
+<div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+<span class="text-sm">🥄</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface-variant">이유식 가이드</p>
+<p class="text-sm text-on-surface">입자가 있는 죽 형태의 중기 이유식 2회, 닭가슴살 비중 강화</p>
+</div>
+</div>
+<div class="flex items-start gap-3 py-4">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+<span class="text-sm">🎮</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface-variant">맞춤형 놀이</p>
+<p class="text-sm text-on-surface">대근육 발달을 위한 기어 다니기 유도 및 촉감 놀이</p>
+</div>
+</div>
+<div class="flex items-start gap-3 py-4 last:pb-0">
+<div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+<span class="text-sm">💬</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface-variant">부모 넛지</p>
+<p class="text-sm text-on-surface">"잘 먹지 않을 때는 수유량을 조금 조절해보세요" 격려</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center p-4 rounded-[14px] border border-emerald-100 bg-emerald-50 hover:bg-emerald-100 transition-colors group" onclick="document.getElementById('case-container').classList.remove('show-edit', 'show-reject')">
+<span class="material-symbols-outlined text-emerald-600 mb-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[13px] font-bold text-emerald-700">✅ 승인</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-[14px] border border-primary/10 bg-primary/5 hover:bg-primary/10 transition-colors group" onclick="document.getElementById('case-container').classList.remove('show-reject'); document.getElementById('case-container').classList.add('show-edit')">
+<span class="material-symbols-outlined text-primary mb-1">edit_note</span>
+<span class="text-[13px] font-bold text-primary">✏️ 수정 승인</span>
+</button>
+</div>
+<div class="flex justify-center">
+<button class="px-6 py-2 rounded-full border border-error/30 text-error text-[11px] font-bold hover:bg-error/5 transition-colors flex items-center gap-1.5" onclick="document.getElementById('case-container').classList.remove('show-edit'); document.getElementById('case-container').classList.add('show-reject')">
+<span class="material-symbols-outlined text-[14px]">cancel</span>
+                            ❌ 반려
+                        </button>
+</div>
+<!-- Contextual Form: Edit -->
+<div class="space-y-3" id="edit-form">
+<textarea class="w-full rounded-[14px] border-2 border-primary/20 bg-primary/5 focus:ring-1 focus:ring-primary/40 text-sm py-3 px-4 min-h-[100px] placeholder:text-slate-400" placeholder="수정 내용을 입력하세요..."></textarea>
+<button class="w-full py-4 bg-primary text-on-primary font-bold rounded-full shadow-[0_8px_16px_rgba(45,108,223,0.2)] active:scale-[0.98] transition-all">
+                            ✏️ 수정 내용 전송
+                        </button>
+</div>
+<!-- Contextual Form: Reject -->
+<div class="space-y-3" id="reject-form">
+<textarea class="w-full rounded-[14px] border-2 border-error/20 bg-error/5 focus:ring-1 focus:ring-error/40 text-sm py-3 px-4 min-h-[100px] placeholder:text-slate-400" placeholder="반려 사유를 입력하세요..."></textarea>
+<button class="w-full py-4 border-2 border-error bg-transparent text-error font-bold rounded-full hover:bg-error/5 active:scale-[0.98] transition-all">
+                            ❌ 반려 전송
+                        </button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Section: Recent History -->
+<section class="bg-surface-container-low/50 rounded-[18px] p-6 space-y-4">
+<h3 class="text-[16px] font-[800] text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">assignment</span>
+            📋 최근 검토 이력
+        </h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-[14px]">
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold text-slate-400 font-mono">14:20</span>
+<div>
+<p class="text-sm font-bold">이서준 (12개월)</p>
+<p class="text-[10px] text-slate-500">후기 이유식 가이드</p>
+</div>
+</div>
+<span class="bg-emerald-50 text-emerald-600 text-[10px] font-black px-2 py-1 rounded-full border border-emerald-100 uppercase tracking-tighter">✅ 승인</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-[14px]">
+<div class="flex items-center gap-4">
+<span class="text-[10px] font-bold text-slate-400 font-mono">11:05</span>
+<div>
+<p class="text-sm font-bold">박민재 (5개월)</p>
+<p class="text-[10px] text-slate-500">초기 미음 제안 수정</p>
+</div>
+</div>
+<span class="bg-primary/5 text-primary text-[10px] font-black px-2 py-1 rounded-full border border-primary/10 uppercase tracking-tighter">✏️ 수정</span>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="text-center py-6">
+<a class="text-sm font-extrabold text-[#FF7F6A] hover:opacity-80 transition-opacity flex items-center justify-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+            엄마 화면으로 돌아가기
+        </a>
+</footer>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pb-safe pt-2 px-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl rounded-t-[18px] border-t border-[#0053c1]/14 shadow-[0_-12px_32px_rgba(45,108,223,0.08)]">
+<a class="flex flex-col items-center justify-center bg-[#2d6cdf]/10 dark:bg-[#2d6cdf]/20 text-[#0053c1] dark:text-[#2d6cdf] rounded-[18px] px-5 py-2 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-plus-jakarta-sans uppercase tracking-widest text-[10px] font-semibold mt-1">대시보드</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#2d6cdf] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">pending_actions</span>
+<span class="font-plus-jakarta-sans uppercase tracking-widest text-[10px] font-semibold mt-1">검토 대기</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#2d6cdf] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-plus-jakarta-sans uppercase tracking-widest text-[10px] font-semibold mt-1">완료 목록</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#2d6cdf] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-plus-jakarta-sans uppercase tracking-widest text-[10px] font-semibold mt-1">설정</span>
+</a>
+</nav>
+</body></html>

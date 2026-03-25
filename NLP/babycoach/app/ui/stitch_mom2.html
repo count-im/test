@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>BabyCoach Mom - Stitch v2</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#fff8f3;font-family:Nunito,sans-serif;min-height:100vh}
+    .nav{position:sticky;top:0;z-index:999;background:#fff;border-bottom:2px solid rgba(255,140,105,.25);display:flex;padding:0}
+    .nav-btn{flex:1;padding:14px 6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:#9b7e6e;transition:all .2s;border-bottom:3px solid transparent;line-height:1.4}
+    .nav-btn.active{color:#ff8c69;border-bottom-color:#ff8c69;background:rgba(255,140,105,.06)}
+    .nav-btn:hover{background:rgba(255,140,105,.08)}
+    .frame-wrap{display:none;width:100%}
+    .frame-wrap.active{display:block}
+    iframe{width:100%;border:none;display:block;min-height:90vh}
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <button class="nav-btn active" onclick="show(0)">👶 Step 1<br><small>아기 정보</small></button>
+    <button class="nav-btn" onclick="show(1)">🥣 Step 2<br><small>오늘 하루</small></button>
+    <button class="nav-btn" onclick="show(2)">🌸 Step 3<br><small>코칭 결과</small></button>
+  </div>
+  <div class="frame-wrap active" id="f0"><iframe srcdoc="<!DOCTYPE html>
+
+<html class=&quot;light&quot; lang=&quot;ko&quot;><head>
+<meta charset=&quot;utf-8&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/>
+<title>BabyCoach - Baby Info Input</title>
+<!-- Google Fonts: Nunito &amp; Plus Jakarta Sans (Fallbacks) -->
+<link href=&quot;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<!-- Material Symbols -->
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<script src=&quot;https://cdn.tailwindcss.com?plugins=forms,container-queries&quot;></script>
+<script id=&quot;tailwind-config&quot;>
+      tailwind.config = {
+        darkMode: &quot;class&quot;,
+        theme: {
+          extend: {
+            colors: {
+              &quot;outline-variant&quot;: &quot;#dcc0b9&quot;,
+              &quot;on-primary-container&quot;: &quot;#752409&quot;,
+              &quot;surface-container-high&quot;: &quot;#eee7e2&quot;,
+              &quot;surface-tint&quot;: &quot;#9e4225&quot;,
+              &quot;on-primary&quot;: &quot;#ffffff&quot;,
+              &quot;primary-container&quot;: &quot;#ff8c69&quot;,
+              &quot;tertiary-container&quot;: &quot;#c5a594&quot;,
+              &quot;on-surface&quot;: &quot;#1d1b18&quot;,
+              &quot;surface-container-highest&quot;: &quot;#e8e1dc&quot;,
+              &quot;surface-bright&quot;: &quot;#fff8f3&quot;,
+              &quot;secondary-fixed&quot;: &quot;#ffddb6&quot;,
+              &quot;on-secondary-fixed-variant&quot;: &quot;#643f00&quot;,
+              &quot;primary-fixed-dim&quot;: &quot;#ffb59f&quot;,
+              &quot;surface&quot;: &quot;#fff8f3&quot;,
+              &quot;on-tertiary-fixed&quot;: &quot;#29170c&quot;,
+              &quot;tertiary-fixed&quot;: &quot;#ffdbc9&quot;,
+              &quot;primary-fixed&quot;: &quot;#ffdbd1&quot;,
+              &quot;secondary&quot;: &quot;#845400&quot;,
+              &quot;on-error-container&quot;: &quot;#93000a&quot;,
+              &quot;inverse-primary&quot;: &quot;#ffb59f&quot;,
+              &quot;surface-container-low&quot;: &quot;#f9f2ed&quot;,
+              &quot;surface-variant&quot;: &quot;#e8e1dc&quot;,
+              &quot;on-secondary-fixed&quot;: &quot;#2a1800&quot;,
+              &quot;on-surface-variant&quot;: &quot;#56423d&quot;,
+              &quot;tertiary-fixed-dim&quot;: &quot;#e1c0ae&quot;,
+              &quot;on-tertiary&quot;: &quot;#ffffff&quot;,
+              &quot;primary&quot;: &quot;#9e4225&quot;,
+              &quot;background&quot;: &quot;#fff8f3&quot;,
+              &quot;on-secondary&quot;: &quot;#ffffff&quot;,
+              &quot;error&quot;: &quot;#ba1a1a&quot;,
+              &quot;on-tertiary-fixed-variant&quot;: &quot;#594234&quot;,
+              &quot;secondary-fixed-dim&quot;: &quot;#ffb95a&quot;,
+              &quot;outline&quot;: &quot;#89726b&quot;,
+              &quot;on-tertiary-container&quot;: &quot;#513b2d&quot;,
+              &quot;tertiary&quot;: &quot;#73594a&quot;,
+              &quot;error-container&quot;: &quot;#ffdad6&quot;,
+              &quot;surface-container&quot;: &quot;#f3ede8&quot;,
+              &quot;on-background&quot;: &quot;#1d1b18&quot;,
+              &quot;on-primary-fixed-variant&quot;: &quot;#7e2b10&quot;,
+              &quot;surface-container-lowest&quot;: &quot;#ffffff&quot;,
+              &quot;secondary-container&quot;: &quot;#feb246&quot;,
+              &quot;inverse-surface&quot;: &quot;#33302d&quot;,
+              &quot;inverse-on-surface&quot;: &quot;#f6efeb&quot;,
+              &quot;on-secondary-container&quot;: &quot;#6f4600&quot;,
+              &quot;on-error&quot;: &quot;#ffffff&quot;,
+              &quot;surface-dim&quot;: &quot;#dfd9d4&quot;,
+              &quot;on-primary-fixed&quot;: &quot;#3a0a00&quot;
+            },
+            fontFamily: {
+              &quot;headline&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;],
+              &quot;body&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;],
+              &quot;label&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;, &quot;sans-serif&quot;]
+            },
+            borderRadius: {&quot;DEFAULT&quot;: &quot;1rem&quot;, &quot;lg&quot;: &quot;2rem&quot;, &quot;xl&quot;: &quot;3rem&quot;, &quot;full&quot;: &quot;9999px&quot;},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: 'Nunito', sans-serif;
+        background-color: #fff8f3;
+        background-image: radial-gradient(circle at 10% 20%, rgba(255, 140, 105, 0.05) 0%, transparent 40%),
+                          radial-gradient(circle at 90% 80%, rgba(254, 178, 70, 0.05) 0%, transparent 40%);
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1.5px solid rgba(255, 140, 105, 0.28);
+        box-shadow: 0 8px 28px rgba(158, 66, 37, 0.08);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .step-dot.active {
+        width: 1.5rem;
+        background: linear-gradient(135deg, #ff8c69, #feb246);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class=&quot;min-h-screen text-on-background selection:bg-primary-container/30&quot;>
+<!-- Top Navigation -->
+<header class=&quot;fixed top-0 left-0 w-full z-50 bg-[#fff8f3]/80 backdrop-blur-sm flex justify-between items-center px-6 py-4&quot;>
+<div class=&quot;flex items-center gap-2&quot;>
+<span class=&quot;material-symbols-outlined text-[#9e4225] text-2xl&quot; data-icon=&quot;baby_changing_station&quot;>baby_changing_station</span>
+<h1 class=&quot;font-['Nunito'] font-black text-2xl tracking-tight text-[#9e4225]&quot;>BabyCoach</h1>
+</div>
+<div class=&quot;bg-gradient-to-r from-[#ff8c69] to-[#feb246] px-4 py-1.5 rounded-full shadow-sm&quot;>
+<span class=&quot;text-white font-black text-sm&quot;>🔥 5</span>
+</div>
+</header>
+<main class=&quot;pt-24 pb-32 px-6 max-w-md mx-auto space-y-6&quot;>
+<!-- Progress Indicator Section -->
+<section class=&quot;space-y-4&quot;>
+<div class=&quot;flex justify-between items-end&quot;>
+<h2 class=&quot;text-on-surface font-black text-xl tracking-tight&quot;>1/3 아기 정보 👶</h2>
+<div class=&quot;flex gap-1.5 mb-1.5&quot;>
+<div class=&quot;step-dot active h-2 rounded-full transition-all duration-300&quot;></div>
+<div class=&quot;step-dot w-2 h-2 rounded-full bg-surface-container-highest transition-all duration-300&quot;></div>
+<div class=&quot;step-dot w-2 h-2 rounded-full bg-surface-container-highest transition-all duration-300&quot;></div>
+</div>
+</div>
+<div class=&quot;w-full bg-surface-container h-3 rounded-full overflow-hidden&quot;>
+<div class=&quot;w-1/3 h-full bg-gradient-to-r from-[#ff8c69] to-[#feb246] rounded-full&quot;></div>
+</div>
+</section>
+<!-- Illustration Hero (Size reduced by 30%: 48->34, 40->28) -->
+<section class=&quot;flex justify-center py-2&quot;>
+<div class=&quot;relative w-34 h-34 bg-secondary-fixed/30 rounded-full flex items-center justify-center&quot;>
+<img alt=&quot;Cute Baby Bear Illustration&quot; class=&quot;w-28 h-28 drop-shadow-xl&quot; data-alt=&quot;Cute minimalist teddy bear character with a friendly expression, soft warm skin tones, and rounded features, centered on a soft peach background&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDSBS3ItYo5ntdeIq8omco6kidlXmJ3I16h5CoTDRZBPjosa3Pn1hZhtfKHMyzcHj_RzGXvAbtkckkloHstKi_WDyJuhErOrwg69fYylW_z4fc5wAw5_umDLagHm27KTu1FEa81-owBJLc7knfjiQI4x4LOjVlO8eW6ZuIMLTRbM7SBecMbmJy5akcV3V3kfE0z9tAqzAW77-V-b8pqEWbZOB5Yyjz4cOEPysrwviN1RlEtXIHAePc0cwJiSSo9xmI2Zqt17h1xITRU&quot;/>
+<div class=&quot;absolute -bottom-1 -right-1 bg-white p-2 rounded-xl shadow-lg border border-primary-container/20&quot;>
+<span class=&quot;text-xl&quot;>🧸</span>
+</div>
+</div>
+</section>
+<!-- Form Cards -->
+<div class=&quot;space-y-6&quot;>
+<!-- Card 1: Basic Stats -->
+<div class=&quot;glass-card p-6 rounded-xl space-y-6&quot;>
+<div>
+<div class=&quot;flex justify-between items-center mb-3&quot;>
+<label class=&quot;text-[#9e4225] font-extrabold text-sm uppercase tracking-wider&quot;>생년월일</label>
+<span class=&quot;bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-xs font-black&quot;>4개월</span>
+</div>
+<div class=&quot;relative&quot;>
+<input class=&quot;w-full bg-surface-container-low border-none rounded-xl py-4 px-4 text-on-surface font-bold focus:ring-2 focus:ring-primary-container&quot; type=&quot;date&quot; value=&quot;2024-01-01&quot;/>
+</div>
+</div>
+<div class=&quot;space-y-3&quot;>
+<label class=&quot;block text-[#9e4225] font-extrabold text-sm uppercase tracking-wider&quot;>몸무게 (kg)</label>
+<div class=&quot;flex items-center justify-between bg-white rounded-xl p-1 shadow-sm border border-outline-variant/10&quot;>
+<button class=&quot;w-12 h-12 flex items-center justify-center text-primary active:scale-90 transition-transform&quot;><span class=&quot;material-symbols-outlined&quot; data-icon=&quot;remove&quot;>remove</span></button>
+<span class=&quot;font-black text-xl&quot;>6.5</span>
+<button class=&quot;w-12 h-12 flex items-center justify-center text-primary active:scale-90 transition-transform&quot;><span class=&quot;material-symbols-outlined&quot; data-icon=&quot;add&quot;>add</span></button>
+</div>
+</div>
+</div>
+<!-- Card 2: Allergies -->
+<div class=&quot;glass-card p-6 rounded-xl space-y-4&quot;>
+<label class=&quot;block text-[#9e4225] font-extrabold text-sm uppercase tracking-wider&quot;>알레르기 정보</label>
+<div class=&quot;flex flex-wrap gap-2&quot;>
+<button class=&quot;flex items-center gap-1 px-4 py-2 rounded-full bg-gradient-to-br from-[#ff8c69] to-[#feb246] text-white font-bold text-sm shadow-md active:scale-95 transition-all&quot;>
+<span class=&quot;material-symbols-outlined text-[18px] leading-none&quot; data-icon=&quot;check&quot;>check</span>
+                    없음
+                </button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>우유</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>달걀</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>땅콩</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>밀</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>콩</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>새우</button>
+<button class=&quot;px-4 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-sm hover:bg-surface-container-high transition-colors&quot;>게</button>
+</div>
+</div>
+<!-- Card 3: Notes -->
+<div class=&quot;glass-card p-6 rounded-xl space-y-4&quot;>
+<label class=&quot;block text-[#9e4225] font-extrabold text-sm uppercase tracking-wider&quot;>추가 참고 사항</label>
+<textarea class=&quot;w-full bg-surface-container-low border-none rounded-xl p-4 text-sm font-medium focus:ring-2 focus:ring-primary-container placeholder:text-outline/50&quot; placeholder=&quot;아이의 건강 정보나 특징을 입력해주세요 (선택)&quot; rows=&quot;3&quot;></textarea>
+</div>
+</div>
+<!-- Submit Button -->
+<div class=&quot;pt-4&quot;>
+<button class=&quot;w-full h-16 bg-gradient-to-r from-[#ff8c69] to-[#feb246] text-white rounded-full font-black text-lg flex items-center justify-center gap-2 shadow-xl shadow-primary-container/20 active:scale-[0.98] transition-all&quot;>
+                다음으로 → 🌼
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class=&quot;fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 bg-white/88 backdrop-blur-md rounded-t-[3rem] shadow-[0px_-10px_30px_rgba(158,66,37,0.05)] border-t-1.5 border-[#ff8c69]/20&quot;>
+<div class=&quot;flex flex-col items-center justify-center bg-gradient-to-br from-[#ff8c69] to-[#feb246] text-white rounded-full p-3 shadow-lg transform -translate-y-2 active:scale-90 transition-all duration-300 ease-out&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;home&quot;>home</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Home</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;auto_awesome&quot;>auto_awesome</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Milestones</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;bedtime&quot;>bedtime</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Sleep</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;analytics&quot;>analytics</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Insights</span>
+</div>
+</nav>
+</body></html>" onload="resize(this)"></iframe></div>
+  <div class="frame-wrap" id="f1"><iframe srcdoc="<!DOCTYPE html>
+
+<html lang=&quot;ko&quot;><head>
+<meta charset=&quot;utf-8&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/>
+<title>BabyCoach - Step 2</title>
+<script src=&quot;https://cdn.tailwindcss.com?plugins=forms,container-queries&quot;></script>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<script id=&quot;tailwind-config&quot;>
+      tailwind.config = {
+        darkMode: &quot;class&quot;,
+        theme: {
+          extend: {
+            colors: {
+              &quot;surface-tint&quot;: &quot;#9e4225&quot;,
+              &quot;on-surface-variant&quot;: &quot;#56423d&quot;,
+              &quot;surface-container&quot;: &quot;#f3ede8&quot;,
+              &quot;on-tertiary-fixed&quot;: &quot;#29170c&quot;,
+              &quot;on-secondary-container&quot;: &quot;#6f4600&quot;,
+              &quot;tertiary&quot;: &quot;#73594a&quot;,
+              &quot;surface-container-low&quot;: &quot;#f9f2ed&quot;,
+              &quot;on-primary-fixed-variant&quot;: &quot;#7e2b10&quot;,
+              &quot;inverse-surface&quot;: &quot;#33302d&quot;,
+              &quot;surface-dim&quot;: &quot;#dfd9d4&quot;,
+              &quot;tertiary-fixed&quot;: &quot;#ffdbc9&quot;,
+              &quot;on-primary-container&quot;: &quot;#752409&quot;,
+              &quot;secondary-fixed-dim&quot;: &quot;#ffb95a&quot;,
+              &quot;on-tertiary-container&quot;: &quot;#513b2d&quot;,
+              &quot;surface-bright&quot;: &quot;#fff8f3&quot;,
+              &quot;on-secondary-fixed&quot;: &quot;#2a1800&quot;,
+              &quot;on-background&quot;: &quot;#1d1b18&quot;,
+              &quot;secondary-fixed&quot;: &quot;#ffddb6&quot;,
+              &quot;inverse-on-surface&quot;: &quot;#f6efeb&quot;,
+              &quot;primary-fixed-dim&quot;: &quot;#ffb59f&quot;,
+              &quot;outline&quot;: &quot;#89726b&quot;,
+              &quot;tertiary-fixed-dim&quot;: &quot;#e1c0ae&quot;,
+              &quot;primary&quot;: &quot;#9e4225&quot;,
+              &quot;on-error-container&quot;: &quot;#93000a&quot;,
+              &quot;surface&quot;: &quot;#fff8f3&quot;,
+              &quot;secondary-container&quot;: &quot;#feb246&quot;,
+              &quot;inverse-primary&quot;: &quot;#ffb59f&quot;,
+              &quot;on-tertiary-fixed-variant&quot;: &quot;#594234&quot;,
+              &quot;on-surface&quot;: &quot;#1d1b18&quot;,
+              &quot;error-container&quot;: &quot;#ffdad6&quot;,
+              &quot;surface-container-high&quot;: &quot;#eee7e2&quot;,
+              &quot;on-error&quot;: &quot;#ffffff&quot;,
+              &quot;on-tertiary&quot;: &quot;#ffffff&quot;,
+              &quot;primary-container&quot;: &quot;#ff8c69&quot;,
+              &quot;primary-fixed&quot;: &quot;#ffdbd1&quot;,
+              &quot;on-primary-fixed&quot;: &quot;#3a0a00&quot;,
+              &quot;secondary&quot;: &quot;#845400&quot;,
+              &quot;on-primary&quot;: &quot;#ffffff&quot;,
+              &quot;on-secondary-fixed-variant&quot;: &quot;#643f00&quot;,
+              &quot;surface-container-lowest&quot;: &quot;#ffffff&quot;,
+              &quot;error&quot;: &quot;#ba1a1a&quot;,
+              &quot;surface-variant&quot;: &quot;#e8e1dc&quot;,
+              &quot;on-secondary&quot;: &quot;#ffffff&quot;,
+              &quot;background&quot;: &quot;#fff8f3&quot;,
+              &quot;tertiary-container&quot;: &quot;#c5a594&quot;,
+              &quot;surface-container-highest&quot;: &quot;#e8e1dc&quot;,
+              &quot;outline-variant&quot;: &quot;#dcc0b9&quot;
+            },
+            fontFamily: {
+              &quot;sans&quot;: [&quot;Nunito&quot;, &quot;sans-serif&quot;],
+              &quot;headline&quot;: [&quot;Nunito&quot;, &quot;sans-serif&quot;],
+              &quot;body&quot;: [&quot;Nunito&quot;, &quot;sans-serif&quot;],
+              &quot;label&quot;: [&quot;Nunito&quot;, &quot;sans-serif&quot;]
+            },
+            borderRadius: {&quot;DEFAULT&quot;: &quot;1rem&quot;, &quot;lg&quot;: &quot;2rem&quot;, &quot;xl&quot;: &quot;3rem&quot;, &quot;full&quot;: &quot;9999px&quot;},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff8f3;
+            color: #1d1b18;
+            font-family: 'Nunito', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid #ff8c69;
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #ff8c69 0%, #feb246 100%);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 56px;
+            height: 30px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #dcc0b9;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: &quot;&quot;;
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background: linear-gradient(135deg, #ff8c69 0%, #feb246 100%);
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class=&quot;min-h-screen pb-40&quot;>
+<!-- TopAppBar -->
+<header class=&quot;w-full top-0 sticky z-50 bg-[#fff8f3]/90 backdrop-blur-sm dark:bg-stone-950&quot;>
+<div class=&quot;flex justify-between items-center px-6 py-4 w-full max-w-screen-xl mx-auto&quot;>
+<div class=&quot;flex items-center gap-2&quot;>
+<span class=&quot;material-symbols-outlined text-[#9e4225] dark:text-[#ff8c69]&quot; data-icon=&quot;spa&quot;>spa</span>
+<h1 class=&quot;font-['Nunito'] font-black text-2xl tracking-tight text-[#9e4225] dark:text-[#ff8c69] italic&quot;>BabyCoach</h1>
+</div>
+<div class=&quot;bg-primary-container/20 px-4 py-1.5 rounded-full border border-primary-container/30&quot;>
+<span class=&quot;text-[#9e4225] font-extrabold text-sm&quot;>5 Day Streak</span>
+</div>
+</div>
+</header>
+<main class=&quot;max-w-md mx-auto px-6 pt-8 space-y-8&quot;>
+<!-- Step Indicator Section -->
+<section class=&quot;space-y-4&quot;>
+<div class=&quot;flex justify-between items-end&quot;>
+<h2 class=&quot;text-3xl font-black text-on-background tracking-tight&quot;>수유 및 식습관 🥣</h2>
+<span class=&quot;text-primary font-black text-lg&quot;>2/3</span>
+</div>
+<div class=&quot;w-full h-4 bg-surface-container rounded-full overflow-hidden&quot;>
+<div class=&quot;h-full signature-gradient rounded-full w-[66%]&quot;></div>
+</div>
+</section>
+<!-- Main Content Cards -->
+<div class=&quot;space-y-6&quot;>
+<!-- Feeding Method -->
+<div class=&quot;glass-card rounded-xl p-6 shadow-[0px_20px_40px_rgba(158,66,37,0.06)]&quot;>
+<h3 class=&quot;text-on-background font-bold text-xl mb-6&quot;>수유 방식</h3>
+<div class=&quot;grid grid-cols-3 gap-3&quot;>
+<button class=&quot;flex flex-col items-center justify-center p-5 rounded-lg bg-primary-container text-white signature-gradient shadow-md transform active:scale-95 transition-all&quot;>
+<span class=&quot;material-symbols-outlined mb-2 text-3xl&quot; data-icon=&quot;water_drop&quot;>water_drop</span>
+<span class=&quot;font-extrabold text-sm&quot;>모유</span>
+</button>
+<button class=&quot;flex flex-col items-center justify-center p-5 rounded-lg bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant transform active:scale-95 transition-all&quot;>
+<span class=&quot;material-symbols-outlined mb-2 text-3xl&quot; data-icon=&quot;baby_changing_station&quot;>baby_changing_station</span>
+<span class=&quot;font-extrabold text-sm&quot;>분유</span>
+</button>
+<button class=&quot;flex flex-col items-center justify-center p-5 rounded-lg bg-surface-container-lowest border border-outline-variant/30 text-on-surface-variant transform active:scale-95 transition-all&quot;>
+<span class=&quot;material-symbols-outlined mb-2 text-3xl&quot; data-icon=&quot;fluid_med&quot;>fluid_med</span>
+<span class=&quot;font-extrabold text-sm&quot;>혼합</span>
+</button>
+</div>
+</div>
+<!-- Feeding Frequency -->
+<div class=&quot;glass-card rounded-xl p-6 shadow-[0px_20px_40px_rgba(158,66,37,0.06)]&quot;>
+<h3 class=&quot;text-on-background font-bold text-xl mb-4&quot;>수유 횟수 (하루)</h3>
+<div class=&quot;flex items-center justify-center gap-8 py-4&quot;>
+<button class=&quot;w-14 h-14 rounded-full bg-surface-container-highest flex items-center justify-center text-primary active:scale-90 transition-transform&quot;>
+<span class=&quot;material-symbols-outlined font-black&quot; data-icon=&quot;remove&quot;>remove</span>
+</button>
+<span class=&quot;text-6xl font-black text-primary italic&quot;>6</span>
+<button class=&quot;w-14 h-14 rounded-full bg-surface-container-highest flex items-center justify-center text-primary active:scale-90 transition-transform&quot;>
+<span class=&quot;material-symbols-outlined font-black&quot; data-icon=&quot;add&quot;>add</span>
+</button>
+</div>
+</div>
+<!-- Starting Solids? -->
+<div class=&quot;glass-card rounded-xl p-6 shadow-[0px_20px_40px_rgba(158,66,37,0.06)]&quot;>
+<div class=&quot;flex justify-between items-center&quot;>
+<h3 class=&quot;text-on-background font-bold text-xl&quot;>이유식 여부</h3>
+<div class=&quot;flex items-center gap-3&quot;>
+<span class=&quot;text-sm font-bold text-on-surface-variant&quot;>네</span>
+<label class=&quot;toggle-switch&quot;>
+<input checked=&quot;&quot; type=&quot;checkbox&quot;/>
+<span class=&quot;slider&quot;></span>
+</label>
+<span class=&quot;text-sm font-bold text-on-surface-variant&quot;>아니오</span>
+</div>
+</div>
+</div>
+<!-- Additional Notes -->
+<div class=&quot;glass-card rounded-xl p-6 shadow-[0px_20px_40px_rgba(158,66,37,0.06)]&quot;>
+<h3 class=&quot;text-on-background font-bold text-xl mb-4&quot;>추가 요청 사항</h3>
+<textarea class=&quot;w-full h-32 bg-surface-container-lowest border-none rounded-lg p-4 text-on-background focus:ring-2 focus:ring-primary-container transition-all resize-none font-medium placeholder:text-outline-variant&quot; placeholder=&quot;아이의 특이사항이나 알레르기 정보를 입력해주세요...&quot;></textarea>
+</div>
+</div>
+<!-- Decorative Illustration Bleed -->
+<div class=&quot;relative h-32 w-full overflow-visible&quot;>
+<img alt=&quot;Soft illustration of a baby bottle and organic shapes&quot; class=&quot;absolute -right-12 bottom-0 w-64 h-auto opacity-40 mix-blend-multiply pointer-events-none&quot; data-alt=&quot;whimsical illustration of baby bottles and soft organic cloud shapes in warm coral and amber tones on a soft cream background&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDjVPgfAmrVYfAJ0yzTkEm6eS7ddxCXDVy6zgCsXpaFwJY6UzhNDrmoO5RhEwy5-W1DrMNDsVhVa4QvXMn70wAdR1dBYb_J-zAak9X6lX_M1WaOxPk5R7TxnYWmvjrEfwjzqwc2UF9yLEwt7FT2NHfqoz906uPMazgwWhIYy0sBpV-vRFE6vRgN9oF95kegU_CvsfFESaqTKHsSAZKUHvgaZ8f8d6GVfUhfSK-hO2kNMfIf6LAE3jV8qBN_93DZnnFNwl007gRhCxup&quot;/>
+</div>
+</main>
+<!-- Sticky CTA Container -->
+<div class=&quot;fixed bottom-[88px] left-0 right-0 px-6 pb-4 z-40 bg-gradient-to-t from-[#fff8f3] via-[#fff8f3]/80 to-transparent&quot;>
+<div class=&quot;max-w-md mx-auto&quot;>
+<button class=&quot;w-full py-5 signature-gradient text-white rounded-full font-black text-xl flex items-center justify-center gap-2 shadow-xl transform active:scale-[0.98] transition-all&quot;>
+<span>다음으로 → 🧸</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class=&quot;fixed bottom-0 w-full z-50 flex justify-around items-end pb-6 px-4 bg-white/88 dark:bg-stone-900/80 backdrop-blur-md shadow-[0px_-10px_40px_rgba(158,66,37,0.06)] rounded-t-[3rem] border-t-1.5 border-[#ff8c69]/20&quot;>
+<div class=&quot;flex flex-col items-center justify-center bg-gradient-to-br from-[#ff8c69] to-[#feb246] text-white rounded-full p-3 mb-1 scale-110&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;favorite&quot; data-weight=&quot;fill&quot; style=&quot;font-variation-settings: 'FILL' 1;&quot;>favorite</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Nurture</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;auto_awesome&quot;>auto_awesome</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Milestones</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;bedtime&quot;>bedtime</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Sleep</span>
+</div>
+<div class=&quot;flex flex-col items-center justify-center text-[#c5a594] p-2 hover:text-[#9e4225] transition-colors&quot;>
+<span class=&quot;material-symbols-outlined&quot; data-icon=&quot;groups&quot;>groups</span>
+<span class=&quot;font-['Nunito'] font-extrabold text-[10px] uppercase tracking-wider&quot;>Community</span>
+</div>
+</nav>
+</body></html>" onload="resize(this)"></iframe></div>
+  <div class="frame-wrap" id="f2"><iframe srcdoc="<!DOCTYPE html>
+
+<html lang=&quot;ko&quot;><head>
+<meta charset=&quot;utf-8&quot;/>
+<meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;/>
+<title>BabyCoach - Final Step</title>
+<script src=&quot;https://cdn.tailwindcss.com?plugins=forms,container-queries&quot;></script>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<script id=&quot;tailwind-config&quot;>
+      tailwind.config = {
+        darkMode: &quot;class&quot;,
+        theme: {
+          extend: {
+            colors: {
+              &quot;on-primary&quot;: &quot;#ffffff&quot;,
+              &quot;surface-container-lowest&quot;: &quot;#ffffff&quot;,
+              &quot;tertiary&quot;: &quot;#73594a&quot;,
+              &quot;on-primary-fixed-variant&quot;: &quot;#7e2b10&quot;,
+              &quot;on-error-container&quot;: &quot;#93000a&quot;,
+              &quot;on-tertiary-fixed&quot;: &quot;#29170c&quot;,
+              &quot;secondary-container&quot;: &quot;#feb246&quot;,
+              &quot;tertiary-fixed-dim&quot;: &quot;#e1c0ae&quot;,
+              &quot;on-primary-container&quot;: &quot;#752409&quot;,
+              &quot;inverse-surface&quot;: &quot;#33302d&quot;,
+              &quot;on-secondary-fixed&quot;: &quot;#2a1800&quot;,
+              &quot;secondary-fixed-dim&quot;: &quot;#ffb95a&quot;,
+              &quot;secondary&quot;: &quot;#845400&quot;,
+              &quot;on-secondary-container&quot;: &quot;#6f4600&quot;,
+              &quot;on-secondary&quot;: &quot;#ffffff&quot;,
+              &quot;tertiary-fixed&quot;: &quot;#ffdbc9&quot;,
+              &quot;primary-fixed-dim&quot;: &quot;#ffb59f&quot;,
+              &quot;outline-variant&quot;: &quot;#dcc0b9&quot;,
+              &quot;surface-bright&quot;: &quot;#fff8f3&quot;,
+              &quot;on-error&quot;: &quot;#ffffff&quot;,
+              &quot;surface-container&quot;: &quot;#f3ede8&quot;,
+              &quot;on-surface&quot;: &quot;#1d1b18&quot;,
+              &quot;inverse-on-surface&quot;: &quot;#f6efeb&quot;,
+              &quot;error-container&quot;: &quot;#ffdad6&quot;,
+              &quot;primary-container&quot;: &quot;#ff8c69&quot;,
+              &quot;on-primary-fixed&quot;: &quot;#3a0a00&quot;,
+              &quot;surface-variant&quot;: &quot;#e8e1dc&quot;,
+              &quot;on-background&quot;: &quot;#1d1b18&quot;,
+              &quot;surface-container-high&quot;: &quot;#eee7e2&quot;,
+              &quot;outline&quot;: &quot;#89726b&quot;,
+              &quot;surface&quot;: &quot;#fff8f3&quot;,
+              &quot;on-secondary-fixed-variant&quot;: &quot;#643f00&quot;,
+              &quot;error&quot;: &quot;#ba1a1a&quot;,
+              &quot;primary&quot;: &quot;#9e4225&quot;,
+              &quot;on-tertiary&quot;: &quot;#ffffff&quot;,
+              &quot;inverse-primary&quot;: &quot;#ffb59f&quot;,
+              &quot;background&quot;: &quot;#fff8f3&quot;,
+              &quot;surface-container-low&quot;: &quot;#f9f2ed&quot;,
+              &quot;surface-container-highest&quot;: &quot;#e8e1dc&quot;,
+              &quot;on-tertiary-container&quot;: &quot;#513b2d&quot;,
+              &quot;on-surface-variant&quot;: &quot;#56423d&quot;,
+              &quot;secondary-fixed&quot;: &quot;#ffddb6&quot;,
+              &quot;primary-fixed&quot;: &quot;#ffdbd1&quot;,
+              &quot;on-tertiary-fixed-variant&quot;: &quot;#594234&quot;,
+              &quot;surface-tint&quot;: &quot;#9e4225&quot;,
+              &quot;tertiary-container&quot;: &quot;#c5a594&quot;,
+              &quot;surface-dim&quot;: &quot;#dfd9d4&quot;
+            },
+            fontFamily: {
+              &quot;headline&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;],
+              &quot;body&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;],
+              &quot;label&quot;: [&quot;Nunito&quot;, &quot;Plus Jakarta Sans&quot;]
+            },
+            borderRadius: {&quot;DEFAULT&quot;: &quot;1rem&quot;, &quot;lg&quot;: &quot;2rem&quot;, &quot;xl&quot;: &quot;3rem&quot;, &quot;full&quot;: &quot;9999px&quot;},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Nunito', sans-serif; }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1.5px solid #ff8c69;
+      }
+      .bg-golden-hour {
+        background: radial-gradient(circle at top right, #ffecd2 0%, #fcb69f 100%);
+      }
+      .glow-border {
+        box-shadow: 0 0 15px rgba(255, 140, 105, 0.2);
+      }
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+</head>
+<body class=&quot;bg-surface text-on-surface min-h-screen flex flex-col overflow-x-hidden&quot;>
+<!-- Top Navigation -->
+<header class=&quot;bg-[#fff8f3] flex justify-between items-center w-full px-6 py-4 fixed top-0 z-50&quot;>
+<div class=&quot;flex items-center gap-2&quot;>
+<span class=&quot;material-symbols-outlined text-[#ff8c69] text-3xl&quot;>child_care</span>
+<h1 class=&quot;font-['Nunito'] font-black tracking-tight text-2xl text-[#9e4225]&quot;>BabyCoach</h1>
+</div>
+<div class=&quot;flex items-center gap-3 bg-surface-container-low px-4 py-2 rounded-full shadow-sm&quot;>
+<span class=&quot;material-symbols-outlined text-[#ff8c69]&quot; data-weight=&quot;fill&quot;>local_fire_department</span>
+<span class=&quot;font-black text-primary text-sm&quot;>3 DAY STREAK</span>
+</div>
+</header>
+<main class=&quot;flex-1 pt-24 pb-12 px-6 max-w-2xl mx-auto w-full relative&quot;>
+<!-- Background Decorative Elements -->
+<div class=&quot;fixed top-20 -right-20 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl -z-10&quot;></div>
+<div class=&quot;fixed bottom-40 -left-20 w-80 h-80 bg-primary-container/10 rounded-full blur-3xl -z-10&quot;></div>
+<!-- Step Indicator -->
+<div class=&quot;flex flex-col items-center mb-8&quot;>
+<div class=&quot;bg-surface-container-high px-6 py-2 rounded-full flex items-center gap-3 mb-4 border border-outline-variant/20&quot;>
+<span class=&quot;text-xs font-black text-primary tracking-widest&quot;>3/3 마무리 및 목표 설정 🎯</span>
+</div>
+<div class=&quot;flex gap-2&quot;>
+<div class=&quot;w-3 h-3 rounded-full bg-primary&quot;></div>
+<div class=&quot;w-3 h-3 rounded-full bg-primary&quot;></div>
+<div class=&quot;w-8 h-3 rounded-full bg-primary shadow-sm&quot;></div>
+</div>
+</div>
+<!-- Illustration -->
+<div class=&quot;flex justify-center mb-8 relative&quot;>
+<div class=&quot;absolute inset-0 bg-secondary-container/10 rounded-full blur-xl scale-125&quot;></div>
+<img alt=&quot;blooming plant illustration&quot; class=&quot;w-24 h-24 object-contain animate-pulse&quot; src=&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBslbhpNX3wC7g2IfoawUWKASKWjBZJ_agc-I7uhjn4fmc_CAmKRg2v5fFijkdEANb6Ws5UmGPXr_dMKwnkmoovrfScYb32r4qVNUVUnt0jJvCA1uuPzgQeMLHUdt5jBUwpGYyCQFFSy4kp089FYlxSKl7twwkI-wUEhR1XURmwlOl5JXEeFpYi3SxczsFgMuJmt5_A5i7tCqEflJ-1Bg-uPh2A5oqA77zJi4DCVVAiGa-6joCogEx66TMjTaincUJsRLmMYwH3tEih&quot;/>
+</div>
+<!-- Main Coaching Goals Card Container -->
+<section class=&quot;glass-card p-6 rounded-xl shadow-xl mb-8 relative overflow-hidden&quot;>
+<div class=&quot;absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-container/10 to-transparent -z-10 rounded-bl-full&quot;></div>
+<h2 class=&quot;text-2xl font-black text-primary mb-2 text-center&quot;>우리 아이 코칭 목표</h2>
+<p class=&quot;text-on-surface-variant text-center text-sm font-medium mb-8&quot;>아이의 성장을 위한 첫 발걸음을 설정하세요.</p>
+<!-- 2x2 Grid of Summary Cards -->
+<div class=&quot;grid grid-cols-2 gap-3 mb-8&quot;>
+<!-- Card 1 -->
+<button class=&quot;flex flex-col items-start p-4 rounded-lg bg-surface-container-low hover:bg-primary-container/10 transition-all text-left active:scale-95 group border border-outline-variant/10&quot;>
+<span class=&quot;text-2xl mb-2&quot;>💤</span>
+<span class=&quot;font-extrabold text-sm text-on-surface group-hover:text-primary transition-colors&quot;>수면 교육</span>
+<span class=&quot;text-[10px] text-on-surface-variant mt-1 leading-tight&quot;>규칙적인 수면 습관 형성</span>
+</button>
+<!-- Card 2 -->
+<button class=&quot;flex flex-col items-start p-4 rounded-lg bg-surface-container-low hover:bg-primary-container/10 transition-all text-left active:scale-95 group border border-outline-variant/10&quot;>
+<span class=&quot;text-2xl mb-2&quot;>🥗</span>
+<span class=&quot;font-extrabold text-sm text-on-surface group-hover:text-primary transition-colors&quot;>건강한 식습관</span>
+<span class=&quot;text-[10px] text-on-surface-variant mt-1 leading-tight&quot;>균형 잡힌 영양 섭취</span>
+</button>
+<!-- Card 3 -->
+<button class=&quot;flex flex-col items-start p-4 rounded-lg bg-surface-container-low hover:bg-primary-container/10 transition-all text-left active:scale-95 group border border-outline-variant/10&quot;>
+<span class=&quot;text-2xl mb-2&quot;>🧠</span>
+<span class=&quot;font-extrabold text-sm text-on-surface group-hover:text-primary transition-colors&quot;>인지 및 감각 발달</span>
+<span class=&quot;text-[10px] text-on-surface-variant mt-1 leading-tight&quot;>오감 자극 및 사고력 증진</span>
+</button>
+<!-- Card 4 -->
+<button class=&quot;flex flex-col items-start p-4 rounded-lg bg-surface-container-low hover:bg-primary-container/10 transition-all text-left active:scale-95 group border border-outline-variant/10&quot;>
+<span class=&quot;text-2xl mb-2&quot;>🏃</span>
+<span class=&quot;font-extrabold text-sm text-on-surface group-hover:text-primary transition-colors&quot;>대근육/소근육 운동</span>
+<span class=&quot;text-[10px] text-on-surface-variant mt-1 leading-tight&quot;>신체 조절 및 대담성 강화</span>
+</button>
+</div>
+<!-- Weekly Commitment Stepper (Directly below grid) -->
+<div class=&quot;bg-surface-container rounded-lg p-5 mb-6 border border-outline-variant/30&quot;>
+<div class=&quot;flex justify-between items-center mb-4&quot;>
+<span class=&quot;font-bold text-on-surface text-sm&quot;>주간 실천 목표</span>
+<span class=&quot;bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-[10px] font-black uppercase&quot;>추천: 5일</span>
+</div>
+<div class=&quot;flex items-center justify-center gap-6&quot;>
+<button class=&quot;w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-primary text-xl font-black border border-outline-variant/20 active:scale-90 transition-transform&quot;>-</button>
+<div class=&quot;text-center&quot;>
+<span class=&quot;text-4xl font-black text-primary tracking-tighter&quot;>5</span>
+<span class=&quot;text-base font-bold text-on-surface-variant ml-1&quot;>Days</span>
+</div>
+<button class=&quot;w-10 h-10 rounded-full bg-primary text-white shadow-md flex items-center justify-center text-xl font-black active:scale-90 transition-transform&quot;>+</button>
+</div>
+<p class=&quot;text-center text-[11px] text-on-surface-variant mt-3 italic&quot;>일주일에 5일 이상 코칭을 실천해 보세요!</p>
+</div>
+<!-- Final Review Section -->
+<div class=&quot;border-2 border-dashed border-outline-variant/50 rounded-lg p-4 bg-surface-container-low mb-6&quot;>
+<h4 class=&quot;font-extrabold text-primary text-[11px] mb-2 uppercase tracking-wider&quot;>앞서 입력한 정보 확인</h4>
+<div class=&quot;space-y-1.5&quot;>
+<div class=&quot;flex justify-between text-xs&quot;>
+<span class=&quot;text-on-surface-variant&quot;>아이 이름</span>
+<span class=&quot;font-bold&quot;>김루다</span>
+</div>
+<div class=&quot;flex justify-between text-xs&quot;>
+<span class=&quot;text-on-surface-variant&quot;>생년월일</span>
+<span class=&quot;font-bold&quot;>2024.01.12</span>
+</div>
+<div class=&quot;flex justify-between text-xs&quot;>
+<span class=&quot;text-on-surface-variant&quot;>주요 관심사</span>
+<span class=&quot;font-bold&quot;>수면, 발달</span>
+</div>
+</div>
+</div>
+<!-- CTA Button (Visually anchored below counter within/after content) -->
+<button class=&quot;w-full py-4 bg-gradient-to-r from-[#ff8c69] to-[#feb246] text-white rounded-full text-lg font-black shadow-lg hover:shadow-xl active:scale-95 transition-all flex items-center justify-center gap-3 group&quot;>
+                코칭 시작하기 
+                <span class=&quot;group-hover:rotate-12 transition-transform&quot;>→ 🧸</span>
+</button>
+</section>
+</main>
+</body></html>" onload="resize(this)"></iframe></div>
+  <script>
+    const btns=document.querySelectorAll(".nav-btn"),frames=document.querySelectorAll(".frame-wrap");
+    function show(i){btns.forEach((b,j)=>b.classList.toggle("active",i===j));frames.forEach((f,j)=>f.classList.toggle("active",i===j));}
+    function resize(fr){try{fr.style.height=Math.max(fr.contentDocument.documentElement.scrollHeight,window.innerHeight-60)+"px"}catch(e){fr.style.height="90vh"}}
+  </script>
+</body>
+</html>
