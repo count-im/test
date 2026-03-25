@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BabyCoach - Step 1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#f3ede8",
+              "inverse-on-surface": "#f6efeb",
+              "on-surface": "#1d1b18",
+              "error-container": "#ffdad6",
+              "tertiary-fixed": "#faddc8",
+              "primary-fixed-dim": "#ffb59f",
+              "outline-variant": "#dcc0b9",
+              "surface-bright": "#fff8f3",
+              "on-error": "#ffffff",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed": "#2a1800",
+              "secondary-fixed-dim": "#ffb95a",
+              "secondary": "#845400",
+              "on-secondary-container": "#6f4600",
+              "on-primary-container": "#752409",
+              "inverse-surface": "#33302d",
+              "secondary-container": "#feb246",
+              "tertiary-fixed-dim": "#ddc1ad",
+              "on-primary-fixed-variant": "#7e2b10",
+              "on-error-container": "#93000a",
+              "tertiary": "#6f5a4a",
+              "on-tertiary-fixed": "#27180c",
+              "on-primary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-tint": "#9e4225",
+              "surface-dim": "#dfd9d4",
+              "tertiary-container": "#c1a794",
+              "primary-fixed": "#ffdbd1",
+              "on-tertiary-fixed-variant": "#564334",
+              "on-surface-variant": "#56423d",
+              "secondary-fixed": "#ffddb6",
+              "surface-container-low": "#f9f2ed",
+              "surface-container-highest": "#e8e1dc",
+              "on-tertiary-container": "#4f3c2d",
+              "surface": "#fff8f3",
+              "error": "#ba1a1a",
+              "on-secondary-fixed-variant": "#643f00",
+              "primary": "#9e4225",
+              "on-tertiary": "#ffffff",
+              "inverse-primary": "#ffb59f",
+              "background": "#fff8f3",
+              "surface-container-high": "#eee7e2",
+              "outline": "#89726b",
+              "surface-variant": "#e8e1dc",
+              "on-background": "#1d1b18",
+              "primary-container": "#ff8c69",
+              "on-primary-fixed": "#3a0a00"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans", "Noto Sans KR"],
+              "body": ["Be Vietnam Pro", "Noto Sans KR"],
+              "label": ["Be Vietnam Pro", "Noto Sans KR"],
+              "brand": ["Plus Jakarta Sans", "Noto Sans KR"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Be Vietnam Pro', 'Noto Sans KR', sans-serif;
+            background-color: #fff8f3;
+            color: #1d1b18;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .dashed-border {
+            border: 1.5px dashed #ff8c69;
+        }
+        .radial-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(255, 140, 105, 0.1) 0%, rgba(254, 178, 70, 0.05) 50%, transparent 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col items-center justify-start overflow-x-hidden radial-glow">
+<!-- Streak Banner -->
+<div class="w-full bg-gradient-to-r from-[#ff8c69] to-[#ffb347] py-2 px-4 flex items-center justify-center shadow-sm z-[60]">
+<p class="text-white text-[13px] font-bold tracking-tight">
+            🔥 오늘도 기록해요! | 3일 연속
+        </p>
+</div>
+<!-- Main Container -->
+<main class="w-[375px] flex flex-col gap-6 px-6 pt-6 pb-32 min-h-screen relative">
+<!-- Header Card -->
+<header class="glass-card dashed-border rounded-xl p-5 flex flex-col items-center gap-1 text-center">
+<h1 class="font-brand font-black text-2xl text-primary tracking-tighter">🌸 BabyCoach</h1>
+<p class="font-headline font-bold text-on-surface/80 text-sm">아기 정보 입력</p>
+</header>
+<!-- Step Indicator -->
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<span class="font-label text-[10px] uppercase tracking-widest text-secondary font-bold">Progress</span>
+<span class="font-body font-bold text-sm text-primary">1단계 / 4단계</span>
+</div>
+<div class="flex gap-1.5">
+<div class="h-2 w-12 bg-primary-container rounded-full shadow-[0_2px_8px_rgba(255,140,105,0.4)]"></div>
+<div class="h-2 w-2 bg-surface-container-highest rounded-full"></div>
+<div class="h-2 w-2 bg-surface-container-highest rounded-full"></div>
+<div class="h-2 w-2 bg-surface-container-highest rounded-full"></div>
+</div>
+</div>
+<!-- Baby Character Illustration -->
+<div class="flex justify-center py-2">
+<div class="relative w-32 h-32 flex items-center justify-center rounded-full bg-primary-fixed/30 border-[1.5px] border-dashed border-primary-container/40">
+<img alt="Cute baby illustration" class="w-24 h-24 object-contain" data-alt="cute minimalist cartoon baby illustration with soft pastel colors and a friendly smiling face on a warm cream background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtJGwRRD8s98_fmr60jne-iiAnRDyHxkDhqSmLvchpzg6zdYzXDYIpZMmKel1w1-UdGsPwg_GZa61p89IpG7Z-nOx270TSdePyBmFtvMQZRqApf2vNi_bdLXVBvJ5nr2aasymLPlVC1t95wSIKK-TVQ8dXTmTryOK0RJAWQML9-EeHeSCnPrCWHIrIeX1eNy04V6ZGHEvsmQ4pzjW36da5sbcmIxoCI7z2crYwzcw5fBrQXQl8ZbmaEvk-uzSxdltw2tiETeVkTmTa"/>
+</div>
+</div>
+<!-- Section 1: Basic Info -->
+<section class="glass-card dashed-border rounded-lg p-6 flex flex-col gap-5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="calendar_today">calendar_today</span>
+<h2 class="font-headline font-bold text-on-surface">기본 정보</h2>
+</div>
+<div class="space-y-4">
+<!-- Months Stepper -->
+<div class="flex items-center justify-between">
+<span class="font-body font-bold text-on-surface-variant text-sm">개월 수</span>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full bg-surface-container-lowest text-primary shadow-[0_4px_12px_rgba(255,140,105,0.15)] flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="font-headline font-extrabold text-lg text-on-surface">10<span class="text-sm font-bold ml-1">개월</span></span>
+<button class="w-10 h-10 rounded-full bg-surface-container-lowest text-primary shadow-[0_4px_12px_rgba(255,140,105,0.15)] flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<!-- Weight Stepper -->
+<div class="flex items-center justify-between">
+<span class="font-body font-bold text-on-surface-variant text-sm">체중</span>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full bg-surface-container-lowest text-primary shadow-[0_4px_12px_rgba(255,140,105,0.15)] flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="font-headline font-extrabold text-lg text-on-surface">8.7<span class="text-sm font-bold ml-1">kg</span></span>
+<button class="w-10 h-10 rounded-full bg-surface-container-lowest text-primary shadow-[0_4px_12px_rgba(255,140,105,0.15)] flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Gender -->
+<section class="glass-card dashed-border rounded-lg p-6 flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="face">face</span>
+<h2 class="font-headline font-bold text-on-surface">성별</h2>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-3 rounded-full font-body font-bold text-sm bg-surface-container-low text-on-surface-variant flex items-center justify-center gap-2">
+<span>👦</span> 남아
+                </button>
+<button class="flex-1 py-3 rounded-full font-body font-bold text-sm bg-gradient-to-br from-primary to-primary-container text-white flex items-center justify-center gap-2 shadow-lg scale-105">
+<span>👧</span> 여아
+                </button>
+</div>
+</section>
+<!-- Section 3: Allergy -->
+<section class="glass-card dashed-border rounded-lg p-6 flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="warning">warning</span>
+<h2 class="font-headline font-bold text-on-surface">알레르기</h2>
+</div>
+<div class="flex flex-wrap gap-2">
+<div class="px-4 py-2 rounded-full bg-primary text-white text-xs font-bold shadow-md">우유</div>
+<div class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold">달걀</div>
+<div class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold">밀</div>
+<div class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold">견과류</div>
+<div class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold">기타 없음</div>
+</div>
+</section>
+<!-- Bottom Fixed Button -->
+<div class="fixed bottom-0 left-0 right-0 w-full max-w-[375px] mx-auto p-6 bg-gradient-to-t from-surface via-surface/90 to-transparent z-50">
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-white font-headline font-extrabold text-lg rounded-full shadow-[0_8px_28px_rgba(255,140,105,0.3)] active:scale-95 transition-all flex items-center justify-center gap-2">
+                다음 단계
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Hidden on focus task but structure provided) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/88 dark:bg-[#1d1b18]/88 backdrop-blur-md z-40 rounded-t-[32px] border-t-[1.5px] border-dashed border-[#ff8c69]/30 shadow-[0_-8px_28px_rgba(255,140,105,0.13)] opacity-0 pointer-events-none">
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#9e4225] to-[#ff8c69] text-white rounded-full px-5 py-2 shadow-lg scale-105">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-semibold uppercase tracking-wider">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#845400] opacity-70">
+<span class="material-symbols-outlined" data-icon="baby_changing_station">baby_changing_station</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-semibold uppercase tracking-wider">Tracking</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#845400] opacity-70">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-semibold uppercase tracking-wider">Insights</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#845400] opacity-70">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-semibold uppercase tracking-wider">Community</span>
+</div>
+</nav>
+</body></html>
