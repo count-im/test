@@ -8,3 +8,10 @@ logs/
 LLM_Application/LLM01/data/
 **/*-checkpoint.ipynb
 **/*의_사본.ipynb
+# MLOps08 - 커밋 제외 대상
+MLOps/MLOps08/checkpoints/
+MLOps/MLOps08/lightning_logs/
+MLOps/MLOps08/__pycache__/
+MLOps/MLOps08/.pytest_cache/
+MLOps/MLOps08/src/__pycache__/
+MLOps/MLOps08/tests/__pycache__/
