@@ -40,6 +40,7 @@ LABELS = ['IT과학', '경제', '사회', '생활문화', '세계', '스포츠',
 
 model = None
 tokenizer = None
+device = None
 
 
 @app.on_event("startup")
@@ -49,7 +50,11 @@ def load_model():
     on_event("startup"): FastAPI 라이프사이클 훅.
     요청마다 로드하면 너무 느림 → 전역으로 한 번만.
     """
-    global model, tokenizer
+    global model, tokenizer, device
+
+    # 디바이스 명시적 설정 (GPU 있으면 cuda, 없으면 cpu)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"사용 디바이스: {device}")
 
     if not os.path.exists(CHECKPOINT_PATH):
         print(f"⚠️  체크포인트 없음: {CHECKPOINT_PATH}")
@@ -58,7 +63,11 @@ def load_model():
         return
 
     print(f"모델 로드 중: {CHECKPOINT_PATH}")
-    model = NewsClassifier.load_from_checkpoint(CHECKPOINT_PATH)
+    model = NewsClassifier.load_from_checkpoint(
+        CHECKPOINT_PATH,
+        map_location=device,  # 체크포인트를 현재 디바이스로 로드
+    )
+    model = model.to(device)  # 명시적으로 디바이스 이동
     model.eval()
     model.freeze()  # 서빙 시에는 파라미터 고정 (메모리·속도 최적화)
 
@@ -109,6 +118,9 @@ def classify_news(request: NewsRequest):
         truncation=True,
     )
 
+    # 입력을 모델 디바이스로 이동
+    inputs = {k: v.to(device) for k, v in inputs.items()}
+
     # 추론 (no_grad: 그래디언트 계산 불필요 → 메모리·속도 절약)
     with torch.no_grad():
         logits = model.model(**inputs).logits  # (1, 7)
@@ -138,9 +150,4 @@ def health_check():
 
 @app.get("/")
 def root():
-    return {
-        "message": "한국어 뉴스 분류 API",
-        "docs": "/docs",
-        "health": "/health",
-        "classify": "POST /classify",
-    }
+    retur
