@@ -150,4 +150,9 @@ def health_check():
 
 @app.get("/")
 def root():
-    retur
+    return {
+        "message": "한국어 뉴스 분류 API",
+        "docs": "/docs",
+        "health": "/health",
+        "classify": "POST /classify",
+    }
